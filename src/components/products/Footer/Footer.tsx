@@ -6,7 +6,7 @@ import valve from "images/Valve_Logo_Since_2018.png";
 import rockStar from "images/rockstar-games-555376.png";
 import EA from "images/EA_logo_logotype.png";
 import activision from "images/Activision_Blizzard.svg.png";
-import sony from "images/png-clipart-playstation-vr-logo-playstation-4-sony-corporation-playstation-3-ps4-television-angle.png";
+import sony from "images/PlayStation_black_logo.png";
 
 const Footer: React.FC = () => (
   <div className="Footer">
@@ -14,7 +14,7 @@ const Footer: React.FC = () => (
     <ul>
       <li>
         <a href="https://www.valvesoftware.com/ru/" target="_blank" rel="noopener noreferrer">
-          <img src={valve} alt="Nintendo" />
+          <img src={valve} alt="Nintendo" className="love" />
         </a>
       </li>
       <li>
