@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// console.clear(); // TODO: watchFix => it doesn't work properly since VSCode-terminal has bug: https://github.com/microsoft/vscode/issues/75141
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
@@ -31,8 +30,7 @@ function isPackageExists(packageName) {
 
 /* eslint-disable func-names */
 module.exports = function (_env, argv) {
-  // const isDevServer = argv?.$0?.indexOf("webpack-dev-server") !== -1;
-  const isDevServer = true;
+  const isDevServer = argv.config.indexOf("webpack.devServer.js") !== -1;
   const mode = argv.mode || (isDevServer ? "development" : "production");
   const isDevMode = mode !== "production";
 
