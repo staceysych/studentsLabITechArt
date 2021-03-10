@@ -9,6 +9,7 @@ import Header from "./components/products/Header/index";
 import HomePage from "./components/products/HomePage/HomePage";
 import ProductsPage from "./components/products/ProductsPage/ProductsPage";
 import AboutPage from "./components/products/AboutPage/AboutPage";
+import Footer from "./components/products/Footer/Footer";
 
 const AppContainer: React.FC = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const AppContainer: React.FC = () => (
         <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       </Switch>
     </div>
+    <Footer />
   </BrowserRouter>
 );
 
