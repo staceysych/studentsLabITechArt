@@ -5,11 +5,11 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import "./styles/main.scss";
 
-import Header from "./components/products/Header/index";
-import HomePage from "./components/products/HomePage/HomePage";
-import ProductsPage from "./components/products/ProductsPage/ProductsPage";
-import AboutPage from "./components/products/AboutPage/AboutPage";
-import Footer from "./components/products/Footer/Footer";
+import Header from "./components/products/Header";
+import HomePage from "./components/products/HomePage";
+import ProductsPage from "./components/products/ProductsPage";
+import AboutPage from "./components/products/AboutPage";
+import Footer from "./components/products/Footer";
 
 const AppContainer: React.FC = () => (
   <BrowserRouter>

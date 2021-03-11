@@ -24,17 +24,17 @@ const Footer: React.FC = () => (
       </li>
       <li>
         <a href="https://www.ea.com/ru-ru" target="_blank" rel="noopener noreferrer">
-          <img src={EA} alt="rockStar" />
+          <img src={EA} alt="EA" />
         </a>
       </li>
       <li>
         <a href="https://www.activisionblizzard.com/" target="_blank" rel="noopener noreferrer">
-          <img src={activision} alt="rockStar" />
+          <img src={activision} alt="activision" />
         </a>
       </li>
       <li>
         <a href="https://www.playstation.com/ru-ru/" target="_blank" rel="noopener noreferrer">
-          <img src={sony} alt="rockStar" />
+          <img src={sony} alt="sony" />
         </a>
       </li>
     </ul>

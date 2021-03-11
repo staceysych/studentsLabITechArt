@@ -23,6 +23,9 @@
     "*.(js|jsx)": [
       "eslint --fix",
       "prettier --write"
+    ],
+    "*.(scss)": [
+      "stylelint --fix"
     ]
   },
   "repository": {
