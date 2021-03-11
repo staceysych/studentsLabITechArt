@@ -14,13 +14,12 @@ import Footer from "./components/products/Footer";
 interface AppState {
   hasError: boolean;
 }
+interface AppProps {}
 
-const TestErrorComponent = ({ testError }) => (
-  <button type="button" onClick={testError}>
-    Throw error
-  </button>
-);
-class AppContainer extends Component<{}, AppState> {
+const TestErrorComponent = () => {
+  throw new Error("Error is in the render method");
+};
+class AppContainer extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,22 +28,16 @@ class AppContainer extends Component<{}, AppState> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error("You have an error", error, errorInfo);
     this.setState({ hasError: true });
-    if (this.state.hasError) {
-      console.log("this is an error", error);
-      console.log("this is an error info", errorInfo);
-    }
   }
 
-  testError = () => {
-    try {
-      throw new Error("Error is in the render method");
-    } catch (e) {
-      return window.alert(e);
-    }
-  };
-
   render() {
+    if (this.state.hasError) {
+      window.alert("Ops, error");
+      window.location.href = "/";
+    }
+
     return (
       <BrowserRouter>
         <Header />
@@ -55,7 +48,7 @@ class AppContainer extends Component<{}, AppState> {
             <Route component={AboutPage} path="/about" />
             <Route render={() => <Redirect to={{ pathname: "/" }} />} />
           </Switch>
-          <TestErrorComponent testError={this.testError} />
+          <TestErrorComponent />
         </div>
         <Footer />
       </BrowserRouter>
