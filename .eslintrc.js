@@ -26,6 +26,7 @@ module.exports = {
   rules: {
     "prettier/prettier": ["error"],
     "react/destructuring-assignment": 0,
+    "no-use-before-define": "off",
     "react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
     // "react/jsx-max-props-per-line": [1, { maximum: 1 }], //it doesn't work with prettier, you can remove prettier from rules: 'prettier/prettier'...
     // "react/jsx-first-prop-new-line": [1, "multiline"], //it doesn't work with prettier, you can remove prettier from rules: 'prettier/prettier'...
