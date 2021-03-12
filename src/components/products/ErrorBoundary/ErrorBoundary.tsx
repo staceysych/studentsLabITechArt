@@ -1,27 +1,37 @@
 import React from "react";
+import { withRouter } from "react-router";
 
-interface AppProps {}
+interface Props {
+  history: object;
+}
 
-interface AppState {
+interface State {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<AppProps, AppState> {
+class ErrorBoundary extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.log(error);
-    console.log(info);
-    this.setState({ hasError: true });
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch() {
+    console.log(typeof this.props.history);
+    this.props.history.push("/");
+    window.location.reload();
   }
 
   render() {
-    if (this.state.hasError) alert("Opps, error is here");
+    if (this.state.hasError) {
+      window.alert("Ops, something went wrong!");
+      return null;
+    }
     return this.props.children;
   }
 }
 
-export default ErrorBoundary;
+export default withRouter(ErrorBoundary);

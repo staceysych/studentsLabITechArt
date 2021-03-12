@@ -10,47 +10,31 @@ import HomePage from "./components/products/HomePage";
 import ProductsPage from "./components/products/ProductsPage";
 import AboutPage from "./components/products/AboutPage";
 import Footer from "./components/products/Footer";
+import ErrorBoundary from "./components/products/ErrorBoundary";
 
-interface AppState {
-  hasError: boolean;
-}
+interface AppState {}
 interface AppProps {}
 
 const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
 };
 class AppContainer extends Component<AppProps, AppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hasError: false,
-    };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("You have an error", error, errorInfo);
-    this.setState({ hasError: true });
-  }
-
   render() {
-    if (this.state.hasError) {
-      window.alert("Ops, error");
-      window.location.href = "/";
-    }
-
     return (
       <BrowserRouter>
-        <Header />
-        <div className="container">
-          <Switch>
-            <Route component={HomePage} path="/" exact />
-            <Route component={ProductsPage} path="/products" />
-            <Route component={AboutPage} path="/about" />
-            <Route render={() => <Redirect to={{ pathname: "/" }} />} />
-          </Switch>
-          <TestErrorComponent />
-        </div>
-        <Footer />
+        <ErrorBoundary>
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route component={HomePage} path="/" exact />
+              <Route component={ProductsPage} path="/products" />
+              <Route component={AboutPage} path="/about" />
+              <Route component={TestErrorComponent} path="/testError" />
+              <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+            </Switch>
+          </div>
+          <Footer />
+        </ErrorBoundary>
       </BrowserRouter>
     );
   }
