@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 
 interface Props {
-  history: object;
+  history: any;
 }
 
 interface State {
