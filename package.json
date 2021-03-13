@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npm run lint-code && npm run lint-styles",
     "serve": "./node_modules/.bin/webpack serve --hot --open --config webpack.devServer.js",
+    "json:server": "json-server --watch ./src/helpers/db.json",
     "build-prod": "./node_modules/.bin/webpack --mode production --config webpack.prod.js",
     "build-prod-withMap": "./node_modules/.bin/webpack --mode production --config webpack.prod.js --sourceMap",
     "build-dev": "./node_modules/.bin/webpack --mode development --config webpack.dev.js",
@@ -115,6 +116,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "core-js": "^3.9.1",
+    "json-server": "^0.16.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
