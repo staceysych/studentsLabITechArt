@@ -6,3 +6,9 @@ body {
   font-family: "OpenSans-Regular", sans-serif;
   color: $basicColor;
 }
+
+.container {
+  max-width: 1400px;
+  padding: 20px;
+  height: 100%;
+}

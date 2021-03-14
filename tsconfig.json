@@ -7,7 +7,8 @@
       //none-js-ts files is not supported by intellisense. Use 'path-intellisense.mappings' in .vscode/settings.json instead
       //this is should be sync with aliases in webpack
       "@/*": ["src/*"],
-      "images/*": ["src/assets/images/*"],
+      "images/*": ["src/assets/images/*", "src/assets/images/posters/*"],
+      "posters/*": ["src/assets/images/posters/*"],
       "fonts/*": ["src/assets/fonts/*"],
     },
     "jsx": "react",

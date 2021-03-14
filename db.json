@@ -1,19 +1,53 @@
 {
-  "posts": [
+  "games": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "grand theft auto",
+      "rating": 100,
+      "price": 30,
+      "poster": "images/GTA.jpg"
+    },
+    {
+      "id": 2,
+      "name": "minecraft",
+      "rating": 100,
+      "price": 20,
+      "poster": "images/Minecraft.jpg"
+    },
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "cyberpunk",
+      "rating": 97,
+      "price": 35,
+      "poster": "images/cyberpunk.png"
+    },
+    {
+      "id": 3,
+      "name": "witcher",
+      "rating": 70,
+      "price": 25,
+      "poster": "images/1607595308_poster.jpg"
+    },
+    {
+      "id": 4,
+      "name": "forza: Horizon 4",
+      "rating": 60,
+      "price": 15,
+      "poster": "images/forza.jpg"
+    },
+    {
+      "id": 1,
+      "name": "world of warcraft",
+      "rating": 99,
+      "price": 14,
+      "poster": "images/warcraft.jpg"
+    },
+    {
+      "id": 1,
+      "name": "red dead redemption",
+      "rating": 78,
+      "price": 40,
+      "poster": "images/redemption.jpg"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

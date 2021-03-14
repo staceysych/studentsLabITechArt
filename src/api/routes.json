@@ -1,0 +1,3 @@
+{
+  "/games/api/search/:name": "/games?name_like=:name"
+}
