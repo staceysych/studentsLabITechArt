@@ -1,5 +1,18 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
-const ProductsPage: React.FC = () => <h3>Products</h3>;
+interface ParamTypes {
+  param: string;
+}
+
+const ProductsPage: React.FC = () => {
+  const { param } = useParams<ParamTypes>();
+
+  return (
+    <div>
+      <h3>{param}</h3>
+    </div>
+  );
+};
 
 export default ProductsPage;

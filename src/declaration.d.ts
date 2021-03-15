@@ -11,6 +11,8 @@ declare module "*.jpeg" {
   export = value;
 }
 declare module "*.svg" {
-  const value: any;
-  export = value;
+  import React = require("react");
+  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  const src: string;
+  export default src;
 }

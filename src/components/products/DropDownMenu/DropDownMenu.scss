@@ -1,0 +1,33 @@
+@import "../../../styles/variables.scss";
+
+.DropDownMenu {
+  position: absolute;
+  width: 130px;
+  background: $basicColor;
+  z-index: 2;
+  padding: 3px;
+  top: 45px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: $textColor;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background: $basicColorBright;
+    }
+  }
+
+  &__icon {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+  }
+}
