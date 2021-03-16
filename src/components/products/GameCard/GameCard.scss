@@ -1,0 +1,63 @@
+@import "../../../styles/variables.scss";
+
+.GameCard {
+  width: 165px;
+  height: 390px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 9px 10px 0 $basicColorBright;
+
+  &__rating {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: start;
+
+    img {
+      margin-right: 3px;
+      height: 100%;
+      width: 15%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 65%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
+
+  h2 {
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-top: 0;
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 5px 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: $highlightColor;
+  }
+
+  &__content {
+    height: 35%;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+  }
+}

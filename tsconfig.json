@@ -20,5 +20,5 @@
     "module": "ESNext",
   },
   "exclude": ["node_modules", "dist", "build", ".vscode"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/components/products/GameCard/utils/generate-rating.tsx"]
 }

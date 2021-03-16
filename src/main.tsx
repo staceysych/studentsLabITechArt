@@ -32,8 +32,8 @@ class AppContainer extends Component<AppProps, AppState> {
               <Route component={TestErrorComponent} path="/testError" />
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
+            <Footer />
           </div>
-          <Footer />
         </ErrorBoundary>
       </BrowserRouter>
     );
