@@ -1,9 +1,12 @@
 .HomePage {
   &__content {
-    padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-bottom: 140px;
+  }
+
+  &__title {
+    text-align: center;
   }
 }

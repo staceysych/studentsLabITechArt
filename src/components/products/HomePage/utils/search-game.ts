@@ -6,7 +6,6 @@ export const searchGame = async (search: string) => {
 
   const response = await fetch(`${SERVER_URL}${SEARCH_URL}${searchText}`);
   const data = await response.json();
-  console.log(data);
 
   return data;
 };

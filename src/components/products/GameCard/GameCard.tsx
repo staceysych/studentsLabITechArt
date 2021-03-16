@@ -5,14 +5,16 @@ import "./GameCard.scss";
 import star from "images/star.svg";
 
 interface Props {
-  id: number;
-  poster: string;
-  name: string;
-  rating: number;
-  price: number;
+  obj: {
+    id: number;
+    poster: string;
+    name: string;
+    rating: number;
+    price: number;
+  };
 }
 
-const GameCard: React.FC<Props> = ({ id, poster, name, rating, price }) => (
+const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => (
   <div className="GameCard" key={id}>
     <div className="GameCard__img">
       <img src={poster} alt={name} />

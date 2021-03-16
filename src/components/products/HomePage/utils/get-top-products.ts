@@ -5,7 +5,6 @@ export const getTopProducts = async () => {
 
   const response = await fetch(`${SERVER_URL}${TOP_PRODUCTS_URL}`);
   const data = await response.json();
-  console.log(data);
 
   return data;
 };

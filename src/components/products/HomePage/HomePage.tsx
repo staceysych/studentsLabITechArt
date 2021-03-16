@@ -5,7 +5,7 @@ import GameCard from "../GameCard/index";
 
 import "./HomePage.scss";
 
-import { searchGame, getTopProducts } from "./utils/index";
+import { searchGame, getTopProducts, generateTitle } from "./utils/index";
 import { useDebounce } from "../../../utils/index";
 import { CONSTANTS } from "../../../constants/index";
 
@@ -38,19 +38,17 @@ const HomePage: React.FC = () => {
       });
     } else {
       setResults([]);
+      setIsSearching(false);
     }
   }, [debouncedSearchText]);
 
   return (
     <>
       <SearchBar {...{ handleChange, isSearching }} />
+      {!isSearching && generateTitle(searchText, results)}
       <div className="HomePage__content">
-        {results.map(({ id, name, poster, rating, price }) => (
-          <GameCard {...{ id, poster, name, rating, price }} />
-        ))}
-        {recentGames.slice(0, 3).map(({ id, name, poster, rating, price }) => (
-          <GameCard {...{ id, poster, name, rating, price }} />
-        ))}
+        {results.length ? results.map((obj) => <GameCard obj={obj} />) : null}
+        {!searchText ? recentGames.slice(-3).map((obj) => <GameCard obj={obj} />) : null}
       </div>
     </>
   );
