@@ -11,7 +11,11 @@ import NavItem from "../NavItem/index";
 import DropDownMenu from "../DropDownMenu/index";
 import DropDownItem from "../DropDownItem/index";
 
-const Header: React.FC = () => {
+interface Props {
+  handleOpenModal: (type: string) => void;
+}
+
+const Header: React.FC<Props> = ({ handleOpenModal }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleDropDownClick = () => {
@@ -37,6 +41,14 @@ const Header: React.FC = () => {
         </NavItem>
         <NavItem path="/about" name="About" />
       </NavBar>
+      <div className="Header__signIn">
+        <button type="button" onClick={() => handleOpenModal("sign-in")}>
+          Sign In
+        </button>
+        <button type="button" onClick={() => handleOpenModal("registration")}>
+          Registration
+        </button>
+      </div>
     </div>
   );
 };
