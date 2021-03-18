@@ -1,0 +1,60 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "grand theft auto",
+      "rating": 5,
+      "price": 30,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/GTA_uxipxm.jpg",
+      "date": "2021-03-12"
+    },
+    {
+      "id": 2,
+      "name": "minecraft",
+      "rating": 5,
+      "price": 20,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/Minecraft_v6hpb9.jpg",
+      "date": "2021-03-10"
+    },
+    {
+      "id": 3,
+      "name": "cyberpunk",
+      "rating": 4,
+      "price": 35,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
+      "date": "2021-11-15"
+    },
+    {
+      "id": 4,
+      "name": "witcher",
+      "rating": 3,
+      "price": 25,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/1607595308_poster_ivi9of.jpg",
+      "date": "2020-03-12"
+    },
+    {
+      "id": 5,
+      "name": "forza: Horizon 4",
+      "rating": 2,
+      "price": 15,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
+      "date": "2021-03-15"
+    },
+    {
+      "id": 6,
+      "name": "world of warcraft",
+      "rating": 5,
+      "price": 14,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887212/game-posters/warcraft_ua9637.jpg",
+      "date": "2021-01-12"
+    },
+    {
+      "id": 7,
+      "name": "red dead redemption",
+      "rating": 4,
+      "price": 40,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887320/game-posters/redemption_rooy74.jpg",
+      "date": "2021-02-23"
+    }
+  ]
+}

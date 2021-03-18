@@ -27,7 +27,7 @@ class AppContainer extends Component<AppProps, AppState> {
           <div className="container">
             <Switch>
               <Route component={HomePage} path="/" exact />
-              <Route component={ProductsPage} path="/products" />
+              <Route component={ProductsPage} path="/products/:param" />
               <Route component={AboutPage} path="/about" />
               <Route component={TestErrorComponent} path="/testError" />
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />

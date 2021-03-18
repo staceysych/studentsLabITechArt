@@ -124,7 +124,7 @@ module.exports = function (_env, argv) {
           exclude: /(node_modules)/,
           use: [
             {
-              loader: "url-loader", // it converts images that have size less 'limit' option into inline base64-css-format
+              loader: "file-loader", // it converts images that have size less 'limit' option into inline base64-css-format
               options: {
                 name: "images/[name].[ext]",
                 limit: filesThreshold, // if file-size more then limit, file-loader copies one into outputPath
@@ -271,6 +271,11 @@ module.exports = function (_env, argv) {
           {
             from: assetsPath,
             to: destPath,
+            toType: "dir",
+          },
+          {
+            from: "src/assets/images/posters",
+            to: "images/",
             toType: "dir",
           },
         ],

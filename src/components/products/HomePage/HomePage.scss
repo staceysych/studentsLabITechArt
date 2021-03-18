@@ -1,0 +1,12 @@
+.HomePage {
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 140px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+}
