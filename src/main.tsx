@@ -13,6 +13,7 @@ import Footer from "./components/products/Footer";
 import ErrorBoundary from "./components/products/ErrorBoundary";
 import Modal from "./elements/modal";
 import Login from "./components/users/Login";
+import Registration from "./components/users/Registration";
 
 interface AppState {
   isModalOpen: boolean;
@@ -56,7 +57,7 @@ class AppContainer extends Component<AppProps, AppState> {
           </div>
           <Modal isOpen={this.state.isModalOpen} handleCloseModal={this.handleCloseModal}>
             {" "}
-            {this.state.type === "sign-in" ? <Login /> : "Registration"}{" "}
+            {this.state.type === "sign-in" ? <Login /> : <Registration />}{" "}
           </Modal>
           <Footer />
         </ErrorBoundary>
