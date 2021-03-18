@@ -48,9 +48,12 @@ class AppContainer extends Component<AppProps, AppState> {
               <Route component={TestErrorComponent} path="/testError" />
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
-            <Footer />
           </div>
+<<<<<<< HEAD
           <Modal isOpen={this.state.isModalOpen}> {this.state.type === "sign-in" ? "Sign in" : "Registration"} </Modal>
+=======
+          <Footer />
+>>>>>>> home-page
         </ErrorBoundary>
       </BrowserRouter>
     );

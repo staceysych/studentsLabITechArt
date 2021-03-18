@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 interface Props {
   path?: string;
   name: string;
-  handleDropDownClick: (event: React.MouseEvent<HTMLElement>) => void;
+  handleDropDownClick: () => void;
   icon: any;
 }
 

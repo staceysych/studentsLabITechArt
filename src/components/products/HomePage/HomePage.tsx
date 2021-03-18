@@ -6,7 +6,7 @@ import GameCard from "../GameCard/index";
 import "./HomePage.scss";
 
 import { searchGame, getTopProducts, generateTitle } from "./utils/index";
-import { useDebounce } from "../../../utils/index";
+import { useDebounce, IGameObject } from "../../../utils/index";
 import { CONSTANTS } from "../../../constants/index";
 
 const HomePage: React.FC = () => {
@@ -45,10 +45,15 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SearchBar {...{ handleChange, isSearching }} />
-      {!isSearching && generateTitle(searchText, results)}
+      {!isSearching && <h2 className="HomePage__title">{generateTitle(searchText, results)}</h2>}
+      {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
       <div className="HomePage__content">
-        {results.length ? results.map((obj) => <GameCard obj={obj} />) : null}
-        {!searchText ? recentGames.slice(-3).map((obj) => <GameCard obj={obj} />) : null}
+        {results.length && !isSearching
+          ? results.map((obj: IGameObject) => <GameCard key={Math.random()} obj={obj} />)
+          : null}
+        {!searchText && !results.length
+          ? recentGames.slice(-3).map((obj: IGameObject) => <GameCard key={Math.random()} obj={obj} />)
+          : null}
       </div>
     </>
   );

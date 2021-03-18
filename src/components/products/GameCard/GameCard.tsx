@@ -3,15 +3,10 @@ import React from "react";
 import "./GameCard.scss";
 
 import star from "images/star.svg";
+import { IGameObject } from "../../../utils/index";
 
 interface Props {
-  obj: {
-    id: number;
-    poster: string;
-    name: string;
-    rating: number;
-    price: number;
-  };
+  obj: IGameObject;
 }
 
 const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => (
