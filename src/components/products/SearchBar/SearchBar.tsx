@@ -24,7 +24,3 @@ const SearchBar: React.FC<Props> = ({ handleChange, isSearching }) => (
 );
 
 export default SearchBar;
-
-/* fetch("http://localhost:3000/search/gta")
-  .then((res) => res.json())
-  .then((data) => console.log(data)); */

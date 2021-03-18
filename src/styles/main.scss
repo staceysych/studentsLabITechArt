@@ -2,13 +2,22 @@
 @import "sanitize.css";
 @import "fontface.css";
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "OpenSans-Regular", sans-serif;
   color: $basicColor;
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+  position: relative;
 }
 
 .container {
-  max-width: 1400px;
   padding: 20px;
   height: 100%;
   position: relative;
