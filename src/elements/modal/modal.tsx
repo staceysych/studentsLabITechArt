@@ -3,17 +3,25 @@ import { createPortal } from "react-dom";
 
 import "./modal.scss";
 
+import cancel from "images/cancel.svg";
+
 interface Props {
   isOpen: boolean;
   children: React.ReactNode;
+  handleCloseModal: () => void;
 }
 
-const Modal: React.FC<Props> = ({ isOpen, children }) =>
+const Modal: React.FC<Props> = ({ isOpen, handleCloseModal, children }) =>
   isOpen &&
   createPortal(
     <>
       <div className="Modal__overlay" />
-      <div className="Modal">{children}</div>
+      <div className="Modal">
+        <button className="Modal__cancel" type="button" onClick={handleCloseModal}>
+          <img src={cancel} alt="cancel" />
+        </button>
+        {children}
+      </div>
     </>,
     document.getElementById("modal")
   );

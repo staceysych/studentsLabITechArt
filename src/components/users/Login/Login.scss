@@ -1,0 +1,17 @@
+@import "../../../styles/variables.scss";
+
+.Login {
+  height: 100%;
+
+  &__title {
+    margin-top: 0;
+    border-bottom: 1px solid $basicColorBright;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: start;
+  }
+}

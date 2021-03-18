@@ -18,6 +18,9 @@
     "module": "ESNext",
   },
   "exclude": ["node_modules", "dist", "build", ".vscode"],
-  "include": ["src/**/*.ts", "src/**/*.tsx",
-    "src/declaration.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*.ts",
+    "src/declaration.ts"]
 }
+
+// "**/*.ts"
+// "**/*.tsx"

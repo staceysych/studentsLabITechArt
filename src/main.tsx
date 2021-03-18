@@ -11,7 +11,8 @@ import ProductsPage from "./components/products/ProductsPage";
 import AboutPage from "./components/products/AboutPage";
 import Footer from "./components/products/Footer";
 import ErrorBoundary from "./components/products/ErrorBoundary";
-import Modal from "./elements/modal/modal";
+import Modal from "./elements/modal";
+import Login from "./components/users/Login";
 
 interface AppState {
   isModalOpen: boolean;
@@ -35,6 +36,10 @@ class AppContainer extends Component<AppProps, AppState> {
     this.setState({ isModalOpen: true, type });
   };
 
+  handleCloseModal = () => {
+    this.setState({ isModalOpen: false });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -49,11 +54,11 @@ class AppContainer extends Component<AppProps, AppState> {
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
           </div>
-<<<<<<< HEAD
-          <Modal isOpen={this.state.isModalOpen}> {this.state.type === "sign-in" ? "Sign in" : "Registration"} </Modal>
-=======
+          <Modal isOpen={this.state.isModalOpen} handleCloseModal={this.handleCloseModal}>
+            {" "}
+            {this.state.type === "sign-in" ? <Login /> : "Registration"}{" "}
+          </Modal>
           <Footer />
->>>>>>> home-page
         </ErrorBoundary>
       </BrowserRouter>
     );
