@@ -49,10 +49,10 @@ const HomePage: React.FC = () => {
       {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
       <div className="HomePage__content">
         {results.length && !isSearching
-          ? results.map((obj: IGameObject) => <GameCard key={Math.random()} obj={obj} />)
+          ? results.map((obj: IGameObject) => <GameCard key={obj.name} obj={obj} />)
           : null}
         {!searchText && !results.length
-          ? recentGames.slice(-3).map((obj: IGameObject) => <GameCard key={Math.random()} obj={obj} />)
+          ? recentGames.slice(-3).map((obj: IGameObject) => <GameCard key={obj.name} obj={obj} />)
           : null}
       </div>
     </>
