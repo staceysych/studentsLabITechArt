@@ -11,9 +11,11 @@ import { dropDownData } from "./utils/index";
 
 interface Props {
   handleOpenModal: (type: string) => void;
+  userName: string;
+  isLogged: boolean;
 }
 
-const Header: React.FC<Props> = ({ handleOpenModal }) => {
+const Header: React.FC<Props> = ({ handleOpenModal, userName, isLogged }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleDropDownClick = () => {
@@ -41,12 +43,23 @@ const Header: React.FC<Props> = ({ handleOpenModal }) => {
         <NavItem path="/about" name="About" />
       </NavBar>
       <div className="Header__signIn">
-        <button type="button" onClick={() => handleOpenModal("sign-in")}>
-          Sign In
-        </button>
-        <button type="button" onClick={() => handleOpenModal("registration")}>
-          Registration
-        </button>
+        {isLogged ? (
+          <>
+            <h2 className="Header__userName">{userName}</h2>
+            <button type="button" onClick={() => handleOpenModal("sign-out")}>
+              Sign out
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" onClick={() => handleOpenModal("sign-in")}>
+              Sign In
+            </button>
+            <button type="button" onClick={() => handleOpenModal("registration")}>
+              Registration
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

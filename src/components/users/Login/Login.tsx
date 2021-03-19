@@ -5,7 +5,15 @@ import "./Login.scss";
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
-const Login = () => (
+import { IUserData } from "../../../utils/index";
+
+interface Props {
+  userData: IUserData;
+  handleUserInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Login: React.FC<Props> = ({ userData, handleUserInput, handleSubmit }) => (
   <form method="post" className="Login">
     <h2 className="Login__title">Sing In</h2>
     <div className="Login__content">
@@ -14,16 +22,30 @@ const Login = () => (
           <img src={user} alt="user" />
           Login:
         </span>
-        <input type="text" placeholder="Enter Login" name="login" required />
+        <input
+          type="text"
+          placeholder="Enter Login"
+          name="login"
+          required
+          value={userData.login || ""}
+          onChange={handleUserInput}
+        />
       </label>
       <label htmlFor="password">
         <span>
           <img src={padlock} alt="padlock" />
           Password:
         </span>
-        <input type="text" placeholder="Enter Password" name="password" required />
+        <input
+          type="text"
+          placeholder="Enter Password"
+          name="password"
+          required
+          value={userData.password || ""}
+          onChange={handleUserInput}
+        />
       </label>
-      <button type="submit" className="Login__btn">
+      <button type="submit" className="Login__btn" onClick={handleSubmit}>
         Enter
       </button>
     </div>

@@ -6,7 +6,15 @@ import padlock from "images/padlock.svg";
 import "../Login/Login.scss";
 import "./Registration.scss";
 
-const Registration = () => (
+import { IUserData } from "../../../utils/index";
+
+interface Props {
+  userData: IUserData;
+  handleRegistration: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleUserInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Registration: React.FC<Props> = ({ userData, handleUserInput, handleRegistration }) => (
   <form method="post" className="Login">
     <h2 className="Login__title">Registration</h2>
     <div className="Login__content">
@@ -15,23 +23,44 @@ const Registration = () => (
           <img src={user} alt="user" />
           Login:
         </span>
-        <input type="text" placeholder="Enter Login" name="login" required />
+        <input
+          type="text"
+          placeholder="Enter Login"
+          name="login"
+          required
+          value={userData.login || ""}
+          onChange={handleUserInput}
+        />
       </label>
       <label htmlFor="password">
         <span>
           <img src={padlock} alt="padlock" />
           Password:
         </span>
-        <input type="text" placeholder="Enter Password" name="password" required />
+        <input
+          type="text"
+          placeholder="Enter Password"
+          name="password"
+          required
+          value={userData.password || ""}
+          onChange={handleUserInput}
+        />
       </label>
       <label htmlFor="password">
         <span>
           <img src={padlock} alt="padlock" />
           Password:
         </span>
-        <input type="text" placeholder="Enter Password" name="password" required />
+        <input
+          type="text"
+          placeholder="Enter Password"
+          name="password"
+          required
+          value={userData.password || ""}
+          onChange={handleUserInput}
+        />
       </label>
-      <button type="submit" className="Login__btn Registration__btn">
+      <button type="submit" className="Login__btn Registration__btn" onClick={handleRegistration}>
         Registration
       </button>
     </div>

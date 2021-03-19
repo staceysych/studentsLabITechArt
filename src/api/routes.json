@@ -1,4 +1,6 @@
 {
   "/games/api/search/:name": "/games?name_like=:name",
-  "/games/api/getTopProducts": "/games?_sort=date&order=desc"
+  "/games/api/getTopProducts": "/games?_sort=date&order=desc",
+  "/users/auth/signIn": "/users",
+  "/users/auth/signUp": "/users"
 }

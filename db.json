@@ -56,5 +56,12 @@
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887320/game-posters/redemption_rooy74.jpg",
       "date": "2021-02-23"
     }
+  ],
+  "users": [
+    {
+      "login": "staceysych",
+      "password": "123HiFromStacey!",
+      "id": 1
+    }
   ]
 }

@@ -39,4 +39,15 @@
       }
     }
   }
+
+  &__userName {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline;
+    height: 100%;
+    font-family: "OpenSans-Regular", sans-serif;
+    color: $textColor;
+    text-align: center;
+  }
 }
