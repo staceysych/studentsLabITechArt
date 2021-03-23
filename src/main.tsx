@@ -18,8 +18,9 @@ import SignOut from "./components/users/SignOut";
 import Alert from "./elements/alert/alert";
 
 import { IUserData, IErrors, validateLogin, validatePassword } from "./utils";
+import { postRequest } from "./api/utils/index";
 
-import { URLS } from "./constants";
+import { URLS, CONSTANTS } from "./constants";
 
 interface AppState {
   isModalOpen: boolean;
@@ -28,13 +29,13 @@ interface AppState {
   isLogged: boolean;
   errors: IErrors;
   info: string;
+  hasError: boolean;
 }
-interface AppProps {}
 
 const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
 };
-class AppContainer extends Component<AppProps, AppState> {
+class AppContainer extends Component<{}, AppState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,26 +44,37 @@ class AppContainer extends Component<AppProps, AppState> {
       userData: {
         login: "",
         password: "",
+        confirmPassword: "",
       },
       isLogged: false,
+      hasError: false,
       errors: {},
       info: "",
     };
   }
 
   componentDidUpdate() {
-    setTimeout(() => this.setState({ info: "" }), 7000);
+    let timer;
+    if (this.state.info) {
+      timer = setTimeout(() => {
+        this.setState({
+          info: "",
+        });
+      }, CONSTANTS.TIMEOUT);
+    } else {
+      clearTimeout(timer);
+    }
   }
 
-  handleOpenModal = (type) => {
+  handleOpenModal = (type: string) => {
     this.setState({ isModalOpen: true, type });
   };
 
   handleCloseModal = () => {
-    this.setState({ isModalOpen: false });
+    this.setState({ isModalOpen: false, hasError: false });
   };
 
-  handleUserInput = (e) => {
+  handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     this.setState((prevState) => ({
       userData: {
@@ -73,25 +85,22 @@ class AppContainer extends Component<AppProps, AppState> {
   };
 
   handleErrors = (validationErrors) => {
-    this.setState({ errors: validationErrors });
+    this.setState({ errors: validationErrors, hasError: true });
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { userData } = this.state;
     try {
-      if (
-        validateLogin(this.state.userData.login, this.handleErrors) &&
-        validatePassword(this.state.userData.password, this.handleErrors)
-      ) {
-        await fetch(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, {
-          method: "POST",
-          body: JSON.stringify(this.state.userData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+      if (validateLogin(userData.login, this.handleErrors) && validatePassword(userData.password, this.handleErrors)) {
+        this.setState({ hasError: false });
+        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, userData);
 
-        this.setState({ isModalOpen: false, isLogged: true, info: "Successfully logged in" });
+        this.setState({
+          isModalOpen: false,
+          isLogged: true,
+          info: "Successfully logged in",
+        });
       }
     } catch (error) {
       window.alert(error);
@@ -100,27 +109,42 @@ class AppContainer extends Component<AppProps, AppState> {
 
   handleRegistration = async (e) => {
     e.preventDefault();
+    const { userData } = this.state;
     try {
-      await fetch(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, {
-        method: "POST",
-        body: JSON.stringify(this.state.userData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      if (
+        validateLogin(userData.login, this.handleErrors) &&
+        validatePassword(userData.password, this.handleErrors, true, userData.confirmPassword)
+      ) {
+        this.setState({ hasError: false });
+        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, userData);
 
-      this.setState({ isModalOpen: false, isLogged: true, info: "Successfully signed in" });
+        this.setState({
+          isModalOpen: false,
+          isLogged: true,
+          info: "Successfully signed in",
+        });
+      }
     } catch (error) {
       window.alert(error);
     }
   };
 
   handleSignOut = () => {
-    this.setState({ isModalOpen: false, isLogged: false, info: "Successfully signed out" });
+    this.setState({
+      isModalOpen: false,
+      isLogged: false,
+      info: "Successfully signed out",
+      userData: {
+        login: "",
+        password: "",
+        confirmPassword: "",
+      },
+    });
   };
 
   render() {
-    const { userData, isLogged, errors, isModalOpen, type, info } = this.state;
+    const { userData, isLogged, errors, isModalOpen, type, info, hasError } = this.state;
+
     return (
       <BrowserRouter>
         <ErrorBoundary>
@@ -148,12 +172,11 @@ class AppContainer extends Component<AppProps, AppState> {
                 userData={userData}
                 handleUserInput={this.handleUserInput}
                 handleRegistration={this.handleRegistration}
-                hasError={errors.password}
+                errors={errors}
               />
             )}
             {type === "sign-out" && <SignOut handleSignOut={this.handleSignOut} />}
-            {errors.login && <Alert text={errors.login} />}
-            {errors.password && <Alert text={errors.password} />}
+            {hasError && <Alert text={errors.login || errors.password || errors.confirmPassword} />}
           </Modal>
           <Footer />
           {info && <Alert text={info} className="success" />}

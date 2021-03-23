@@ -1,29 +1,45 @@
 import { IErrors } from "./interfaces/IErrors";
+import { CONSTANTS } from "../constants/index";
 
-export const validatePassword = (password: string, setErrors: Function, isRegistration?: boolean) => {
+export const validatePassword = (
+  password: string,
+  setErrors: Function,
+  isRegistration?: boolean,
+  confirmPassword?: string
+) => {
   const errors: IErrors = {
     login: "",
     password: "",
+    confirmPassword: "",
   };
   let isValid: boolean = true;
   if (!password) {
     isValid = false;
-    errors.password = "Please enter your password.";
-  }
-
-  if (isRegistration) {
-    /*  if (!confirm_password) {
-      isValid = false;
-      errors.confirm_password = "Please enter your confirm password.";
-    } */
+    errors.password = CONSTANTS.PASSWORD_TEXT;
   }
 
   if (password) {
-    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})/gi;
+    const strongRegex = CONSTANTS.PASSWORD_RGX;
 
     if (!strongRegex.test(password)) {
       isValid = false;
-      errors.password = "Please add at least 6 characters, one digit, uppercase character, special character";
+      errors.password = CONSTANTS.PASSWORD_VALIDATION_TEXT;
+    }
+  }
+
+  if (isRegistration) {
+    if (password) {
+      if (!confirmPassword) {
+        isValid = false;
+        errors.confirmPassword = CONSTANTS.CONFIRM_PASSWORD_TEXT;
+      }
+    }
+
+    if (password && confirmPassword) {
+      if (password !== confirmPassword) {
+        isValid = false;
+        errors.confirmPassword = CONSTANTS.PASSWORDS_NO_MATCH;
+      }
     }
   }
 
