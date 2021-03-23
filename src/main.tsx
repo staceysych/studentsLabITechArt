@@ -9,13 +9,14 @@ import Header from "./components/products/Header";
 import HomePage from "./components/products/HomePage";
 import ProductsPage from "./components/products/ProductsPage";
 import AboutPage from "./components/products/AboutPage";
+import ProfilePage from "./components/products/ProfilePage";
 import Footer from "./components/products/Footer";
 import ErrorBoundary from "./components/products/ErrorBoundary";
-import Modal from "./elements/modal";
 import Login from "./components/users/Login";
 import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
 import Alert from "./elements/alert/alert";
+import { ProtectedRoute } from "./elements/index";
 
 import { IUserData, IErrors, validateLogin, validatePassword } from "./utils";
 import { postRequest } from "./api/utils/index";
@@ -71,11 +72,21 @@ class AppContainer extends Component<{}, AppState> {
   };
 
   handleCloseModal = () => {
-    this.setState({ isModalOpen: false, hasError: false });
+    this.setState({
+      isModalOpen: false,
+      hasError: false,
+      userData: {
+        login: "",
+        password: "",
+        confirmPassword: "",
+      },
+      errors: {},
+    });
   };
 
   handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     this.setState((prevState) => ({
       userData: {
         ...prevState.userData,
@@ -101,14 +112,17 @@ class AppContainer extends Component<{}, AppState> {
           isLogged: true,
           info: "Successfully logged in",
         });
+
+        return true;
       }
     } catch (error) {
       window.alert(error);
     }
+
+    return false;
   };
 
-  handleRegistration = async (e) => {
-    e.preventDefault();
+  handleRegistration = async () => {
     const { userData } = this.state;
     try {
       if (
@@ -123,10 +137,14 @@ class AppContainer extends Component<{}, AppState> {
           isLogged: true,
           info: "Successfully signed in",
         });
+
+        return true;
       }
     } catch (error) {
       window.alert(error);
     }
+
+    return false;
   };
 
   handleSignOut = () => {
@@ -152,32 +170,42 @@ class AppContainer extends Component<{}, AppState> {
           <div className="container">
             <Switch>
               <Route component={HomePage} path="/" exact />
-              <Route component={ProductsPage} path="/products/:param" />
-              <Route component={AboutPage} path="/about" />
-              <Route component={TestErrorComponent} path="/testError" />
+              <ProtectedRoute isLogged={isLogged} component={ProductsPage} path="/products/:param" />
+              <ProtectedRoute isLogged={isLogged} component={AboutPage} path="/about" />
+              <ProtectedRoute isLogged={isLogged} component={TestErrorComponent} path="/testError" />
+              <ProtectedRoute isLogged={isLogged} component={ProfilePage} path="/profile" />
+              <Route
+                path="/login"
+                component={() => (
+                  <Login
+                    handleCloseModal={this.handleCloseModal}
+                    userData={userData}
+                    handleUserInput={this.handleUserInput}
+                    handleSubmit={this.handleSubmit}
+                    errors={errors}
+                    hasError={hasError}
+                  />
+                )}
+              />
+              <Route
+                path="/signUp"
+                component={() => (
+                  <Registration
+                    handleCloseModal={this.handleCloseModal}
+                    userData={userData}
+                    handleUserInput={this.handleUserInput}
+                    handleRegistration={this.handleRegistration}
+                    errors={errors}
+                    hasError={hasError}
+                  />
+                )}
+              />
               <Route render={() => <Redirect to={{ pathname: "/" }} />} />
             </Switch>
           </div>
-          <Modal isOpen={isModalOpen} handleCloseModal={this.handleCloseModal}>
-            {type === "sign-in" && (
-              <Login
-                userData={userData}
-                handleUserInput={this.handleUserInput}
-                handleSubmit={this.handleSubmit}
-                errors={errors}
-              />
-            )}
-            {type === "registration" && (
-              <Registration
-                userData={userData}
-                handleUserInput={this.handleUserInput}
-                handleRegistration={this.handleRegistration}
-                errors={errors}
-              />
-            )}
-            {type === "sign-out" && <SignOut handleSignOut={this.handleSignOut} />}
-            {hasError && <Alert text={errors.login || errors.password || errors.confirmPassword} />}
-          </Modal>
+          {type === "sign-out" && isModalOpen && (
+            <SignOut handleCloseModal={this.handleCloseModal} handleSignOut={this.handleSignOut} />
+          )}
           <Footer />
           {info && <Alert text={info} className="success" />}
         </ErrorBoundary>

@@ -6,13 +6,11 @@ import "./modal.scss";
 import cancel from "images/cancel.svg";
 
 interface Props {
-  isOpen: boolean;
   children: React.ReactNode;
   handleCloseModal: () => void;
 }
 
-const Modal: React.FC<Props> = ({ isOpen, handleCloseModal, children }) =>
-  isOpen &&
+const Modal: React.FC<Props> = ({ handleCloseModal, children }) =>
   createPortal(
     <>
       <div className="Modal__overlay" />

@@ -52,12 +52,8 @@ const Header: React.FC<Props> = ({ handleOpenModal, userName, isLogged }) => {
           </>
         ) : (
           <>
-            <button type="button" onClick={() => handleOpenModal("sign-in")}>
-              Sign In
-            </button>
-            <button type="button" onClick={() => handleOpenModal("registration")}>
-              Registration
-            </button>
+            <NavItem path="/login" isOpen name="Sign in" />
+            <NavItem path="/signUp" isOpen name="Registration" />
           </>
         )}
       </div>

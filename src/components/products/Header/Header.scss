@@ -38,6 +38,25 @@
         border-radius: 5px;
       }
     }
+
+    li {
+      margin: 0;
+      display: inline;
+      height: 100%;
+      cursor: pointer;
+      color: $textColor;
+      padding: 5px;
+      text-align: center;
+
+      &:hover {
+        background: $basicColorBright;
+        border-radius: 5px;
+      }
+    }
+
+    a {
+      font-size: 16px;
+    }
   }
 
   &__userName {
