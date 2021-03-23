@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+.Alert {
+  height: auto;
+  background: $errorColorBG;
+  color: $errorColor;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  border-radius: 10px;
+  width: auto;
+  max-width: 335px;
+  transition: 1s all ease-in-out;
+  transform-origin: right;
+  animation: notify 3s ease-in-out forwards;
+}
+
+@keyframes notify {
+  0% {
+    transform: scaleX(0);
+  }
+  10% {
+    transform: scaleX(1);
+  }
+  13% {
+    transform: scale(1.1);
+  }
+  16% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.success {
+  background: $successColor;
+  color: $textColor;
+}

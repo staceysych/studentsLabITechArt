@@ -12,9 +12,10 @@ interface Props {
   userData: IUserData;
   handleRegistration: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleUserInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  hasError: string;
 }
 
-const Registration: React.FC<Props> = ({ userData, handleUserInput, handleRegistration }) => (
+const Registration: React.FC<Props> = ({ userData, handleUserInput, handleRegistration, hasError }) => (
   <form method="post" className="Login">
     <h2 className="Login__title">Registration</h2>
     <div className="Login__content">
@@ -30,6 +31,7 @@ const Registration: React.FC<Props> = ({ userData, handleUserInput, handleRegist
           required
           value={userData.login || ""}
           onChange={handleUserInput}
+          style={hasError ? { border: "2px solid red" } : {}}
         />
       </label>
       <label htmlFor="password">

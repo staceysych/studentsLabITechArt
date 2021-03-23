@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.Info {
+  width: 290px;
+  height: 33px;
+  background: $infoColorBG;
+  color: $infoColor;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
