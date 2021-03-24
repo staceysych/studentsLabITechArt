@@ -2,16 +2,16 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 interface Props {
-  isLogged: boolean;
+  isLoggedIn: boolean;
   component: any;
   path: string;
 }
 
-const ProtectedRoute: React.FC<Props> = ({ isLogged, component: Component, path }) => (
+const ProtectedRoute: React.FC<Props> = ({ isLoggedIn, component: Component, path }) => (
   <Route
     {...path}
     render={(props) => {
-      if (isLogged) {
+      if (isLoggedIn) {
         return <Component {...props} />;
       }
       return <Redirect to={{ pathname: "/login", state: { from: props.location } }} />;

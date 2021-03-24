@@ -8,14 +8,15 @@ import DropDownMenu from "../DropDownMenu/index";
 import DropDownItem from "../DropDownItem/index";
 
 import { dropDownData } from "./utils/index";
+import { CONSTANTS } from "../../../constants/index";
 
 interface Props {
   handleOpenModal: (type: string) => void;
   userName: string;
-  isLogged: boolean;
+  isLoggedIn: boolean;
 }
 
-const Header: React.FC<Props> = ({ handleOpenModal, userName, isLogged }) => {
+const Header: React.FC<Props> = ({ handleOpenModal, userName, isLoggedIn }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleDropDownClick = () => {
@@ -43,10 +44,10 @@ const Header: React.FC<Props> = ({ handleOpenModal, userName, isLogged }) => {
         <NavItem path="/about" name="About" />
       </NavBar>
       <div className="Header__signIn">
-        {isLogged ? (
+        {isLoggedIn ? (
           <>
             <h2 className="Header__userName">{userName}</h2>
-            <button type="button" onClick={() => handleOpenModal("sign-out")}>
+            <button type="button" onClick={() => handleOpenModal(CONSTANTS.SIGN_OUT)}>
               Sign out
             </button>
           </>

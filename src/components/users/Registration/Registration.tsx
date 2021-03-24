@@ -7,7 +7,7 @@ import padlock from "images/padlock.svg";
 import "../Login/Login.scss";
 import "./Registration.scss";
 
-import { IUserData, IErrors } from "../../../utils/index";
+import { IUserData, IErrors, validateLogin, validatePassword } from "../../../utils/index";
 
 import Modal from "../../../elements/modal/index";
 import Alert from "../../../elements/alert/Alert";
@@ -19,6 +19,8 @@ interface Props {
   handleCloseModal: () => void;
   errors: IErrors;
   hasError: boolean;
+  hideValidationError: () => void;
+  handleErrors: (validationError) => void;
 }
 
 const Registration: React.FC<Props> = ({
@@ -28,6 +30,8 @@ const Registration: React.FC<Props> = ({
   handleRegistration,
   errors,
   hasError,
+  hideValidationError,
+  handleErrors,
 }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
@@ -35,11 +39,17 @@ const Registration: React.FC<Props> = ({
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
-  const [inputText, setInput] = useState<object>(userData);
+  const [inputText, setInput] = useState<IUserData>(userData);
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
   }, []);
+
+  useEffect(() => {
+    if (hasError) {
+      hideValidationError();
+    }
+  }, [inputText]);
 
   useEffect(() => {
     if (errors.login) {
@@ -65,10 +75,17 @@ const Registration: React.FC<Props> = ({
     setInput({ ...inputText, [name]: value });
   };
 
-  const onSubmit = async () => {
-    await handleUserInput(inputText);
-    const results = await handleRegistration();
-    results && history.push("/profile");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      validateLogin(inputText.login, handleErrors) &&
+      validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
+    ) {
+      await handleUserInput(inputText);
+      const results = await handleRegistration();
+      results && history.push("/profile");
+    }
   };
 
   return (
@@ -97,7 +114,7 @@ const Registration: React.FC<Props> = ({
               Password:
             </span>
             <input
-              type="text"
+              type="password"
               placeholder="Enter Password"
               name="password"
               required
@@ -112,7 +129,7 @@ const Registration: React.FC<Props> = ({
               Password:
             </span>
             <input
-              type="text"
+              type="password"
               placeholder="Enter confirm password"
               name="confirmPassword"
               required

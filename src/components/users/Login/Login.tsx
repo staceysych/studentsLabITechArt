@@ -6,7 +6,7 @@ import "./Login.scss";
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
-import { IUserData, IErrors } from "../../../utils/index";
+import { IUserData, IErrors, validateLogin, validatePassword } from "../../../utils/index";
 
 import Modal from "../../../elements/modal/index";
 import Alert from "../../../elements/alert/Alert";
@@ -18,19 +18,36 @@ interface Props {
   handleSubmit: any;
   errors: IErrors;
   hasError: boolean;
+  hideValidationError: () => void;
+  handleErrors: (validationError) => void;
 }
 
-const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, handleSubmit, errors, hasError }) => {
+const Login: React.FC<Props> = ({
+  handleCloseModal,
+  userData,
+  handleUserInput,
+  handleSubmit,
+  errors,
+  hasError,
+  hideValidationError,
+  handleErrors,
+}) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
-  const [inputText, setInput] = useState<object>(userData);
+  const [inputText, setInput] = useState<IUserData>(userData);
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
   }, []);
+
+  useEffect(() => {
+    if (hasError) {
+      hideValidationError();
+    }
+  }, [inputText]);
 
   useEffect(() => {
     if (errors.login) {
@@ -53,13 +70,16 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
   };
 
   const onSubmit = async (e) => {
-    await handleUserInput(inputText);
-    const results = await handleSubmit(e);
-    if (results) {
-      if (targetPath) {
-        history.push(targetPath);
-      } else {
-        history.push("/");
+    e.preventDefault();
+    if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
+      await handleUserInput(inputText);
+      const results = await handleSubmit(e);
+      if (results) {
+        if (targetPath) {
+          history.push(targetPath);
+        } else {
+          history.push("/");
+        }
       }
     }
   };
@@ -67,7 +87,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
   return (
     <Modal handleCloseModal={closeModal}>
       <form method="post" className="Login">
-        <h2 className="Login__title">Sing In</h2>
+        <h2 className="Login__title">Sign In</h2>
         <div className="Login__content">
           <label htmlFor="login">
             <span>
@@ -91,7 +111,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
               Password:
             </span>
             <input
-              type="text"
+              type="password"
               placeholder="Enter Password"
               name="password"
               required

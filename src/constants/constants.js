@@ -6,4 +6,5 @@ export default {
   CONFIRM_PASSWORD_TEXT: "Please enter your confirm password.",
   PASSWORDS_NO_MATCH: "Passwords don't match.",
   TIMEOUT: 2000,
+  SIGN_OUT: "signOut",
 };
