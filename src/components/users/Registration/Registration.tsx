@@ -15,7 +15,7 @@ import Alert from "../../../elements/alert/Alert";
 interface Props {
   userData: IUserData;
   handleRegistration: any;
-  handleUserInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleUserInput: (userData) => void;
   handleCloseModal: () => void;
   errors: IErrors;
   hasError: boolean;
@@ -35,6 +35,7 @@ const Registration: React.FC<Props> = ({
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
+  const [inputText, setInput] = useState<object>(userData);
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
@@ -59,6 +60,17 @@ const Registration: React.FC<Props> = ({
     history.push(targetPath);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...inputText, [name]: value });
+  };
+
+  const onSubmit = async () => {
+    await handleUserInput(inputText);
+    const results = await handleRegistration();
+    results && history.push("/profile");
+  };
+
   return (
     <Modal handleCloseModal={closeModal}>
       <form method="post" className="Login">
@@ -74,8 +86,8 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter Login"
               name="login"
               required
-              value={userData.login || ""}
-              onChange={handleUserInput}
+              value={inputText.login || userData.login}
+              onChange={handleChange}
               ref={loginRef}
             />
           </label>
@@ -89,8 +101,8 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter Password"
               name="password"
               required
-              value={userData.password || ""}
-              onChange={handleUserInput}
+              value={inputText.password || userData.password}
+              onChange={handleChange}
               ref={passwordRef}
             />
           </label>
@@ -104,20 +116,12 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter confirm password"
               name="confirmPassword"
               required
-              value={userData.confirmPassword || ""}
-              onChange={handleUserInput}
+              value={inputText.confirmPassword || userData.confirmPassword}
+              onChange={handleChange}
               ref={confirmRef}
             />
           </label>
-          <button
-            type="submit"
-            className="Login__btn Registration__btn"
-            onClick={() => {
-              handleRegistration().then((result) => {
-                result && history.push("/profile");
-              });
-            }}
-          >
+          <button type="submit" className="Login__btn Registration__btn" onClick={onSubmit}>
             Registration
           </button>
         </div>

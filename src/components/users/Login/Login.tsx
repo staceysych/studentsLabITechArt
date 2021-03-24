@@ -13,7 +13,7 @@ import Alert from "../../../elements/alert/Alert";
 
 interface Props {
   userData: IUserData;
-  handleUserInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleUserInput: (userData) => void;
   handleCloseModal: () => void;
   handleSubmit: any;
   errors: IErrors;
@@ -26,6 +26,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
+  const [inputText, setInput] = useState<object>(userData);
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
@@ -46,9 +47,26 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
     history.push("/");
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...inputText, [name]: value });
+  };
+
+  const onSubmit = async (e) => {
+    await handleUserInput(inputText);
+    const results = await handleSubmit(e);
+    if (results) {
+      if (targetPath) {
+        history.push(targetPath);
+      } else {
+        history.push("/");
+      }
+    }
+  };
+
   return (
     <Modal handleCloseModal={closeModal}>
-      <form method="post" className="Login" onSubmit={() => history.push("/")}>
+      <form method="post" className="Login">
         <h2 className="Login__title">Sing In</h2>
         <div className="Login__content">
           <label htmlFor="login">
@@ -57,12 +75,13 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
               Login:
             </span>
             <input
+              key="login"
               type="text"
               placeholder="Enter Login"
               name="login"
               required
-              value={userData.login || ""}
-              onChange={handleUserInput}
+              value={inputText.login || userData.login}
+              onChange={handleChange}
               ref={loginRef}
             />
           </label>
@@ -76,26 +95,12 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
               placeholder="Enter Password"
               name="password"
               required
-              value={userData.password || ""}
-              onChange={handleUserInput}
+              value={inputText.password || userData.password}
+              onChange={handleChange}
               ref={passwordRef}
             />
           </label>
-          <button
-            type="submit"
-            className="Login__btn"
-            onClick={(e) => {
-              handleSubmit(e).then((result) => {
-                if (result) {
-                  if (targetPath) {
-                    history.push(targetPath);
-                  } else {
-                    history.push("/");
-                  }
-                }
-              });
-            }}
-          >
+          <button type="submit" className="Login__btn" onClick={(e) => onSubmit(e)}>
             Enter
           </button>
         </div>
@@ -105,4 +110,4 @@ const Login: React.FC<Props> = ({ handleCloseModal, userData, handleUserInput, h
   );
 };
 
-export default Login;
+export default React.memo(Login);

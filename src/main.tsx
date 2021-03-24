@@ -84,14 +84,11 @@ class AppContainer extends Component<{}, AppState> {
     });
   };
 
-  handleUserInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
+  handleUserInput = async (userData) => {
+    console.log("from login", userData);
     this.setState((prevState) => ({
-      userData: {
-        ...prevState.userData,
-        [name]: value,
-      },
+      ...prevState,
+      userData,
     }));
   };
 
@@ -101,7 +98,9 @@ class AppContainer extends Component<{}, AppState> {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+
     const { userData } = this.state;
+    console.log(userData);
     try {
       if (validateLogin(userData.login, this.handleErrors) && validatePassword(userData.password, this.handleErrors)) {
         this.setState({ hasError: false });

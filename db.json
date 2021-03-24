@@ -99,6 +99,12 @@
       "password": "123HiFromStacey!",
       "confirmPassword": "123HiFromStacey!",
       "id": 7
+    },
+    {
+      "login": "loveyousomuch",
+      "password": "comehere123!",
+      "confirmPassword": "comehere123!",
+      "id": 8
     }
   ],
   "login-history": [
@@ -305,6 +311,28 @@
       "password": "123HiFromStacey!",
       "confirmPassword": "",
       "id": 34
+    },
+    {
+      "login": "lovetou",
+      "password": "bdfhjgfdfhgh123!",
+      "id": 35
+    },
+    {
+      "login": "loveyou",
+      "password": "1234!love",
+      "id": 36
+    },
+    {
+      "login": "loveyou",
+      "password": "122Loveyou!",
+      "confirmPassword": "",
+      "id": 37
+    },
+    {
+      "login": "Mymnameis",
+      "password": "hellotrher123!",
+      "confirmPassword": "",
+      "id": 38
     }
   ]
 }
