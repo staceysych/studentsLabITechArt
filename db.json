@@ -93,6 +93,12 @@
       "password": "123HiFromStacey!",
       "confirmPassword": "123HiFromStacey!",
       "id": 6
+    },
+    {
+      "login": "stacey.sych@gmail.com",
+      "password": "123HiFromStacey!",
+      "confirmPassword": "123HiFromStacey!",
+      "id": 7
     }
   ],
   "login-history": [
@@ -293,6 +299,12 @@
       "password": "123HiFromStacey!",
       "confirmPassword": "",
       "id": 33
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123HiFromStacey!",
+      "confirmPassword": "",
+      "id": 34
     }
   ]
 }

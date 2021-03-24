@@ -3,7 +3,7 @@ import React from "react";
 import "./SearchBar.scss";
 
 import lens from "images/lens.svg";
-import Loader from "../../../elements/loader/loader";
+import Loader from "../../../elements/loader/Loader";
 
 interface Props {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

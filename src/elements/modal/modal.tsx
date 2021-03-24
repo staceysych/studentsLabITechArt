@@ -1,7 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-import "./modal.scss";
+import "./Modal.scss";
 
 import cancel from "images/cancel.svg";
 

@@ -10,7 +10,7 @@ import "./Registration.scss";
 import { IUserData, IErrors } from "../../../utils/index";
 
 import Modal from "../../../elements/modal/index";
-import Alert from "../../../elements/alert/alert";
+import Alert from "../../../elements/alert/Alert";
 
 interface Props {
   userData: IUserData;

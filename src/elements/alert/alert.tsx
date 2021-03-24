@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./alert.scss";
+import "./Alert.scss";
 
 interface Props {
   text: string;

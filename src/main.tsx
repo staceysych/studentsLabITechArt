@@ -15,7 +15,7 @@ import ErrorBoundary from "./components/products/ErrorBoundary";
 import Login from "./components/users/Login";
 import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
-import Alert from "./elements/alert/alert";
+import Alert from "./elements/alert/Alert";
 import { ProtectedRoute } from "./elements/index";
 
 import { IUserData, IErrors, validateLogin, validatePassword } from "./utils";
