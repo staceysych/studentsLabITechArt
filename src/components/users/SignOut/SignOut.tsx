@@ -6,7 +6,7 @@ import "./SignOut.scss";
 
 import logout from "images/logout.svg";
 
-import Modal from "../../../elements/modal/index";
+import { Modal } from "../../../elements";
 
 interface Props {
   handleSignOut: () => void;

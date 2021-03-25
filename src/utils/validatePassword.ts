@@ -1,5 +1,5 @@
-import { IErrors } from "./interfaces/IErrors";
-import { CONSTANTS } from "../constants/index";
+import { IErrors } from "./interfaces";
+import { CONSTANTS } from "../constants";
 
 export const validatePassword = (
   password: string,

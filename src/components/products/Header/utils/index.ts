@@ -1,3 +1,3 @@
-import { dropDownData } from "./drop-down-data";
+import { dropDownData } from "./dropDownData";
 
 export { dropDownData };

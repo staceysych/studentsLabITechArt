@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 
 import "./Header.scss";
 
-import NavBar from "../NavBar/index";
-import NavItem from "../NavItem/index";
-import DropDownMenu from "../DropDownMenu/index";
-import DropDownItem from "../DropDownItem/index";
+import NavBar from "../NavBar";
+import NavItem from "../NavItem";
+import DropDownMenu from "../DropDownMenu";
+import DropDownItem from "../DropDownItem";
 
-import { dropDownData } from "./utils/index";
-import { CONSTANTS } from "../../../constants/index";
+import { dropDownData } from "./utils";
+import { CONSTANTS } from "../../../constants";
 
 import AppContext from "../../../helpers/AppContext";
 

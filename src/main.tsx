@@ -5,23 +5,23 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import "./styles/main.scss";
 
-import Header from "./components/products/Header";
-import HomePage from "./components/products/HomePage";
-import ProductsPage from "./components/products/ProductsPage";
-import AboutPage from "./components/products/AboutPage";
-import ProfilePage from "./components/products/ProfilePage";
-import Footer from "./components/products/Footer";
-import ErrorBoundary from "./components/products/ErrorBoundary";
-import Login from "./components/users/Login";
-import Registration from "./components/users/Registration";
-import SignOut from "./components/users/SignOut";
-import Alert from "./elements/alert/Alert";
-import { ProtectedRoute } from "./elements/index";
+import Header from "./components/products/Header/index";
+import HomePage from "./components/products/HomePage/index";
+import ProductsPage from "./components/products/ProductsPage/index";
+import AboutPage from "./components/products/AboutPage/index";
+import ProfilePage from "./components/products/ProfilePage/index";
+import Footer from "./components/products/Footer/index";
+import ErrorBoundary from "./components/products/ErrorBoundary/index";
+import Login from "./components/users/Login/index";
+import Registration from "./components/users/Registration/index";
+import SignOut from "./components/users/SignOut/index";
 
-import { IUserData, IErrors } from "./utils";
+import { Alert, ProtectedRoute } from "./elements/index";
+
+import { IUserData, IErrors } from "./utils/interfaces";
 import { postRequest } from "./api/utils/index";
 
-import { URLS, CONSTANTS } from "./constants";
+import { URLS, CONSTANTS } from "./constants/index";
 
 import AppContext from "./helpers/AppContext";
 
