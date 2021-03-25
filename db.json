@@ -57,6 +57,32 @@
       "date": "2021-02-23"
     }
   ],
-  "users": [],
-  "login-history": []
+  "users": [
+    {
+      "login": "hellothere",
+      "password": "123Hello!",
+      "confirmPassword": "123Hello!",
+      "id": 1
+    }
+  ],
+  "login-history": [
+    {
+      "login": "hellothere",
+      "password": "123Hello!",
+      "confirmPassword": "",
+      "id": 1
+    },
+    {
+      "login": "d15is111",
+      "password": "123!love",
+      "confirmPassword": "",
+      "id": 2
+    },
+    {
+      "login": "stacey.sych@gmail.com",
+      "password": "123Love!",
+      "confirmPassword": "",
+      "id": 3
+    }
+  ]
 }

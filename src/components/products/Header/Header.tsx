@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./Header.scss";
 
@@ -10,14 +10,16 @@ import DropDownItem from "../DropDownItem/index";
 import { dropDownData } from "./utils/index";
 import { CONSTANTS } from "../../../constants/index";
 
+import AppContext from "../../../helpers/AppContext";
+
 interface Props {
   handleOpenModal: (type: string) => void;
-  userName: string;
   isLoggedIn: boolean;
 }
 
-const Header: React.FC<Props> = ({ handleOpenModal, userName, isLoggedIn }) => {
+const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
+  const { userData } = useContext(AppContext);
 
   const handleDropDownClick = () => {
     setOpen(!isOpen);
@@ -46,7 +48,7 @@ const Header: React.FC<Props> = ({ handleOpenModal, userName, isLoggedIn }) => {
       <div className="Header__signIn">
         {isLoggedIn ? (
           <>
-            <h2 className="Header__userName">{userName}</h2>
+            <h2 className="Header__userName">{userData.login}</h2>
             <button type="button" onClick={() => handleOpenModal(CONSTANTS.SIGN_OUT)}>
               Sign out
             </button>

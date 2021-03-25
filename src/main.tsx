@@ -18,10 +18,12 @@ import SignOut from "./components/users/SignOut";
 import Alert from "./elements/alert/Alert";
 import { ProtectedRoute } from "./elements/index";
 
-import { IUserData, IErrors, validateLogin, validatePassword } from "./utils";
+import { IUserData, IErrors } from "./utils";
 import { postRequest } from "./api/utils/index";
 
 import { URLS, CONSTANTS } from "./constants";
+
+import AppContext from "./helpers/AppContext";
 
 interface AppState {
   isModalOpen: boolean;
@@ -159,50 +161,52 @@ class AppContainer extends Component<{}, AppState> {
     const { userData, isLoggedIn, errors, isModalOpen, type, info, hasError } = this.state;
 
     return (
-      <BrowserRouter>
-        <ErrorBoundary>
-          <Header handleOpenModal={this.handleOpenModal} userName={userData.login || ""} isLoggedIn={isLoggedIn} />
-          <div className="container">
-            <Switch>
-              <Route component={HomePage} path="/" exact />
-              <ProtectedRoute isLoggedIn={isLoggedIn} component={ProductsPage} path="/products/:param" />
-              <ProtectedRoute isLoggedIn={isLoggedIn} component={AboutPage} path="/about" />
-              <ProtectedRoute isLoggedIn={isLoggedIn} component={TestErrorComponent} path="/testError" />
-              <ProtectedRoute isLoggedIn={isLoggedIn} component={ProfilePage} path="/profile" />
-              <Route path="/login">
-                <Login
-                  handleCloseModal={this.handleCloseModal}
-                  userData={userData}
-                  handleUserInput={this.handleUserInput}
-                  handleSubmit={this.handleSubmit}
-                  errors={errors}
-                  hasError={hasError}
-                  hideValidationError={this.hideValidationError}
-                  handleErrors={this.handleErrors}
-                />
-              </Route>
-              <Route path="/signUp">
-                <Registration
-                  handleCloseModal={this.handleCloseModal}
-                  userData={userData}
-                  handleUserInput={this.handleUserInput}
-                  handleRegistration={this.handleRegistration}
-                  errors={errors}
-                  hasError={hasError}
-                  hideValidationError={this.hideValidationError}
-                  handleErrors={this.handleErrors}
-                />
-              </Route>
-              <Route render={() => <Redirect to={{ pathname: "/" }} />} />
-            </Switch>
-          </div>
-          {type === CONSTANTS.SIGN_OUT && isModalOpen && (
-            <SignOut handleCloseModal={this.handleCloseModal} handleSignOut={this.handleSignOut} />
-          )}
-          <Footer />
-          {info && <Alert text={info} className="success" />}
-        </ErrorBoundary>
-      </BrowserRouter>
+      <AppContext.Provider value={this.state}>
+        <BrowserRouter>
+          <ErrorBoundary>
+            <Header handleOpenModal={this.handleOpenModal} userName={userData.login || ""} isLoggedIn={isLoggedIn} />
+            <div className="container">
+              <Switch>
+                <Route component={HomePage} path="/" exact />
+                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProductsPage} path="/products/:param" />
+                <ProtectedRoute isLoggedIn={isLoggedIn} component={AboutPage} path="/about" />
+                <ProtectedRoute isLoggedIn={isLoggedIn} component={TestErrorComponent} path="/testError" />
+                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProfilePage} path="/profile" />
+                <Route path="/login">
+                  <Login
+                    handleCloseModal={this.handleCloseModal}
+                    userData={userData}
+                    handleUserInput={this.handleUserInput}
+                    handleSubmit={this.handleSubmit}
+                    errors={errors}
+                    hasError={hasError}
+                    hideValidationError={this.hideValidationError}
+                    handleErrors={this.handleErrors}
+                  />
+                </Route>
+                <Route path="/signUp">
+                  <Registration
+                    handleCloseModal={this.handleCloseModal}
+                    userData={userData}
+                    handleUserInput={this.handleUserInput}
+                    handleRegistration={this.handleRegistration}
+                    errors={errors}
+                    hasError={hasError}
+                    hideValidationError={this.hideValidationError}
+                    handleErrors={this.handleErrors}
+                  />
+                </Route>
+                <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+              </Switch>
+            </div>
+            {type === CONSTANTS.SIGN_OUT && isModalOpen && (
+              <SignOut handleCloseModal={this.handleCloseModal} handleSignOut={this.handleSignOut} />
+            )}
+            <Footer />
+            {info && <Alert text={info} className="success" />}
+          </ErrorBoundary>
+        </BrowserRouter>
+      </AppContext.Provider>
     );
   }
 }
