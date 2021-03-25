@@ -1,5 +1,7 @@
 import React from "react";
 
-const AppContext = React.createContext({});
+import { IAppState } from "../utils/interfaces";
+
+const AppContext = React.createContext<IAppState>(null);
 
 export default AppContext;

@@ -5,40 +5,30 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import "./styles/main.scss";
 
-import Header from "./components/products/Header/index";
-import HomePage from "./components/products/HomePage/index";
-import ProductsPage from "./components/products/ProductsPage/index";
-import AboutPage from "./components/products/AboutPage/index";
-import ProfilePage from "./components/products/ProfilePage/index";
-import Footer from "./components/products/Footer/index";
-import ErrorBoundary from "./components/products/ErrorBoundary/index";
-import Login from "./components/users/Login/index";
-import Registration from "./components/users/Registration/index";
-import SignOut from "./components/users/SignOut/index";
+import Header from "./components/products/Header";
+import HomePage from "./components/products/HomePage";
+import ProductsPage from "./components/products/ProductsPage";
+import AboutPage from "./components/products/AboutPage";
+import ProfilePage from "./components/products/ProfilePage";
+import Footer from "./components/products/Footer";
+import ErrorBoundary from "./components/products/ErrorBoundary";
+import Login from "./components/users/Login";
+import Registration from "./components/users/Registration";
+import SignOut from "./components/users/SignOut";
 
-import { Alert, ProtectedRoute } from "./elements/index";
+import { Alert, ProtectedRoute } from "./elements";
 
-import { IUserData, IErrors } from "./utils/interfaces";
-import { postRequest } from "./api/utils/index";
+import { IAppState } from "./utils/interfaces";
+import { postRequest } from "./api/utils";
 
-import { URLS, CONSTANTS } from "./constants/index";
+import { URLS, CONSTANTS } from "./constants";
 
 import AppContext from "./helpers/AppContext";
-
-interface AppState {
-  isModalOpen: boolean;
-  type: string;
-  userData: IUserData;
-  isLoggedIn: boolean;
-  errors: IErrors;
-  info: string;
-  hasError: boolean;
-}
 
 const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
 };
-class AppContainer extends Component<{}, AppState> {
+class AppContainer extends Component<{}, IAppState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -164,7 +154,7 @@ class AppContainer extends Component<{}, AppState> {
       <AppContext.Provider value={this.state}>
         <BrowserRouter>
           <ErrorBoundary>
-            <Header handleOpenModal={this.handleOpenModal} userName={userData.login || ""} isLoggedIn={isLoggedIn} />
+            <Header handleOpenModal={this.handleOpenModal} isLoggedIn={isLoggedIn} />
             <div className="container">
               <Switch>
                 <Route component={HomePage} path="/" exact />

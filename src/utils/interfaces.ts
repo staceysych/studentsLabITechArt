@@ -25,3 +25,13 @@ export interface ILocation extends Location {
     pathname: string;
   };
 }
+
+export interface IAppState {
+  isModalOpen: boolean;
+  type: string;
+  userData: IUserData;
+  isLoggedIn: boolean;
+  errors: IErrors;
+  info: string;
+  hasError: boolean;
+}
