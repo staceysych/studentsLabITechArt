@@ -1,5 +1,5 @@
-import { searchGame } from "./search-game";
-import { getTopProducts } from "./get-top-products";
-import { generateTitle } from "./generate-title";
+import { searchGame } from "./searchGame";
+import { getTopProducts } from "./getTopProducts";
+import { generateTitle } from "./generateTitle";
 
 export { searchGame, getTopProducts, generateTitle };

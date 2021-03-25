@@ -3,7 +3,8 @@ import React from "react";
 import "./GameCard.scss";
 
 import star from "images/star.svg";
-import { IGameObject } from "../../../utils/index";
+
+import { IGameObject } from "../../../utils/interfaces";
 
 interface Props {
   obj: IGameObject;

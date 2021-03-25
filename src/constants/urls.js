@@ -3,4 +3,6 @@ export default {
   LOCAL_HOST_URL: "http://localhost:8080/",
   SEARCH_URL: "games/api/search/",
   TOP_PRODUCTS_URL: "games/api/getTopProducts/",
+  SIGN_IN: "users/auth/signIn",
+  SIGN_UP: "users/auth/signUp",
 };

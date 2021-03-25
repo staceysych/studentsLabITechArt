@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import SearchBar from "../SearchBar/index";
-import GameCard from "../GameCard/index";
+import SearchBar from "../SearchBar";
+import GameCard from "../GameCard";
 
 import "./HomePage.scss";
 
-import { searchGame, getTopProducts, generateTitle } from "./utils/index";
-import { useDebounce, IGameObject } from "../../../utils/index";
-import { CONSTANTS } from "../../../constants/index";
+import { searchGame, getTopProducts, generateTitle } from "./utils";
+import { useDebounce } from "../../../utils";
+import { IGameObject } from "../../../utils/interfaces";
+import { CONSTANTS } from "../../../constants";
 
 const HomePage: React.FC = () => {
   const { DEBOUNCE_TIME } = CONSTANTS;
