@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "node",
   },
   "exclude": ["node_modules", "dist", "build", ".vscode"],
   "include": ["src/**/*.ts",

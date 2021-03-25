@@ -15,11 +15,11 @@ import ErrorBoundary from "./components/products/ErrorBoundary";
 import Login from "./components/users/Login";
 import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
-import Alert from "./elements/alert/Alert";
-import { ProtectedRoute } from "./elements/index";
 
-import { IUserData, IErrors, validateLogin, validatePassword } from "./utils";
-import { postRequest } from "./api/utils/index";
+import { Alert, ProtectedRoute } from "./elements";
+
+import { IUserData, IErrors } from "./utils/interfaces";
+import { postRequest } from "./api/utils";
 
 import { URLS, CONSTANTS } from "./constants";
 

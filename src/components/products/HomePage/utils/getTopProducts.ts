@@ -1,4 +1,4 @@
-import { URLS } from "../../../../constants/index";
+import { URLS } from "../../../../constants";
 
 export const getTopProducts = async () => {
   const { SERVER_URL, TOP_PRODUCTS_URL } = URLS;

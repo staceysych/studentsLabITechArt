@@ -1,4 +1,4 @@
-import { IErrors } from "./interfaces/IErrors";
+import { IErrors } from "./interfaces";
 
 export const validateLogin = (login: string, setErrors: Function) => {
   const errors: IErrors = {

@@ -7,10 +7,10 @@ import padlock from "images/padlock.svg";
 import "../Login/Login.scss";
 import "./Registration.scss";
 
-import { IUserData, IErrors, validateLogin, validatePassword } from "../../../utils/index";
+import { validateLogin, validatePassword } from "../../../utils";
+import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
 
-import Modal from "../../../elements/modal/index";
-import Alert from "../../../elements/alert/Alert";
+import { Modal, Alert } from "../../../elements";
 
 interface Props {
   userData: IUserData;
@@ -37,7 +37,7 @@ const Registration: React.FC<Props> = ({
   const passwordRef = useRef(null);
   const confirmRef = useRef(null);
   const history = useHistory();
-  const location = useLocation();
+  const location = useLocation<ILocation>();
   const [targetPath, setTargetPath] = useState<string>("");
   const [inputText, setInput] = useState<IUserData>(userData);
 
@@ -126,7 +126,7 @@ const Registration: React.FC<Props> = ({
           <label htmlFor="password">
             <span>
               <img src={padlock} alt="padlock" />
-              Password:
+              Confirm Password:
             </span>
             <input
               type="password"

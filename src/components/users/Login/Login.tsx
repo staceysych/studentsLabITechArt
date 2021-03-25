@@ -6,10 +6,10 @@ import "./Login.scss";
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
-import { IUserData, IErrors, validateLogin, validatePassword } from "../../../utils/index";
+import { validateLogin, validatePassword } from "../../../utils";
+import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
 
-import Modal from "../../../elements/modal/index";
-import Alert from "../../../elements/alert/Alert";
+import { Modal, Alert } from "../../../elements";
 
 interface Props {
   userData: IUserData;
@@ -35,7 +35,7 @@ const Login: React.FC<Props> = ({
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
-  const location = useLocation();
+  const location = useLocation<ILocation>();
   const [targetPath, setTargetPath] = useState<string>("");
   const [inputText, setInput] = useState<IUserData>(userData);
 
