@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./Login.scss";
 
@@ -8,29 +9,33 @@ import padlock from "images/padlock.svg";
 
 import { validateLogin, validatePassword } from "../../../utils";
 import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
+import { postRequest } from "../../../api/utils";
 
 import { Modal, Alert } from "../../../elements";
 
+import { ACTIONS } from "../../../redux/actions/creators";
+import { CONSTANTS, URLS } from "../../../constants";
+
 interface Props {
   userData: IUserData;
-  handleUserInput: (userData) => void;
   handleCloseModal: () => void;
-  handleSubmit: any;
+  handleSubmit: () => void;
   errors: IErrors;
   hasError: boolean;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
+  setUserData: (userData: IUserData) => void;
 }
 
 const Login: React.FC<Props> = ({
   handleCloseModal,
   userData,
-  handleUserInput,
   handleSubmit,
   errors,
   hasError,
   hideValidationError,
   handleErrors,
+  setUserData,
 }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
@@ -62,6 +67,7 @@ const Login: React.FC<Props> = ({
   const closeModal = () => {
     handleCloseModal();
     history.push("/");
+    setUserData(CONSTANTS.EMPTY_USER_DATA);
   };
 
   const handleChange = (e) => {
@@ -71,16 +77,20 @@ const Login: React.FC<Props> = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
-      await handleUserInput(inputText);
-      const results = await handleSubmit(e);
-      if (results) {
+    try {
+      if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
+        setUserData(inputText);
+        handleSubmit();
+        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText);
+
         if (targetPath) {
           history.push(targetPath);
         } else {
           history.push("/");
         }
       }
+    } catch (error) {
+      window.alert(error);
     }
   };
 
@@ -130,4 +140,8 @@ const Login: React.FC<Props> = ({
   );
 };
 
-export default React.memo(Login);
+const mapStateToProps = (state) => ({
+  userData: state.auth.userData,
+});
+
+export default connect(mapStateToProps, { setUserData: ACTIONS.setUserData })(Login);

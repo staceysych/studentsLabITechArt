@@ -59,54 +59,36 @@
   ],
   "users": [
     {
-      "login": "hellothere",
-      "password": "123Hello!",
-      "confirmPassword": "123Hello!",
+      "login": "",
+      "password": "",
+      "confirmPassword": "",
       "id": 1
     },
     {
-      "login": "loveyou",
-      "password": "123Love!",
-      "confirmPassword": "123Love!",
+      "login": "",
+      "password": "",
+      "confirmPassword": "",
       "id": 2
     }
   ],
   "login-history": [
     {
-      "login": "hellothere",
-      "password": "123Hello!",
+      "login": "d15isssss",
+      "password": "123Love!",
       "confirmPassword": "",
       "id": 1
     },
     {
-      "login": "d15is111",
-      "password": "123!love",
+      "login": "loveisHere",
+      "password": "123Love!",
       "confirmPassword": "",
       "id": 2
     },
     {
-      "login": "stacey.sych@gmail.com",
-      "password": "123Love!",
+      "login": "Nastya",
+      "password": "123Nastya!",
       "confirmPassword": "",
       "id": 3
-    },
-    {
-      "login": "funnybaby",
-      "password": "funnyBaby123!",
-      "confirmPassword": "",
-      "id": 4
-    },
-    {
-      "login": "stacey.sych@gmail.com",
-      "password": "123Love!",
-      "confirmPassword": "",
-      "id": 5
-    },
-    {
-      "login": "lovelove",
-      "password": "123!Love",
-      "confirmPassword": "",
-      "id": 6
     }
   ]
 }

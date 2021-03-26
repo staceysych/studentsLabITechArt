@@ -29,7 +29,6 @@ export interface ILocation extends Location {
 export interface IAppState {
   isModalOpen: boolean;
   type: string;
-  userData: IUserData;
   isLoggedIn: boolean;
   errors: IErrors;
   info: string;

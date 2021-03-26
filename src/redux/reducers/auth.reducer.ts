@@ -1,11 +1,11 @@
-import { SET_USER_NAME } from "../actions/types";
+import { SET_USER_DATA } from "../actions/types";
 
-const initialState = [];
+import { getInitialState } from "../../utils";
 
-export default function authReducer(state = initialState, action) {
+export default function authReducer(state = getInitialState(), action) {
   switch (action.type) {
-    case SET_USER_NAME:
-      return { ...state, userName: action.userName };
+    case SET_USER_DATA:
+      return { ...state, userData: action.userData };
     default:
       return state;
   }

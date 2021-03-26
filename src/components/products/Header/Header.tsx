@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import "./Header.scss";
 
@@ -10,16 +11,16 @@ import DropDownItem from "../DropDownItem";
 import { dropDownData } from "./utils";
 import { CONSTANTS } from "../../../constants";
 
-import AppContext from "../../../helpers/AppContext";
+import { IUserData } from "../../../utils/interfaces";
 
 interface Props {
   handleOpenModal: (type: string) => void;
   isLoggedIn: boolean;
+  userData: IUserData;
 }
 
-const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn }) => {
+const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn, userData }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const { userData } = useContext(AppContext);
 
   const handleDropDownClick = () => {
     setOpen(!isOpen);
@@ -64,4 +65,8 @@ const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  userData: state.auth.userData,
+});
+
+export default connect(mapStateToProps, {})(Header);

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
@@ -9,29 +10,33 @@ import "./Registration.scss";
 
 import { validateLogin, validatePassword } from "../../../utils";
 import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
+import { postRequest } from "../../../api/utils";
 
 import { Modal, Alert } from "../../../elements";
+
+import { ACTIONS } from "../../../redux/actions/creators";
+import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {
   userData: IUserData;
   handleRegistration: any;
-  handleUserInput: (userData) => void;
   handleCloseModal: () => void;
   errors: IErrors;
   hasError: boolean;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
+  setUserData: (userData: IUserData) => void;
 }
 
 const Registration: React.FC<Props> = ({
   handleCloseModal,
   userData,
-  handleUserInput,
   handleRegistration,
   errors,
   hasError,
   hideValidationError,
   handleErrors,
+  setUserData,
 }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
@@ -68,6 +73,7 @@ const Registration: React.FC<Props> = ({
   const closeModal = () => {
     handleCloseModal();
     history.push(targetPath);
+    setUserData(CONSTANTS.EMPTY_USER_DATA);
   };
 
   const handleChange = (e) => {
@@ -78,13 +84,18 @@ const Registration: React.FC<Props> = ({
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      validateLogin(inputText.login, handleErrors) &&
-      validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
-    ) {
-      await handleUserInput(inputText);
-      const results = await handleRegistration();
-      results && history.push("/profile");
+    try {
+      if (
+        validateLogin(inputText.login, handleErrors) &&
+        validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
+      ) {
+        setUserData(inputText);
+        handleRegistration();
+        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, userData);
+        history.push("/profile");
+      }
+    } catch (error) {
+      window.alert(error);
     }
   };
 
@@ -148,4 +159,8 @@ const Registration: React.FC<Props> = ({
   );
 };
 
-export default Registration;
+const mapStateToProps = (state) => ({
+  userData: state.auth.userData,
+});
+
+export default connect(mapStateToProps, { setUserData: ACTIONS.setUserData })(Registration);

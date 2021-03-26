@@ -1,7 +1,8 @@
-import { SET_USER_NAME } from "../types/index";
+import { SET_USER_DATA } from "../types/index";
+import { IUserData } from "../../../utils/interfaces";
 
-const setUserName = (username) => ({ type: SET_USER_NAME, username });
+const setUserData = (userData: IUserData) => ({ type: SET_USER_DATA, userData });
 
 export default {
-  setUserName,
+  setUserData,
 };
