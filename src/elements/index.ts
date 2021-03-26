@@ -1,6 +1,6 @@
-import Alert from "./Alert/Alert";
+import Alert from "./alert/Alert";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
-import Modal from "./Modal/Modal";
-import Loader from "./Loader/Loader";
+import Modal from "./modal/Modal";
+import Loader from "./loader/Loader";
 
 export { Alert, ProtectedRoute, Modal, Loader };
