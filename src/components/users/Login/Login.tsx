@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Login.scss";
 
@@ -8,8 +8,7 @@ import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
 import { validateLogin, validatePassword } from "../../../utils";
-import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
-import { postRequest } from "../../../api/utils";
+import { IUserData, IErrors, ILocation, RootState } from "../../../utils/interfaces";
 
 import { Modal, Alert } from "../../../elements";
 
@@ -17,32 +16,22 @@ import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {
-  userData: IUserData;
   handleCloseModal: () => void;
   handleSubmit: () => void;
   errors: IErrors;
-  hasError: boolean;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
-  setUserData: (userData: IUserData) => void;
 }
 
-const Login: React.FC<Props> = ({
-  handleCloseModal,
-  userData,
-  handleSubmit,
-  errors,
-  hasError,
-  hideValidationError,
-  handleErrors,
-  setUserData,
-}) => {
+const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideValidationError, handleErrors }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
   const location = useLocation<ILocation>();
   const [targetPath, setTargetPath] = useState<string>("");
-  const [inputText, setInput] = useState<IUserData>(userData);
+  const [inputText, setInput] = useState<IUserData>({ login: "", password: "" });
+  const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
@@ -50,6 +39,7 @@ const Login: React.FC<Props> = ({
 
   useEffect(() => {
     if (hasError) {
+      dispatch(ACTIONS.setError(false));
       hideValidationError();
     }
   }, [inputText]);
@@ -65,9 +55,10 @@ const Login: React.FC<Props> = ({
   }, [errors.login, errors.password]);
 
   const closeModal = () => {
+    dispatch(ACTIONS.setError(false));
     handleCloseModal();
     history.push("/");
-    setUserData(CONSTANTS.EMPTY_USER_DATA);
+    setInput(CONSTANTS.EMPTY_USER_DATA);
   };
 
   const handleChange = (e) => {
@@ -79,15 +70,16 @@ const Login: React.FC<Props> = ({
     e.preventDefault();
     try {
       if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
-        setUserData(inputText);
+        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText));
         handleSubmit();
-        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText);
 
         if (targetPath) {
           history.push(targetPath);
         } else {
           history.push("/");
         }
+      } else {
+        dispatch(ACTIONS.setError(true));
       }
     } catch (error) {
       window.alert(error);
@@ -110,7 +102,7 @@ const Login: React.FC<Props> = ({
               placeholder="Enter Login"
               name="login"
               required
-              value={inputText.login || userData.login}
+              value={inputText.login}
               onChange={handleChange}
               ref={loginRef}
             />
@@ -125,7 +117,7 @@ const Login: React.FC<Props> = ({
               placeholder="Enter Password"
               name="password"
               required
-              value={inputText.password || userData.password}
+              value={inputText.password}
               onChange={handleChange}
               ref={passwordRef}
             />
@@ -140,8 +132,4 @@ const Login: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  userData: state.auth.userData,
-});
-
-export default connect(mapStateToProps, { setUserData: ACTIONS.setUserData })(Login);
+export default Login;

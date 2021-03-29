@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
@@ -9,34 +9,26 @@ import "../Login/Login.scss";
 import "./Registration.scss";
 
 import { validateLogin, validatePassword } from "../../../utils";
-import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
-import { postRequest } from "../../../api/utils";
-
+import { IUserData, IErrors, ILocation, RootState } from "../../../utils/interfaces";
 import { Modal, Alert } from "../../../elements";
 
 import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {
-  userData: IUserData;
   handleRegistration: any;
   handleCloseModal: () => void;
   errors: IErrors;
-  hasError: boolean;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
-  setUserData: (userData: IUserData) => void;
 }
 
 const Registration: React.FC<Props> = ({
   handleCloseModal,
-  userData,
   handleRegistration,
   errors,
-  hasError,
   hideValidationError,
   handleErrors,
-  setUserData,
 }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
@@ -44,7 +36,14 @@ const Registration: React.FC<Props> = ({
   const history = useHistory();
   const location = useLocation<ILocation>();
   const [targetPath, setTargetPath] = useState<string>("");
-  const [inputText, setInput] = useState<IUserData>(userData);
+  const [inputText, setInput] = useState<IUserData>({
+    login: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const hasError = useSelector((state: RootState) => state.auth.hasError);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
@@ -52,6 +51,7 @@ const Registration: React.FC<Props> = ({
 
   useEffect(() => {
     if (hasError) {
+      dispatch(ACTIONS.setError(false));
       hideValidationError();
     }
   }, [inputText]);
@@ -71,9 +71,10 @@ const Registration: React.FC<Props> = ({
   }, [errors.login, errors.password, errors.confirmPassword]);
 
   const closeModal = () => {
+    dispatch(ACTIONS.setError(false));
     handleCloseModal();
     history.push(targetPath);
-    setUserData(CONSTANTS.EMPTY_USER_DATA);
+    setInput(CONSTANTS.EMPTY_USER_DATA);
   };
 
   const handleChange = (e) => {
@@ -89,10 +90,11 @@ const Registration: React.FC<Props> = ({
         validateLogin(inputText.login, handleErrors) &&
         validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
       ) {
-        setUserData(inputText);
+        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, inputText));
         handleRegistration();
-        await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, userData);
         history.push("/profile");
+      } else {
+        dispatch(ACTIONS.setError(true));
       }
     } catch (error) {
       window.alert(error);
@@ -114,7 +116,7 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter Login"
               name="login"
               required
-              value={inputText.login || userData.login}
+              value={inputText.login}
               onChange={handleChange}
               ref={loginRef}
             />
@@ -129,7 +131,7 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter Password"
               name="password"
               required
-              value={inputText.password || userData.password}
+              value={inputText.password}
               onChange={handleChange}
               ref={passwordRef}
             />
@@ -144,7 +146,7 @@ const Registration: React.FC<Props> = ({
               placeholder="Enter confirm password"
               name="confirmPassword"
               required
-              value={inputText.confirmPassword || userData.confirmPassword}
+              value={inputText.confirmPassword}
               onChange={handleChange}
               ref={confirmRef}
             />
@@ -159,8 +161,4 @@ const Registration: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  userData: state.auth.userData,
-});
-
-export default connect(mapStateToProps, { setUserData: ACTIONS.setUserData })(Registration);
+export default Registration;

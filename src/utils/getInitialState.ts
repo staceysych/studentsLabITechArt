@@ -1,7 +1,5 @@
 export const getInitialState = () => ({
-  userData: {
-    login: "",
-    password: "",
-    confirmPassword: "",
-  },
+  userName: "",
+  isLoggedIn: false,
+  hasError: false,
 });

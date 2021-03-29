@@ -34,8 +34,6 @@ class AppContainer extends Component<{}, IAppState> {
     this.state = {
       isModalOpen: false,
       type: "",
-      isLoggedIn: false,
-      hasError: false,
       errors: {},
       info: "",
     };
@@ -61,29 +59,24 @@ class AppContainer extends Component<{}, IAppState> {
   handleCloseModal = () => {
     this.setState({
       isModalOpen: false,
-      hasError: false,
       errors: {},
     });
   };
 
   handleErrors = (validationErrors) => {
-    this.setState({ errors: validationErrors, hasError: true });
+    this.setState({ errors: validationErrors });
   };
 
   handleSubmit = () => {
     this.setState({
-      hasError: false,
       isModalOpen: false,
-      isLoggedIn: true,
       info: "Successfully logged in",
     });
   };
 
   handleRegistration = () => {
     this.setState({
-      hasError: false,
       isModalOpen: false,
-      isLoggedIn: true,
       info: "Successfully signed in",
     });
   };
@@ -91,39 +84,36 @@ class AppContainer extends Component<{}, IAppState> {
   handleSignOut = () => {
     this.setState({
       isModalOpen: false,
-      isLoggedIn: false,
       info: "Successfully signed out",
     });
   };
 
   hideValidationError = () => {
     this.setState({
-      hasError: false,
       errors: {},
     });
   };
 
   render() {
-    const { isLoggedIn, errors, isModalOpen, type, info, hasError } = this.state;
+    const { errors, isModalOpen, type, info } = this.state;
 
     return (
       <Provider store={store}>
         <BrowserRouter>
           <ErrorBoundary>
-            <Header handleOpenModal={this.handleOpenModal} isLoggedIn={isLoggedIn} />
+            <Header handleOpenModal={this.handleOpenModal} />
             <div className="container">
               <Switch>
                 <Route component={HomePage} path="/" exact />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProductsPage} path="/products/:param" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={AboutPage} path="/about" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={TestErrorComponent} path="/testError" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProfilePage} path="/profile" />
+                <ProtectedRoute component={ProductsPage} path="/products/:param" />
+                <ProtectedRoute component={AboutPage} path="/about" />
+                <ProtectedRoute component={TestErrorComponent} path="/testError" />
+                <ProtectedRoute component={ProfilePage} path="/profile" />
                 <Route path="/login">
                   <Login
                     handleCloseModal={this.handleCloseModal}
                     handleSubmit={this.handleSubmit}
                     errors={errors}
-                    hasError={hasError}
                     hideValidationError={this.hideValidationError}
                     handleErrors={this.handleErrors}
                   />
@@ -133,7 +123,6 @@ class AppContainer extends Component<{}, IAppState> {
                     handleCloseModal={this.handleCloseModal}
                     handleRegistration={this.handleRegistration}
                     errors={errors}
-                    hasError={hasError}
                     hideValidationError={this.hideValidationError}
                     handleErrors={this.handleErrors}
                   />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./Header.scss";
 
@@ -11,16 +11,16 @@ import DropDownItem from "../DropDownItem";
 import { dropDownData } from "./utils";
 import { CONSTANTS } from "../../../constants";
 
-import { IUserData } from "../../../utils/interfaces";
+import { RootState } from "../../../utils/interfaces";
 
 interface Props {
   handleOpenModal: (type: string) => void;
-  isLoggedIn: boolean;
-  userData: IUserData;
 }
 
-const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn, userData }) => {
+const Header: React.FC<Props> = ({ handleOpenModal }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
+  const userName = useSelector((state: RootState) => state.auth.userName);
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const handleDropDownClick = () => {
     setOpen(!isOpen);
@@ -49,7 +49,7 @@ const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn, userData }) => {
       <div className="Header__signIn">
         {isLoggedIn ? (
           <>
-            <h2 className="Header__userName">{userData.login}</h2>
+            <h2 className="Header__userName">{userName}</h2>
             <button type="button" onClick={() => handleOpenModal(CONSTANTS.SIGN_OUT)}>
               Sign out
             </button>
@@ -65,8 +65,4 @@ const Header: React.FC<Props> = ({ handleOpenModal, isLoggedIn, userData }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  userData: state.auth.userData,
-});
-
-export default connect(mapStateToProps, {})(Header);
+export default Header;

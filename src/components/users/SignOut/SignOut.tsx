@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "../Login/Login.scss";
 import "./SignOut.scss";
@@ -11,25 +11,23 @@ import { Modal } from "../../../elements";
 
 import { ACTIONS } from "../../../redux/actions/creators";
 
-import { IUserData } from "../../../utils/interfaces";
-import { CONSTANTS } from "../../../constants";
-
 interface Props {
   handleSignOut: () => void;
   handleCloseModal: () => void;
-  setUserData: (userData: IUserData) => void;
 }
 
-const SignOut: React.FC<Props> = ({ handleCloseModal, handleSignOut, setUserData }) => {
+const SignOut: React.FC<Props> = ({ handleCloseModal, handleSignOut }) => {
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     location.pathname && setTargetPath(location.pathname);
   }, []);
 
   const closeModal = () => {
+    dispatch(ACTIONS.setError(false));
     handleCloseModal();
     history.push(targetPath);
   };
@@ -37,7 +35,8 @@ const SignOut: React.FC<Props> = ({ handleCloseModal, handleSignOut, setUserData
   const onSignOut = () => {
     handleSignOut();
     history.push("/");
-    setUserData(CONSTANTS.EMPTY_USER_DATA);
+    dispatch(ACTIONS.setUserName(""));
+    dispatch(ACTIONS.setLoggedIn(false));
   };
 
   return (
@@ -55,6 +54,4 @@ const SignOut: React.FC<Props> = ({ handleCloseModal, handleSignOut, setUserData
   );
 };
 
-export default connect(null, {
-  setUserData: ACTIONS.setUserData,
-})(SignOut);
+export default SignOut;
