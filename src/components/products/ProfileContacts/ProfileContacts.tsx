@@ -1,17 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const mockedData = {
-  address: "Golubka 12-82, Minsk",
-  phone: "+375291306780",
-  email: "tronastya@yandex.ru",
-};
+import { RootState } from "../../../utils/interfaces";
+
 const ProfileContacts: React.FC = () => {
-  const objArray = Object.entries(mockedData);
-  console.log(objArray);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const profileDataArr = Object.entries(userInfo).filter((arr) => !(arr.includes("login") || arr.includes("password")));
 
   return (
     <>
-      {objArray.map((arr) => (
+      {profileDataArr.map((arr) => (
         <div className="ProfilePage__field" key={arr[0]}>
           <label htmlFor={arr[0]}>{`${arr[0]}:`}</label>
           <input type="text" value={arr[1]} id={arr[0]} />

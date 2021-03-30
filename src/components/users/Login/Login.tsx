@@ -70,7 +70,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideVa
     e.preventDefault();
     try {
       if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
-        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText));
+        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText, history));
         handleSubmit();
 
         if (targetPath) {

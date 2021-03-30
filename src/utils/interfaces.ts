@@ -38,5 +38,14 @@ export interface RootState {
     userName: string;
     isLoggedIn: boolean;
     hasError: boolean;
+    userInfo: iUserInfo;
   };
+}
+
+export interface iUserInfo {
+  login: string;
+  password: string;
+  address: string;
+  phone: string;
+  email: string;
 }
