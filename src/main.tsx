@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
+import { Provider } from "react-redux";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
@@ -19,11 +20,10 @@ import SignOut from "./components/users/SignOut";
 import { Alert, ProtectedRoute } from "./elements";
 
 import { IAppState } from "./utils/interfaces";
-import { postRequest } from "./api/utils";
 
-import { URLS, CONSTANTS } from "./constants";
+import { CONSTANTS } from "./constants";
 
-import AppContext from "./helpers/AppContext";
+import store from "./redux/index";
 
 const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
@@ -34,13 +34,6 @@ class AppContainer extends Component<{}, IAppState> {
     this.state = {
       isModalOpen: false,
       type: "",
-      userData: {
-        login: "",
-        password: "",
-        confirmPassword: "",
-      },
-      isLoggedIn: false,
-      hasError: false,
       errors: {},
       info: "",
     };
@@ -66,110 +59,61 @@ class AppContainer extends Component<{}, IAppState> {
   handleCloseModal = () => {
     this.setState({
       isModalOpen: false,
-      hasError: false,
-      userData: {
-        login: "",
-        password: "",
-        confirmPassword: "",
-      },
       errors: {},
     });
   };
 
-  handleUserInput = async (userData) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      userData,
-    }));
-  };
-
   handleErrors = (validationErrors) => {
-    this.setState({ errors: validationErrors, hasError: true });
+    this.setState({ errors: validationErrors });
   };
 
-  handleSubmit = async () => {
-    const { userData } = this.state;
-    try {
-      this.setState({ hasError: false });
-      await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, userData);
-
-      this.setState({
-        isModalOpen: false,
-        isLoggedIn: true,
-        info: "Successfully logged in",
-      });
-
-      return true;
-    } catch (error) {
-      window.alert(error);
-    }
-
-    return false;
+  handleSubmit = () => {
+    this.setState({
+      isModalOpen: false,
+      info: "Successfully logged in",
+    });
   };
 
-  handleRegistration = async () => {
-    const { userData } = this.state;
-    try {
-      this.setState({ hasError: false });
-      await postRequest(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, userData);
-
-      this.setState({
-        isModalOpen: false,
-        isLoggedIn: true,
-        info: "Successfully signed in",
-      });
-
-      return true;
-    } catch (error) {
-      window.alert(error);
-    }
-
-    return false;
+  handleRegistration = () => {
+    this.setState({
+      isModalOpen: false,
+      info: "Successfully signed in",
+    });
   };
 
   handleSignOut = () => {
     this.setState({
       isModalOpen: false,
-      isLoggedIn: false,
       info: "Successfully signed out",
-      userData: {
-        login: "",
-        password: "",
-        confirmPassword: "",
-      },
     });
   };
 
   hideValidationError = () => {
     this.setState({
-      hasError: false,
       errors: {},
     });
   };
 
   render() {
-    const { userData, isLoggedIn, errors, isModalOpen, type, info, hasError } = this.state;
+    const { errors, isModalOpen, type, info } = this.state;
 
     return (
-      <AppContext.Provider value={this.state}>
+      <Provider store={store}>
         <BrowserRouter>
           <ErrorBoundary>
-            <Header handleOpenModal={this.handleOpenModal} isLoggedIn={isLoggedIn} />
+            <Header handleOpenModal={this.handleOpenModal} />
             <div className="container">
               <Switch>
                 <Route component={HomePage} path="/" exact />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProductsPage} path="/products/:param" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={AboutPage} path="/about" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={TestErrorComponent} path="/testError" />
-                <ProtectedRoute isLoggedIn={isLoggedIn} component={ProfilePage} path="/profile" />
+                <ProtectedRoute component={ProductsPage} path="/products/:param" />
+                <ProtectedRoute component={AboutPage} path="/about" />
+                <ProtectedRoute component={TestErrorComponent} path="/testError" />
+                <ProtectedRoute component={ProfilePage} path="/profile" />
                 <Route path="/login">
                   <Login
                     handleCloseModal={this.handleCloseModal}
-                    userData={userData}
-                    handleUserInput={this.handleUserInput}
                     handleSubmit={this.handleSubmit}
                     errors={errors}
-                    hasError={hasError}
                     hideValidationError={this.hideValidationError}
                     handleErrors={this.handleErrors}
                   />
@@ -177,11 +121,8 @@ class AppContainer extends Component<{}, IAppState> {
                 <Route path="/signUp">
                   <Registration
                     handleCloseModal={this.handleCloseModal}
-                    userData={userData}
-                    handleUserInput={this.handleUserInput}
                     handleRegistration={this.handleRegistration}
                     errors={errors}
-                    hasError={hasError}
                     hideValidationError={this.hideValidationError}
                     handleErrors={this.handleErrors}
                   />
@@ -196,7 +137,7 @@ class AppContainer extends Component<{}, IAppState> {
             {info && <Alert text={info} className="success" />}
           </ErrorBoundary>
         </BrowserRouter>
-      </AppContext.Provider>
+      </Provider>
     );
   }
 }

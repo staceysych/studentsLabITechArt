@@ -7,4 +7,9 @@ export default {
   PASSWORDS_NO_MATCH: "Passwords don't match.",
   TIMEOUT: 2000,
   SIGN_OUT: "signOut",
+  EMPTY_USER_DATA: {
+    login: "",
+    password: "",
+    confirmPassword: "",
+  },
 };

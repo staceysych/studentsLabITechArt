@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Login.scss";
 
@@ -7,37 +8,30 @@ import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
 import { validateLogin, validatePassword } from "../../../utils";
-import { IUserData, IErrors, ILocation } from "../../../utils/interfaces";
+import { IUserData, IErrors, ILocation, RootState } from "../../../utils/interfaces";
 
 import { Modal, Alert } from "../../../elements";
 
+import { ACTIONS } from "../../../redux/actions/creators";
+import { CONSTANTS, URLS } from "../../../constants";
+
 interface Props {
-  userData: IUserData;
-  handleUserInput: (userData) => void;
   handleCloseModal: () => void;
-  handleSubmit: any;
+  handleSubmit: () => void;
   errors: IErrors;
-  hasError: boolean;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
 }
 
-const Login: React.FC<Props> = ({
-  handleCloseModal,
-  userData,
-  handleUserInput,
-  handleSubmit,
-  errors,
-  hasError,
-  hideValidationError,
-  handleErrors,
-}) => {
+const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideValidationError, handleErrors }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
   const location = useLocation<ILocation>();
   const [targetPath, setTargetPath] = useState<string>("");
-  const [inputText, setInput] = useState<IUserData>(userData);
+  const [inputText, setInput] = useState<IUserData>({ login: "", password: "" });
+  const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     location.state && setTargetPath(location.state.from.pathname);
@@ -45,6 +39,7 @@ const Login: React.FC<Props> = ({
 
   useEffect(() => {
     if (hasError) {
+      dispatch(ACTIONS.setError(false));
       hideValidationError();
     }
   }, [inputText]);
@@ -60,8 +55,10 @@ const Login: React.FC<Props> = ({
   }, [errors.login, errors.password]);
 
   const closeModal = () => {
+    dispatch(ACTIONS.setError(false));
     handleCloseModal();
     history.push("/");
+    setInput(CONSTANTS.EMPTY_USER_DATA);
   };
 
   const handleChange = (e) => {
@@ -71,16 +68,21 @@ const Login: React.FC<Props> = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
-      await handleUserInput(inputText);
-      const results = await handleSubmit(e);
-      if (results) {
+    try {
+      if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
+        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText));
+        handleSubmit();
+
         if (targetPath) {
           history.push(targetPath);
         } else {
           history.push("/");
         }
+      } else {
+        dispatch(ACTIONS.setError(true));
       }
+    } catch (error) {
+      window.alert(error);
     }
   };
 
@@ -100,7 +102,7 @@ const Login: React.FC<Props> = ({
               placeholder="Enter Login"
               name="login"
               required
-              value={inputText.login || userData.login}
+              value={inputText.login}
               onChange={handleChange}
               ref={loginRef}
             />
@@ -115,7 +117,7 @@ const Login: React.FC<Props> = ({
               placeholder="Enter Password"
               name="password"
               required
-              value={inputText.password || userData.password}
+              value={inputText.password}
               onChange={handleChange}
               ref={passwordRef}
             />
@@ -130,4 +132,4 @@ const Login: React.FC<Props> = ({
   );
 };
 
-export default React.memo(Login);
+export default Login;
