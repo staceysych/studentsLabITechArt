@@ -49,7 +49,7 @@ const Header: React.FC<Props> = ({ handleOpenModal }) => {
       <div className="Header__signIn">
         {isLoggedIn ? (
           <>
-            <h2 className="Header__userName">{userName}</h2>
+            <NavItem path="/profile" name={userName} />
             <button type="button" onClick={() => handleOpenModal(CONSTANTS.SIGN_OUT)}>
               Sign out
             </button>
