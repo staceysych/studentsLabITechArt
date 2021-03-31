@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { RootState } from "../../utils/interfaces";
+
+import { ACTIONS } from "../../redux/actions/creators";
+import { CONSTANTS } from "../../constants";
 
 import "./Alert.scss";
 
 interface Props {
-  text: string;
-  className?: string;
+  text?: string;
 }
 
-const Alert: React.FC<Props> = ({ text, className }) => {
+const Alert: React.FC<Props> = ({ text }) => {
+  const authInfo = useSelector((state: RootState) => state.auth.authInfo);
+  const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const dispatch = useDispatch();
   const styleName = ["Alert"];
+  const noUserAlert = authInfo === "No such user. Please sign up";
 
-  if (className) {
-    styleName.push(className);
+  useEffect(() => {
+    let timer;
+    if (authInfo) {
+      timer = setTimeout(() => {
+        dispatch(ACTIONS.setAuthInfo(""));
+      }, CONSTANTS.TIMEOUT);
+    } else {
+      clearTimeout(timer);
+    }
+  }, [authInfo]);
+
+  if (!hasError && !noUserAlert) {
+    styleName.push("success");
   }
 
-  return <div className={styleName.join(" ")}>{text}</div>;
+  return authInfo || text ? <div className={styleName.join(" ")}>{text || authInfo}</div> : null;
 };
 
 export default Alert;

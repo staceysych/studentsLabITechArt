@@ -18,6 +18,9 @@ export interface IUserData {
   login: string;
   password: string;
   confirmPassword?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 }
 
 export interface ILocation extends Location {
@@ -27,10 +30,7 @@ export interface ILocation extends Location {
 }
 
 export interface IAppState {
-  isModalOpen: boolean;
-  type: string;
   errors: IErrors;
-  info: string;
 }
 
 export interface RootState {
@@ -39,12 +39,14 @@ export interface RootState {
     isLoggedIn: boolean;
     hasError: boolean;
     userInfo: iUserInfo;
+    isModalOpen: boolean;
+    authInfo: string;
   };
 }
 
 export interface iUserInfo {
-  login: string;
-  password: string;
+  login?: string;
+  password?: string;
   address: string;
   phone: string;
   email: string;

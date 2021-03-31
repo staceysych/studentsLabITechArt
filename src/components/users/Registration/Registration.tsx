@@ -16,20 +16,13 @@ import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {
-  handleRegistration: any;
   handleCloseModal: () => void;
   errors: IErrors;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
 }
 
-const Registration: React.FC<Props> = ({
-  handleCloseModal,
-  handleRegistration,
-  errors,
-  hideValidationError,
-  handleErrors,
-}) => {
+const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError, handleErrors }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmRef = useRef(null);
@@ -90,8 +83,14 @@ const Registration: React.FC<Props> = ({
         validateLogin(inputText.login, handleErrors) &&
         validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
       ) {
-        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, inputText));
-        handleRegistration();
+        await dispatch(
+          ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, {
+            ...inputText,
+            address: "",
+            phone: "",
+            email: "",
+          })
+        );
         history.push("/profile");
       } else {
         dispatch(ACTIONS.setError(true));

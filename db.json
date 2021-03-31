@@ -67,183 +67,54 @@
   ],
   "login-history": [
     {
-      "login": "testUser",
+      "login": "d15isaaaaa",
       "password": "123Love!",
       "id": 1
     },
     {
-      "login": "testUser",
-      "password": "123Love!",
+      "login": "d15isaaaaa",
+      "password": "123ledkfjndkjfhjkfL!",
       "id": 2
     },
     {
-      "login": "testUser",
+      "login": "d15isaaaaa",
       "password": "123Love!",
       "id": 3
     },
     {
-      "login": "testUser",
-      "password": "123Test!",
+      "login": "d15isaaaaa",
+      "password": "123Love!",
       "id": 4
     },
     {
-      "login": "testUser",
-      "password": "123Test!",
+      "login": "d15isaaaaa",
+      "password": "123Love!",
       "id": 5
     },
     {
-      "login": "testUser",
-      "password": "123test!",
+      "login": "d15isaaaaa",
+      "password": "123Love!",
       "id": 6
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 7
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 8
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 9
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 10
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 11
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 12
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 13
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 14
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 15
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 16
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 17
-    },
-    {
-      "login": "testUser",
-      "password": "123test!",
-      "id": 18
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 19
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 20
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 21
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 22
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 23
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 24
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 25
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 26
-    },
-    {
-      "login": "nastya23",
-      "password": "123Test!",
-      "id": 27
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 28
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 29
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 30
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 31
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 32
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 33
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 34
     }
   ],
   "users-info": [
     {
       "login": "testUser",
       "password": "123Test!",
+      "confirmPassword": "123Test!",
       "address": "Golubka 12-82, Minsk, Belarus",
       "phone": "+375441234567",
-      "email": "testUser@gmail.com"
+      "email": "testUser@gmail.com",
+      "id": 1
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "confirmPassword": "123Love!",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "id": 2
     }
   ]
 }

@@ -1,18 +1,31 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { RootState } from "../../../utils/interfaces";
+import { RootState, iUserInfo } from "../../../utils/interfaces";
 
-const ProfileContacts: React.FC = () => {
+interface Props {
+  changedContacts: iUserInfo;
+  handleChange: (e) => void;
+}
+
+const ProfileContacts: React.FC<Props> = ({ changedContacts, handleChange }) => {
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
-  const profileDataArr = Object.entries(userInfo).filter((arr) => !(arr.includes("login") || arr.includes("password")));
+  const profileDataArr = Object.entries(userInfo).filter(
+    (arr) => arr.includes("address") || arr.includes("phone") || arr.includes("email")
+  );
 
   return (
     <>
       {profileDataArr.map((arr) => (
         <div className="ProfilePage__field" key={arr[0]}>
           <label htmlFor={arr[0]}>{`${arr[0]}:`}</label>
-          <input type="text" value={arr[1]} id={arr[0]} />
+          <input
+            type="text"
+            name={arr[0]}
+            value={arr[1] || changedContacts[arr[0]]}
+            id={arr[0]}
+            onChange={handleChange}
+          />
         </div>
       ))}
     </>

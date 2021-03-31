@@ -17,13 +17,12 @@ import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {
   handleCloseModal: () => void;
-  handleSubmit: () => void;
   errors: IErrors;
   hideValidationError: () => void;
   handleErrors: (validationError) => void;
 }
 
-const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideValidationError, handleErrors }) => {
+const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError, handleErrors }) => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
@@ -45,6 +44,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideVa
   }, [inputText]);
 
   useEffect(() => {
+    console.log(errors);
     if (errors.login) {
       loginRef.current.focus();
     }
@@ -70,8 +70,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, handleSubmit, errors, hideVa
     e.preventDefault();
     try {
       if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
-        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText, history));
-        handleSubmit();
+        await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText));
 
         if (targetPath) {
           history.push(targetPath);
