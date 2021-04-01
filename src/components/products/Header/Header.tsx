@@ -15,7 +15,7 @@ import { ACTIONS } from "../../../redux/actions/creators";
 
 const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const userName = useSelector((state: RootState) => state.auth.userName);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
       <div className="Header__signIn">
         {isLoggedIn ? (
           <>
-            <NavItem path="/profile" name={userName} />
+            <NavItem path="/profile" name={userInfo.login} />
             <button type="button" onClick={() => dispatch(ACTIONS.setModalOpen(true))}>
               Sign out
             </button>

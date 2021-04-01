@@ -37,7 +37,6 @@ const SignOut: React.FC<Props> = ({ handleCloseModal }) => {
   const onSignOut = () => {
     dispatch(ACTIONS.setModalOpen(false));
     dispatch(ACTIONS.setAuthInfo("Successfully signed out"));
-    dispatch(ACTIONS.setUserName(""));
     dispatch(ACTIONS.setLoggedIn(false));
     history.push("/");
   };

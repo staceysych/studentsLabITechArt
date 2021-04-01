@@ -35,7 +35,6 @@ export interface IAppState {
 
 export interface RootState {
   auth: {
-    userName: string;
     isLoggedIn: boolean;
     hasError: boolean;
     userInfo: iUserInfo;

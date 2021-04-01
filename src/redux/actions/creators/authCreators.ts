@@ -1,9 +1,8 @@
-import { SET_USER_NAME, SET_LOGGED_IN, SET_ERROR, SET_USER_INFO, SET_MODAL_OPEN, SET_AUTH_INFO } from "../types/index";
+import { SET_LOGGED_IN, SET_ERROR, SET_USER_INFO, SET_MODAL_OPEN, SET_AUTH_INFO } from "../types/index";
 
 import { IUserData, iUserInfo } from "../../../utils/interfaces";
 import { URLS } from "../../../constants";
 
-const setUserName = (userName: string) => ({ type: SET_USER_NAME, userName });
 const setLoggedIn = (isLoggedIn: boolean) => ({ type: SET_LOGGED_IN, isLoggedIn });
 const setError = (hasError: boolean) => ({ type: SET_ERROR, hasError });
 const setUserInfo = (userInfo: iUserInfo) => ({ type: SET_USER_INFO, userInfo });
@@ -18,7 +17,6 @@ const getUserProfile = (body: IUserData) => async (dispatch) => {
   if (data.length) {
     dispatch(setUserInfo(data[0]));
     dispatch(setLoggedIn(true));
-    dispatch(setUserName(body.login));
     dispatch(setAuthInfo("Successfully logged in"));
   } else {
     dispatch(setAuthInfo("No such user. Please sign up"));
@@ -53,11 +51,11 @@ const saveProfile = (url: string, body: iUserInfo) => async (dispatch) => {
 
   if (response.status === 200) {
     dispatch(setAuthInfo("Profile has been changed"));
+    dispatch(setUserInfo(body));
   }
 };
 
 export default {
-  setUserName,
   setLoggedIn,
   loginUser,
   setError,

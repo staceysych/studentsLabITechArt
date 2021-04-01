@@ -64,7 +64,13 @@ class AppContainer extends Component<{}, IAppState> {
                 <ProtectedRoute component={ProductsPage} path="/products/:param" />
                 <ProtectedRoute component={AboutPage} path="/about" />
                 <ProtectedRoute component={TestErrorComponent} path="/testError" />
-                <ProtectedRoute component={ProfilePage} path="/profile" />
+                <ProtectedRoute
+                  component={ProfilePage}
+                  path="/profile"
+                  handleErrors={this.handleErrors}
+                  errors={errors}
+                  hideValidationError={this.hideValidationError}
+                />
                 <Route path="/login">
                   <Login
                     handleCloseModal={this.handleCloseModal}
