@@ -4,8 +4,8 @@ import { CONSTANTS } from "../constants";
 export const validatePassword = (
   password: string,
   setErrors: Function,
-  isRegistration?: boolean,
-  confirmPassword?: string
+  confirmPassword?: string,
+  needsToConfirm?: boolean
 ) => {
   const errors: IErrors = {
     login: "",
@@ -27,7 +27,7 @@ export const validatePassword = (
     }
   }
 
-  if (isRegistration) {
+  if (needsToConfirm) {
     if (password) {
       if (!confirmPassword) {
         isValid = false;

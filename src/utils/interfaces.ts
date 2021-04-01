@@ -4,6 +4,7 @@ export interface IErrors {
   login?: string;
   password?: string;
   confirmPassword?: string;
+  prevPassword?: string;
 }
 
 export interface IGameObject {
@@ -15,7 +16,7 @@ export interface IGameObject {
 }
 
 export interface IUserData {
-  login: string;
+  login?: string;
   password: string;
   confirmPassword?: string;
   address?: string;

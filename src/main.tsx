@@ -16,6 +16,7 @@ import ErrorBoundary from "./components/products/ErrorBoundary";
 import Login from "./components/users/Login";
 import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
+import ChangePassword from "./components/users/ChangePassword";
 
 import { Alert, ProtectedRoute } from "./elements";
 
@@ -87,6 +88,14 @@ class AppContainer extends Component<{}, IAppState> {
                     handleErrors={this.handleErrors}
                   />
                 </Route>
+                <ProtectedRoute
+                  component={ChangePassword}
+                  path="/changePassword"
+                  handleCloseModal={this.handleCloseModal}
+                  errors={errors}
+                  hideValidationError={this.hideValidationError}
+                  handleErrors={this.handleErrors}
+                />
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />
               </Switch>
             </div>

@@ -4,5 +4,6 @@
   "/users/auth/signIn": "/login-history",
   "/users/auth/signUp": "/users-info",
   "/api/getProfile/:login&:password": "/users-info?login=:login&password=:password",
-  "/api/saveProfile/:id": "/users-info/:id"
+  "/api/saveProfile/:id": "/users-info/:id",
+  "/api/changePassword/:id": "/users-info/:id"
 }

@@ -55,6 +55,21 @@ const saveProfile = (url: string, body: iUserInfo) => async (dispatch) => {
   }
 };
 
+const changePassword = (url: string, body: iUserInfo) => async (dispatch) => {
+  const response = await fetch(url, {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 200) {
+    dispatch(setAuthInfo("Password has been changed"));
+    dispatch(setUserInfo(body));
+  }
+};
+
 export default {
   setLoggedIn,
   loginUser,
@@ -64,4 +79,5 @@ export default {
   setAuthInfo,
   setUserInfo,
   saveProfile,
+  changePassword,
 };

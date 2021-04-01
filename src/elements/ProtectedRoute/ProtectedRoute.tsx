@@ -10,6 +10,7 @@ interface Props {
   handleErrors?: (validationErrors: any) => void;
   errors?: IErrors;
   hideValidationError?: () => void;
+  handleCloseModal?: () => void;
 }
 
 const ProtectedRoute: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const ProtectedRoute: React.FC<Props> = ({
   handleErrors,
   errors,
   hideValidationError,
+  handleCloseModal,
   ...rest
 }) => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
@@ -26,7 +28,7 @@ const ProtectedRoute: React.FC<Props> = ({
       {...rest}
       render={(props) => {
         if (isLoggedIn) {
-          return <Component {...props} {...{ handleErrors, errors, hideValidationError }} />;
+          return <Component {...props} {...{ handleErrors, errors, hideValidationError, handleCloseModal }} />;
         }
         return <Redirect to={{ pathname: "/login", state: { from: props.location } }} />;
       }}

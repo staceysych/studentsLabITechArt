@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import avatar from "images/avatar.svg";
 import edit from "images/edit.svg";
@@ -24,6 +25,8 @@ interface Props {
 }
 
 const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationError }) => {
+  const userNameRef = useRef(null);
+  const history = useHistory();
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const hasError = useSelector((state: RootState) => state.auth.hasError);
@@ -37,6 +40,12 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
     }
   }, [changedContacts]);
 
+  useEffect(() => {
+    if (errors.login) {
+      userNameRef.current.focus();
+    }
+  }, [errors.login]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setChangedContacts({ ...changedContacts, [name]: value });
@@ -44,7 +53,6 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
 
   const onClick = async () => {
     const newObj = { ...userInfo, ...changedContacts };
-    console.log(newObj);
 
     if (validateLogin(newObj.login, handleErrors)) {
       await dispatch(ACTIONS.saveProfile(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.id}`, newObj));
@@ -61,7 +69,14 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
       <div className="ProfilePage__info">
         <div className="ProfilePage__userName">
           {isEditMode ? (
-            <input type="text" name="login" value={changedContacts.login} id={userInfo.login} onChange={handleChange} />
+            <input
+              type="text"
+              name="login"
+              value={changedContacts.login}
+              id={userInfo.login}
+              onChange={handleChange}
+              ref={userNameRef}
+            />
           ) : (
             <h2>{userInfo.login}</h2>
           )}
@@ -75,7 +90,11 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
         </div>
         <div className="ProfilePage__controls">
           <Button text="Save contacts" className="ProfilePage__btn ProfilePage__btn_save" onClick={onClick} />
-          <Button text="Change password" className="ProfilePage__btn ProfilePage__btn_changePassword" />
+          <Button
+            text="Change password"
+            className="ProfilePage__btn ProfilePage__btn_changePassword"
+            onClick={() => history.push("/changePassword")}
+          />
         </div>
       </div>
     </div>

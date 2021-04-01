@@ -7,4 +7,5 @@ export default {
   SIGN_UP: "users/auth/signUp",
   GET_PROFILE_URL: "api/getProfile/",
   SAVE_PROFILE_URL: "api/saveProfile/",
+  CHANGE_PASSWORD_URL: "api/changePassword/",
 };

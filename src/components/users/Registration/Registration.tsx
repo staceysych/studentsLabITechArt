@@ -77,11 +77,12 @@ const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidatio
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const needsToConfirm = true;
 
     try {
       if (
         validateLogin(inputText.login, handleErrors) &&
-        validatePassword(inputText.password, handleErrors, true, inputText.confirmPassword)
+        validatePassword(inputText.password, handleErrors, inputText.confirmPassword, needsToConfirm)
       ) {
         await dispatch(
           ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, {

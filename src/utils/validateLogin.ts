@@ -1,7 +1,6 @@
 import { IErrors } from "./interfaces";
 
 export const validateLogin = (login: string, setErrors: Function) => {
-  console.log(login, setErrors);
   const errors: IErrors = {
     login: "",
   };
