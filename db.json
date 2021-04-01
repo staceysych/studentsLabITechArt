@@ -95,6 +95,131 @@
       "login": "d15isaaaaa",
       "password": "123Love!",
       "id": 6
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "id": 7
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "id": 8
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 9
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 10
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 11
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 12
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 13
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123love!",
+      "id": 14
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "id": 15
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Den!",
+      "id": 16
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 17
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 18
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Den!",
+      "id": 19
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 20
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 21
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 22
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 23
+    },
+    {
+      "login": "Nastya",
+      "password": "123Love!",
+      "id": 24
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 25
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 26
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 27
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 28
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "id": 29
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "id": 30
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "id": 31
     }
   ],
   "users-info": [
@@ -110,11 +235,29 @@
     {
       "login": "d15isaaaaa",
       "password": "123Love!",
+      "address": "V. Golubka 12 - 82",
+      "phone": "719-83-58",
+      "email": "nastya@y.ru",
       "confirmPassword": "123Love!",
-      "address": "",
-      "phone": "",
-      "email": "",
       "id": 2
+    },
+    {
+      "login": "Nastya",
+      "password": "123Nastya!",
+      "address": "V. Golubka 12 - 82",
+      "phone": "375291306780",
+      "email": "nastya@y.ru",
+      "confirmPassword": "123Nastya!",
+      "id": 3
+    },
+    {
+      "login": "loveyou",
+      "password": "123Love!",
+      "address": "Minsk, Komsomoltsev 15, apt 80",
+      "phone": "+375257925551",
+      "email": "loveyou@yandex.ru",
+      "confirmPassword": "123Love!",
+      "id": 4
     }
   ]
 }

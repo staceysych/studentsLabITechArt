@@ -50,6 +50,10 @@ const saveProfile = (url: string, body: iUserInfo) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   });
+
+  if (response.status === 200) {
+    dispatch(setAuthInfo("Profile has been changed"));
+  }
 };
 
 export default {
@@ -61,4 +65,5 @@ export default {
   setModalOpen,
   setAuthInfo,
   setUserInfo,
+  saveProfile,
 };

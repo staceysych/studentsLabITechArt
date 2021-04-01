@@ -50,4 +50,5 @@ export interface iUserInfo {
   address: string;
   phone: string;
   email: string;
+  id?: number;
 }

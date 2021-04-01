@@ -19,13 +19,7 @@ const ProfileContacts: React.FC<Props> = ({ changedContacts, handleChange }) => 
       {profileDataArr.map((arr) => (
         <div className="ProfilePage__field" key={arr[0]}>
           <label htmlFor={arr[0]}>{`${arr[0]}:`}</label>
-          <input
-            type="text"
-            name={arr[0]}
-            value={arr[1] || changedContacts[arr[0]]}
-            id={arr[0]}
-            onChange={handleChange}
-          />
+          <input type="text" name={arr[0]} value={changedContacts[arr[0]]} id={arr[0]} onChange={handleChange} />
         </div>
       ))}
     </>

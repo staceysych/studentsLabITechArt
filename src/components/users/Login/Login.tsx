@@ -44,7 +44,6 @@ const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError,
   }, [inputText]);
 
   useEffect(() => {
-    console.log(errors);
     if (errors.login) {
       loginRef.current.focus();
     }

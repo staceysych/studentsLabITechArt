@@ -14,13 +14,9 @@ import "./ProfilePage.scss";
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
-  const [changedContacts, setChangedContacts] = useState<iUserInfo>({
-    address: "",
-    phone: "",
-    email: "",
-  });
   const userName = useSelector((state: RootState) => state.auth.userName);
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const [changedContacts, setChangedContacts] = useState<iUserInfo>(userInfo);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,15 +24,9 @@ const ProfilePage: React.FC = () => {
   };
 
   const onClick = async () => {
-    await dispatch(ACTIONS.setUserInfo(changedContacts));
-    console.log(userInfo);
-    await fetch(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.login}`, {
-      method: "PUT",
-      body: JSON.stringify(userInfo),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const newObj = { ...userInfo, ...changedContacts };
+
+    await dispatch(ACTIONS.saveProfile(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.id}`, newObj));
   };
 
   return (
