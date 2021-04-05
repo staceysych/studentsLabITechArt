@@ -52,6 +52,7 @@ const saveProfile = (url: string, body: iUserInfo) => async (dispatch) => {
   if (response.status === 200) {
     dispatch(setAuthInfo("Profile has been changed"));
     dispatch(setUserInfo(body));
+    dispatch(setError(false));
   }
 };
 

@@ -38,7 +38,7 @@ export interface RootState {
   auth: {
     isLoggedIn: boolean;
     hasError: boolean;
-    userInfo: iUserInfo;
+    userInfo: IUserInfo;
     isModalOpen: boolean;
     authInfo: string;
   };
@@ -47,7 +47,7 @@ export interface RootState {
   };
 }
 
-export interface iUserInfo {
+export interface IUserInfo {
   login?: string;
   password?: string;
   address: string;

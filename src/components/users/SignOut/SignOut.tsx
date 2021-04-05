@@ -12,6 +12,8 @@ import { RootState } from "../../../utils/interfaces";
 
 import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 
+import { CONSTANTS } from "../../../constants";
+
 interface Props {}
 
 const SignOut: React.FC<Props> = () => {
@@ -28,7 +30,7 @@ const SignOut: React.FC<Props> = () => {
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
     dispatch(ACTIONS.setModalOpen(false));
-    dispatch(ERRORS_ACTIONS.setErrors({}));
+    dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
     history.push(targetPath);
   };
 
@@ -36,6 +38,7 @@ const SignOut: React.FC<Props> = () => {
     dispatch(ACTIONS.setModalOpen(false));
     dispatch(ACTIONS.setAuthInfo("Successfully signed out"));
     dispatch(ACTIONS.setLoggedIn(false));
+    dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
     history.push("/");
   };
 

@@ -35,7 +35,7 @@ const Login: React.FC<Props> = () => {
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      dispatch(ERRORS_ACTIONS.setErrors({}));
+      dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
     }
   }, [inputText]);
 
@@ -51,7 +51,7 @@ const Login: React.FC<Props> = () => {
 
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
-    dispatch(ERRORS_ACTIONS.setErrors({}));
+    dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
     history.push("/");
     setInput(CONSTANTS.EMPTY_USER_DATA);
   };
