@@ -2,25 +2,14 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { RootState, IErrors } from "../../utils/interfaces";
+import { RootState } from "../../utils/interfaces";
 
 interface Props {
   component: any;
   path: string;
-  handleErrors?: (validationErrors: any) => void;
-  errors?: IErrors;
-  hideValidationError?: () => void;
-  handleCloseModal?: () => void;
 }
 
-const ProtectedRoute: React.FC<Props> = ({
-  component: Component,
-  handleErrors,
-  errors,
-  hideValidationError,
-  handleCloseModal,
-  ...rest
-}) => {
+const ProtectedRoute: React.FC<Props> = ({ component: Component, ...rest }) => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   return (
@@ -28,7 +17,7 @@ const ProtectedRoute: React.FC<Props> = ({
       {...rest}
       render={(props) => {
         if (isLoggedIn) {
-          return <Component {...props} {...{ handleErrors, errors, hideValidationError, handleCloseModal }} />;
+          return <Component {...props} />;
         }
         return <Redirect to={{ pathname: "/login", state: { from: props.location } }} />;
       }}

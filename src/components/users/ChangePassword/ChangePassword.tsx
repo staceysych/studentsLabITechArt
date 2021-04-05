@@ -4,23 +4,18 @@ import { useHistory } from "react-router-dom";
 
 import { Modal, Button, Alert } from "../../../elements";
 
-import { IUserData, IErrors, RootState } from "../../../utils/interfaces";
+import { IUserData, RootState } from "../../../utils/interfaces";
 import { validatePrevPassword, validatePassword } from "../../../utils";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 
 import { CONSTANTS, URLS } from "../../../constants";
 
 import "./ChangePassword.scss";
 
-interface Props {
-  handleCloseModal: () => void;
-  errors: IErrors;
-  hideValidationError: () => void;
-  handleErrors: (validationError) => void;
-}
+interface Props {}
 
-const ChangePassword: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError, handleErrors }) => {
+const ChangePassword: React.FC<Props> = () => {
   const prevPasswordRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmRef = useRef(null);
@@ -28,13 +23,14 @@ const ChangePassword: React.FC<Props> = ({ handleCloseModal, errors, hideValidat
   const history = useHistory();
   const hasError = useSelector((state: RootState) => state.auth.hasError);
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const errors = useSelector((state: RootState) => state.errors.errors);
   const [inputText, setInput] = useState<IUserData>({ password: "", confirmPassword: "" });
   const [oldPassword, setOldPassword] = useState<string>("");
 
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      hideValidationError();
+      dispatch(ERRORS_ACTIONS.setErrors({}));
     }
   }, [inputText, oldPassword]);
 
@@ -54,7 +50,7 @@ const ChangePassword: React.FC<Props> = ({ handleCloseModal, errors, hideValidat
 
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
-    handleCloseModal();
+    dispatch(ERRORS_ACTIONS.setErrors({}));
     history.push("/profile");
     setInput(CONSTANTS.EMPTY_USER_DATA);
   };
@@ -69,8 +65,8 @@ const ChangePassword: React.FC<Props> = ({ handleCloseModal, errors, hideValidat
     e.preventDefault();
     try {
       if (
-        validatePrevPassword(userInfo.password, oldPassword, handleErrors) &&
-        validatePassword(inputText.password, handleErrors, inputText.confirmPassword, needsToConfirm)
+        validatePrevPassword(userInfo.password, oldPassword, dispatch) &&
+        validatePassword(dispatch, inputText.password, inputText.confirmPassword, needsToConfirm)
       ) {
         const newObj = { ...userInfo, ...inputText };
         await dispatch(ACTIONS.changePassword(`${URLS.SERVER_URL}${URLS.CHANGE_PASSWORD_URL}${userInfo.id}`, newObj));

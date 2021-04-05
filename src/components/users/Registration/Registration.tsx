@@ -9,20 +9,15 @@ import "../Login/Login.scss";
 import "./Registration.scss";
 
 import { validateLogin, validatePassword } from "../../../utils";
-import { IUserData, IErrors, ILocation, RootState } from "../../../utils/interfaces";
+import { IUserData, ILocation, RootState } from "../../../utils/interfaces";
 import { Modal, Alert } from "../../../elements";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
-interface Props {
-  handleCloseModal: () => void;
-  errors: IErrors;
-  hideValidationError: () => void;
-  handleErrors: (validationError) => void;
-}
+interface Props {}
 
-const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError, handleErrors }) => {
+const Registration: React.FC<Props> = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmRef = useRef(null);
@@ -35,6 +30,7 @@ const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidatio
     confirmPassword: "",
   });
   const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const errors = useSelector((state: RootState) => state.errors.errors);
 
   const dispatch = useDispatch();
 
@@ -45,7 +41,7 @@ const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidatio
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      hideValidationError();
+      dispatch(ERRORS_ACTIONS.setErrors({}));
     }
   }, [inputText]);
 
@@ -65,7 +61,7 @@ const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidatio
 
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
-    handleCloseModal();
+    dispatch(ERRORS_ACTIONS.setErrors({}));
     history.push(targetPath);
     setInput(CONSTANTS.EMPTY_USER_DATA);
   };
@@ -81,8 +77,8 @@ const Registration: React.FC<Props> = ({ handleCloseModal, errors, hideValidatio
 
     try {
       if (
-        validateLogin(inputText.login, handleErrors) &&
-        validatePassword(inputText.password, handleErrors, inputText.confirmPassword, needsToConfirm)
+        validateLogin(inputText.login, dispatch) &&
+        validatePassword(dispatch, inputText.password, inputText.confirmPassword, needsToConfirm)
       ) {
         await dispatch(
           ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_UP}`, {

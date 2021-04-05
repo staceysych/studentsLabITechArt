@@ -57,6 +57,144 @@
       "date": "2021-02-23"
     }
   ],
-  "login-history": [],
-  "users-info": []
+  "login-history": [
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 1
+    },
+    {
+      "login": "testUser",
+      "password": "123test!",
+      "id": 2
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 3
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 4
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 5
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 6
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 7
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 8
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 9
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 10
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 11
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 12
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 13
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 14
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 15
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 16
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 17
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 18
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 19
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 20
+    }
+  ],
+  "users-info": [
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "address": "V. Golubka 12 - 82",
+      "phone": "7195672",
+      "email": "nastya@y.ru",
+      "confirmPassword": "123Test!",
+      "id": 1
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "address": "",
+      "phone": "1234567",
+      "email": "nastya@y.ru",
+      "confirmPassword": "123Love!",
+      "id": 2
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "confirmPassword": "123Love!",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "id": 3
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "confirmPassword": "123Love!",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "id": 4
+    }
+  ]
 }

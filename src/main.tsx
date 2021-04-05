@@ -28,32 +28,7 @@ const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
 };
 class AppContainer extends Component<{}, IAppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: {},
-    };
-  }
-
-  handleCloseModal = () => {
-    this.setState({
-      errors: {},
-    });
-  };
-
-  handleErrors = (validationErrors) => {
-    this.setState({ errors: validationErrors });
-  };
-
-  hideValidationError = () => {
-    this.setState({
-      errors: {},
-    });
-  };
-
   render() {
-    const { errors } = this.state;
-
     return (
       <Provider store={store}>
         <BrowserRouter>
@@ -65,41 +40,18 @@ class AppContainer extends Component<{}, IAppState> {
                 <ProtectedRoute component={ProductsPage} path="/products/:param" />
                 <ProtectedRoute component={AboutPage} path="/about" />
                 <ProtectedRoute component={TestErrorComponent} path="/testError" />
-                <ProtectedRoute
-                  component={ProfilePage}
-                  path="/profile"
-                  handleErrors={this.handleErrors}
-                  errors={errors}
-                  hideValidationError={this.hideValidationError}
-                />
+                <ProtectedRoute component={ProfilePage} path="/profile" />
                 <Route path="/login">
-                  <Login
-                    handleCloseModal={this.handleCloseModal}
-                    errors={errors}
-                    hideValidationError={this.hideValidationError}
-                    handleErrors={this.handleErrors}
-                  />
+                  <Login />
                 </Route>
                 <Route path="/signUp">
-                  <Registration
-                    handleCloseModal={this.handleCloseModal}
-                    errors={errors}
-                    hideValidationError={this.hideValidationError}
-                    handleErrors={this.handleErrors}
-                  />
+                  <Registration />
                 </Route>
-                <ProtectedRoute
-                  component={ChangePassword}
-                  path="/changePassword"
-                  handleCloseModal={this.handleCloseModal}
-                  errors={errors}
-                  hideValidationError={this.hideValidationError}
-                  handleErrors={this.handleErrors}
-                />
+                <ProtectedRoute component={ChangePassword} path="/changePassword" />
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />
               </Switch>
             </div>
-            <SignOut handleCloseModal={this.handleCloseModal} />
+            <SignOut />
             <Footer />
             <Alert />
           </ErrorBoundary>

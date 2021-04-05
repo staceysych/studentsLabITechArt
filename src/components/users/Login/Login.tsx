@@ -8,21 +8,16 @@ import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
 import { validateLogin, validatePassword } from "../../../utils";
-import { IUserData, IErrors, ILocation, RootState } from "../../../utils/interfaces";
+import { IUserData, ILocation, RootState } from "../../../utils/interfaces";
 
 import { Modal, Alert } from "../../../elements";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
-interface Props {
-  handleCloseModal: () => void;
-  errors: IErrors;
-  hideValidationError: () => void;
-  handleErrors: (validationError) => void;
-}
+interface Props {}
 
-const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError, handleErrors }) => {
+const Login: React.FC<Props> = () => {
   const loginRef = useRef(null);
   const passwordRef = useRef(null);
   const history = useHistory();
@@ -30,6 +25,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError,
   const [targetPath, setTargetPath] = useState<string>("");
   const [inputText, setInput] = useState<IUserData>({ login: "", password: "" });
   const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const errors = useSelector((state: RootState) => state.errors.errors);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +35,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError,
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      hideValidationError();
+      dispatch(ERRORS_ACTIONS.setErrors({}));
     }
   }, [inputText]);
 
@@ -55,7 +51,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError,
 
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
-    handleCloseModal();
+    dispatch(ERRORS_ACTIONS.setErrors({}));
     history.push("/");
     setInput(CONSTANTS.EMPTY_USER_DATA);
   };
@@ -68,7 +64,7 @@ const Login: React.FC<Props> = ({ handleCloseModal, errors, hideValidationError,
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (validateLogin(inputText.login, handleErrors) && validatePassword(inputText.password, handleErrors)) {
+      if (validateLogin(inputText.login, dispatch) && validatePassword(dispatch, inputText.password)) {
         await dispatch(ACTIONS.loginUser(`${URLS.SERVER_URL}${URLS.SIGN_IN}`, inputText));
 
         if (targetPath) {

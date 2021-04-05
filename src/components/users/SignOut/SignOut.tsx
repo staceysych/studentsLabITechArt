@@ -10,13 +10,11 @@ import logout from "images/logout.svg";
 import { Modal } from "../../../elements";
 import { RootState } from "../../../utils/interfaces";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 
-interface Props {
-  handleCloseModal: () => void;
-}
+interface Props {}
 
-const SignOut: React.FC<Props> = ({ handleCloseModal }) => {
+const SignOut: React.FC<Props> = () => {
   const history = useHistory();
   const location = useLocation();
   const [targetPath, setTargetPath] = useState<string>("");
@@ -30,7 +28,7 @@ const SignOut: React.FC<Props> = ({ handleCloseModal }) => {
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
     dispatch(ACTIONS.setModalOpen(false));
-    handleCloseModal();
+    dispatch(ERRORS_ACTIONS.setErrors({}));
     history.push(targetPath);
   };
 

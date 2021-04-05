@@ -5,6 +5,8 @@ export interface IErrors {
   password?: string;
   confirmPassword?: string;
   prevPassword?: string;
+  phone?: string;
+  email?: string;
 }
 
 export interface IGameObject {
@@ -30,9 +32,7 @@ export interface ILocation extends Location {
   };
 }
 
-export interface IAppState {
-  errors: IErrors;
-}
+export interface IAppState {}
 
 export interface RootState {
   auth: {
@@ -41,6 +41,9 @@ export interface RootState {
     userInfo: iUserInfo;
     isModalOpen: boolean;
     authInfo: string;
+  };
+  errors: {
+    errors: IErrors;
   };
 }
 

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import avatar from "images/avatar.svg";
 import edit from "images/edit.svg";
-import { RootState, iUserInfo, IErrors } from "../../../utils/interfaces";
+import { RootState, iUserInfo } from "../../../utils/interfaces";
 
 import ProfileContacts from "../ProfileContacts";
 
@@ -12,31 +12,28 @@ import { Button, Alert } from "../../../elements";
 
 import { URLS } from "../../../constants";
 
-import { validateLogin } from "../../../utils";
+import { validateLogin, validatePhone, validateEmail } from "../../../utils";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
 
 import "./ProfilePage.scss";
 
-interface Props {
-  handleErrors: (validationErrors: any) => void;
-  errors: IErrors;
-  hideValidationError: () => void;
-}
+interface Props {}
 
-const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationError }) => {
+const ProfilePage: React.FC<Props> = () => {
   const userNameRef = useRef(null);
   const history = useHistory();
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const hasError = useSelector((state: RootState) => state.auth.hasError);
+  const errors = useSelector((state: RootState) => state.errors.errors);
   const [changedContacts, setChangedContacts] = useState<iUserInfo>(userInfo);
   const [isEditMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      hideValidationError();
+      dispatch(ERRORS_ACTIONS.setErrors({}));
     }
   }, [changedContacts]);
 
@@ -54,7 +51,14 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
   const onClick = async () => {
     const newObj = { ...userInfo, ...changedContacts };
 
-    if (validateLogin(newObj.login, handleErrors)) {
+    console.log("obj", newObj);
+    console.log("error", errors);
+
+    if (
+      validateLogin(newObj.login, dispatch) &&
+      validatePhone(newObj.phone, dispatch) &&
+      validateEmail(newObj.email, dispatch)
+    ) {
       await dispatch(ACTIONS.saveProfile(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.id}`, newObj));
     } else {
       dispatch(ACTIONS.setError(true));
@@ -83,7 +87,7 @@ const ProfilePage: React.FC<Props> = ({ handleErrors, errors, hideValidationErro
           <button type="button" onClick={() => setEditMode(!isEditMode)}>
             <img src={edit} alt="edit" />
           </button>
-          {hasError && <Alert text={errors.login} />}
+          {hasError && <Alert text={errors.login || errors.phone || errors.email} />}
         </div>
         <div className="ProfilePage__contacts">
           <ProfileContacts {...{ changedContacts, handleChange }} />

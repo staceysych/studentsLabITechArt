@@ -10,4 +10,11 @@ export const getInitialState = () => ({
   },
   isModalOpen: false,
   authInfo: "",
+  errors: {
+    login: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+    email: "",
+  },
 });
