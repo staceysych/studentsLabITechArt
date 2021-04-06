@@ -6,7 +6,10 @@
       "rating": 5,
       "price": 30,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/GTA_uxipxm.jpg",
-      "date": "2021-03-12"
+      "date": "2021-03-12",
+      "genre": "shooter, strategy, fighting, sport",
+      "age": "18",
+      "devise": "Xbox, PC, PSP"
     },
     {
       "id": 2,
@@ -14,7 +17,10 @@
       "rating": 5,
       "price": 20,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/Minecraft_v6hpb9.jpg",
-      "date": "2021-03-10"
+      "date": "2021-03-10",
+      "genre": "strategy",
+      "age": "18",
+      "devise": "Xbox, PC"
     },
     {
       "id": 3,
@@ -22,7 +28,10 @@
       "rating": 4,
       "price": 35,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
-      "date": "2021-11-15"
+      "date": "2021-11-15",
+      "genre": "strategy, shooter",
+      "age": "18",
+      "devise": "Xbox, PC, PSP"
     },
     {
       "id": 4,
@@ -30,15 +39,21 @@
       "rating": 3,
       "price": 25,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/1607595308_poster_ivi9of.jpg",
-      "date": "2020-03-12"
+      "date": "2020-03-12",
+      "genre": "strategy",
+      "age": "18",
+      "devise": "Xbox, PC"
     },
     {
       "id": 5,
-      "name": "forza: Horizon 4",
+      "name": "Forza: Horizon 4",
       "rating": 2,
       "price": 15,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
-      "date": "2021-03-15"
+      "date": "2021-03-15",
+      "genre": "racing",
+      "age": "12",
+      "devise": "Xbox, PC, PSP"
     },
     {
       "id": 6,
@@ -46,7 +61,10 @@
       "rating": 5,
       "price": 14,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887212/game-posters/warcraft_ua9637.jpg",
-      "date": "2021-01-12"
+      "date": "2021-01-12",
+      "genre": "strategy",
+      "age": "12",
+      "devise": "PC"
     },
     {
       "id": 7,
@@ -54,366 +72,134 @@
       "rating": 4,
       "price": 40,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887320/game-posters/redemption_rooy74.jpg",
-      "date": "2021-02-23"
+      "date": "2021-02-23",
+      "genre": "strategy, shooter",
+      "age": "16",
+      "devise": "Xbox, PC, PSP"
+    },
+    {
+      "id": 8,
+      "name": "Battlefield 5",
+      "rating": 5,
+      "price": 25,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716812/game-posters/XBOX/2409171e271a9dcce7ceaaec95e87c7f_toflye.jpg",
+      "date": "2021-03-12",
+      "genre": "shooter, strategy",
+      "age": "18",
+      "devise": "Xbox"
+    },
+    {
+      "id": 9,
+      "name": "Assassins creed 3",
+      "rating": 5,
+      "price": 55,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716812/game-posters/XBOX/30063_assassins-creed-3-iii-obnovlennaya-v_zu3qac.jpg",
+      "date": "2021-03-20",
+      "genre": "strategy",
+      "age": "16",
+      "devise": "Xbox"
+    },
+    {
+      "id": 10,
+      "name": "NHL 13",
+      "rating": 3,
+      "price": 12,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716812/game-posters/XBOX/959ce4e41cb2a54bbf8a17c9c0545cf1_kventc.jpg",
+      "date": "2021-03-23",
+      "genre": "sport",
+      "age": "8",
+      "devise": "Xbox"
+    },
+    {
+      "id": 11,
+      "name": "Call of duty",
+      "rating": 4,
+      "price": 38,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716786/game-posters/PC/Call_of_Duty_Modern_Warfare_3_box_art_x0ohrh.jpg",
+      "date": "2021-03-30",
+      "genre": "shooter, strategy",
+      "age": "18",
+      "devise": "PC"
+    },
+    {
+      "id": 12,
+      "name": "Need for speed",
+      "rating": 4,
+      "price": 38,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716783/game-posters/PC/needforspeed2016_1_pfe0tf.jpg",
+      "date": "2021-03-31",
+      "genre": "racing",
+      "age": "12",
+      "devise": "PC"
+    },
+    {
+      "id": 13,
+      "name": "Sims 2",
+      "rating": 5,
+      "price": 10,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716781/game-posters/PC/TS2_FirstCover_beu0mv.jpg",
+      "date": "2021-04-01",
+      "genre": "strategy, sport",
+      "age": "8",
+      "devise": "PC"
+    },
+    {
+      "id": 14,
+      "name": "Spider man",
+      "rating": 5,
+      "price": 120,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716654/game-posters/PSP/Spider-Man_Friend_or_Foe_oz2hww.png",
+      "date": "2021-04-02",
+      "genre": "strategy, shooter",
+      "age": "12",
+      "devise": "PSP"
+    },
+    {
+      "id": 15,
+      "name": "FIFA 2013",
+      "rating": 5,
+      "price": 98,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716647/game-posters/PSP/unnamed_l2cko6.png",
+      "date": "2021-04-04",
+      "genre": "sport",
+      "age": "6",
+      "devise": "PSP"
+    },
+    {
+      "id": 16,
+      "name": "Mortal Combat",
+      "rating": 4,
+      "price": 124,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716643/game-posters/PSP/1330009862_mortal-kombat-unchained-box-psp-psv.ru_ul1tjx.jpg",
+      "date": "2021-04-06",
+      "genre": "sport, fighting",
+      "age": "18",
+      "devise": "PSP"
+    },
+    {
+      "id": 17,
+      "name": "Injustice",
+      "rating": 4,
+      "price": 55,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716641/game-posters/PSP/poster_kgwkwi.png",
+      "date": "2021-04-03",
+      "genre": "fighting, strategy, shooter",
+      "age": "18",
+      "devise": "PSP"
+    },
+    {
+      "id": 18,
+      "name": "Call od duty",
+      "rating": 4,
+      "price": 145,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716636/game-posters/PSP/653134365_jvkiw1.jpg",
+      "date": "2021-04-06",
+      "genre": "fighting, strategy, shooter",
+      "age": "18",
+      "devise": "PSP"
     }
   ],
-  "login-history": [
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 1
-    },
-    {
-      "login": "testUser",
-      "password": "123test!",
-      "id": 2
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 3
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 4
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 5
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 6
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 7
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 8
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 9
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 10
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 11
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 12
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 13
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 14
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 15
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 16
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 17
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 18
-    },
-    {
-      "login": "testUser",
-      "password": "123Test!",
-      "id": 19
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 20
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 21
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 22
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 23
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 24
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 25
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 26
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 27
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 28
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 29
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "12Love!",
-      "id": 30
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 31
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 32
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 33
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 34
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 35
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 36
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 37
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 38
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 39
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123love!",
-      "id": 40
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 41
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 42
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 43
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 44
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 45
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 46
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 47
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 48
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 49
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 50
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 51
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 52
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 53
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 54
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 55
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 56
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 57
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 58
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 59
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 60
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 61
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 62
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 63
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 64
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 65
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 66
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 67
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 68
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 69
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 70
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 71
-    }
-  ],
+  "login-history": [],
   "users-info": [
     {
       "login": "testUser",
@@ -432,24 +218,6 @@
       "email": "nastya@y.ruhj",
       "confirmPassword": "123Love!",
       "id": 2
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "confirmPassword": "123Love!",
-      "address": "",
-      "phone": "",
-      "email": "",
-      "id": 3
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "confirmPassword": "123Love!",
-      "address": "",
-      "phone": "",
-      "email": "",
-      "id": 4
     }
   ]
 }
