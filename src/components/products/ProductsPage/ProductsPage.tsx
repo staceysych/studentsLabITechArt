@@ -2,10 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import SearchBar from "../SearchBar";
-
+import { Select, Checkbox } from "../../../elements";
 import "./ProductsPage.scss";
-
-import { Select } from "../../../elements";
 
 interface ParamTypes {
   param: string;
@@ -34,6 +32,8 @@ const ProductsPage: React.FC = () => {
               <h4>Type: </h4>
               <Select optionsList={typeOptions} />
             </div>
+            <h3>Genre: </h3>
+            <Checkbox />
           </div>
         </div>
         <div className="ProductsPage__products" />
