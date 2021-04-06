@@ -7,8 +7,8 @@ import lens from "images/lens.svg";
 import { Loader } from "../../../elements";
 
 interface Props {
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  isSearching: boolean;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isSearching?: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({ handleChange, isSearching }) => (
