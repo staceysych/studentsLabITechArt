@@ -58,6 +58,7 @@ const ProfilePage: React.FC<Props> = () => {
       await dispatch(ACTIONS.saveProfile(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.id}`, newObj));
       await dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
       setChangedContacts(userInfo);
+      console.log("newObj after", newObj);
     } else {
       dispatch(ACTIONS.setError(true));
     }
