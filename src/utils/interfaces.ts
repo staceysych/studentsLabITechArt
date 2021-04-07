@@ -45,6 +45,9 @@ export interface RootState {
   errors: {
     errors: IErrors;
   };
+  page: {
+    products: IProducts[];
+  };
 }
 
 export interface IUserInfo {
@@ -54,4 +57,16 @@ export interface IUserInfo {
   phone: string;
   email: string;
   id?: number;
+}
+
+export interface IProducts {
+  id: number;
+  name: string;
+  rating: number;
+  price: number;
+  poster: string;
+  date: string;
+  genre: string;
+  age: string;
+  devise: string;
 }

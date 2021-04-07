@@ -1,5 +1,7 @@
 import React from "react";
 
-const Checkbox: React.FC = (props) => <input type="checkbox" {...props} />;
+import "./Checkbox.scss";
+
+const Checkbox: React.FC = (props) => <input className="Checkbox" type="checkbox" {...props} />;
 
 export default Checkbox;

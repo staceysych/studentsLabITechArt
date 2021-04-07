@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.Checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  transition: all 150ms;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    box-shadow: 0 0 0 2px $basicColor;
+    outline: none;
+    border-radius: 3px;
+  }
+
+  &:hover {
+    border-color: $basicColor;
+    cursor: pointer;
+  }
+}

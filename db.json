@@ -9,7 +9,7 @@
       "date": "2021-03-12",
       "genre": "shooter, strategy, fighting, sport",
       "age": "18",
-      "devise": "Xbox, PC, PSP"
+      "devise": "Xbox, PC, PlayStation"
     },
     {
       "id": 2,
@@ -31,7 +31,7 @@
       "date": "2021-11-15",
       "genre": "strategy, shooter",
       "age": "18",
-      "devise": "Xbox, PC, PSP"
+      "devise": "Xbox, PC, PlayStation"
     },
     {
       "id": 4,
@@ -53,7 +53,7 @@
       "date": "2021-03-15",
       "genre": "racing",
       "age": "12",
-      "devise": "Xbox, PC, PSP"
+      "devise": "Xbox, PC, PlayStation"
     },
     {
       "id": 6,
@@ -75,7 +75,7 @@
       "date": "2021-02-23",
       "genre": "strategy, shooter",
       "age": "16",
-      "devise": "Xbox, PC, PSP"
+      "devise": "Xbox, PC, PlayStation"
     },
     {
       "id": 8,
@@ -152,7 +152,7 @@
       "date": "2021-04-02",
       "genre": "strategy, shooter",
       "age": "12",
-      "devise": "PSP"
+      "devise": "PlayStation"
     },
     {
       "id": 15,
@@ -163,7 +163,7 @@
       "date": "2021-04-04",
       "genre": "sport",
       "age": "6",
-      "devise": "PSP"
+      "devise": "PlayStation"
     },
     {
       "id": 16,
@@ -174,7 +174,7 @@
       "date": "2021-04-06",
       "genre": "sport, fighting",
       "age": "18",
-      "devise": "PSP"
+      "devise": "PlayStation"
     },
     {
       "id": 17,
@@ -185,7 +185,7 @@
       "date": "2021-04-03",
       "genre": "fighting, strategy, shooter",
       "age": "18",
-      "devise": "PSP"
+      "devise": "PlayStation"
     },
     {
       "id": 18,
@@ -196,7 +196,7 @@
       "date": "2021-04-06",
       "genre": "fighting, strategy, shooter",
       "age": "18",
-      "devise": "PSP"
+      "devise": "PlayStation"
     }
   ],
   "login-history": [
@@ -394,6 +394,191 @@
       "login": "d15isaaaaa",
       "password": "123Love!",
       "id": 39
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 40
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 41
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 42
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 43
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 44
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 45
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 46
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 47
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 48
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 49
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 50
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 51
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 52
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 53
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 54
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 55
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 56
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 57
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 58
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 59
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 60
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 61
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 62
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 63
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 64
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 65
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 66
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 67
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 68
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 69
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 70
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 71
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 72
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 73
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 74
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 75
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 76
     }
   ],
   "users-info": [
