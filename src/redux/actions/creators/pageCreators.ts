@@ -15,4 +15,5 @@ const getProducts = (url: string) => async (dispatch) => {
 
 export default {
   getProducts,
+  setProducts,
 };

@@ -5,5 +5,6 @@ import Loader from "./loader/Loader";
 import Button from "./button/Button";
 import Select from "./select/Select";
 import Checkbox from "./checkbox/Checkbox";
+import Spinner from "./spinner/Spinner";
 
-export { Alert, ProtectedRoute, Modal, Loader, Button, Select, Checkbox };
+export { Alert, ProtectedRoute, Modal, Loader, Button, Select, Checkbox, Spinner };

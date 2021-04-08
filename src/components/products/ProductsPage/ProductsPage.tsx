@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
-import { Select, Checkbox } from "../../../elements";
+import { Select, Checkbox, Spinner } from "../../../elements";
 import "./ProductsPage.scss";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
@@ -29,9 +29,11 @@ const ProductsPage: React.FC = () => {
   const ageList = ["all", "6", "12", "16", "18"];
   const products = useSelector((state: RootState) => state.page.products);
 
+  const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
+
   useEffect(() => {
-    dispatch(PAGE_ACTIONS.getProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`));
-  }, [param]);
+    dispatch(PAGE_ACTIONS.setProducts(data));
+  }, [data]);
 
   return (
     <div className="ProductsPage">
@@ -68,7 +70,7 @@ const ProductsPage: React.FC = () => {
           </div>
         </div>
         <div className="ProductsPage__products">
-          {products ? products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />) : null}
+          {loading ? <Spinner /> : products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)}
         </div>
       </div>
     </div>

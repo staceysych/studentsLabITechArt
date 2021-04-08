@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
 
-import { PAGE_ACTIONS } from "../redux/actions/creators";
-
-export function useFetchData(url: string, dispatch, products) {
-  const [isLoading, setLoading] = useState<boolean>(false);
+export const useFetchData = (url) => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     async function loadData() {
       try {
-        console.log("fetching");
-        setLoading(true);
-        await dispatch(PAGE_ACTIONS.getProducts(url));
+        const res = await fetch(url);
+        const resJson = await res.json();
+        setData(resJson);
+      } catch (err) {
+        setError(err);
+      } finally {
         setLoading(false);
-      } catch (e) {
-        setLoading(true);
-        window.alert(e);
       }
     }
 
-    loadData();
-  }, [products]);
+    const timer1 = setTimeout(() => loadData(), 1000);
 
-  return [isLoading];
-}
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, [url]);
+  return { loading, data, error };
+};
