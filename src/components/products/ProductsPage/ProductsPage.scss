@@ -46,5 +46,10 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
+  }
+  &__products-title {
+    position: absolute;
+    top: 0;
   }
 }

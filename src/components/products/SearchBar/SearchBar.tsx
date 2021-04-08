@@ -7,7 +7,7 @@ import lens from "images/lens.svg";
 import { Loader } from "../../../elements";
 
 interface Props {
-  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   isSearching?: boolean;
 }
 

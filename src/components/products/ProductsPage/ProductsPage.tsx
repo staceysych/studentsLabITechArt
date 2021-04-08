@@ -8,10 +8,10 @@ import "./ProductsPage.scss";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
-import { URLS } from "../../../constants";
+import { URLS, CONSTANTS } from "../../../constants";
 
 import { RootState, IProducts } from "../../../utils/interfaces";
-import { useFetchData } from "../../../utils";
+import { useFetchData, useDebounce, generateTitleSearch } from "../../../utils";
 
 import GameCard from "../GameCard";
 
@@ -23,23 +23,42 @@ const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
   const [isChecked, setChecked] = useState<boolean>(false);
-  const criteriaOptions = ["age", "rating", "date"];
-  const typeOptions = ["ascending", "descending"];
-  const genreList = ["all", "shooter", "fighting", "racing", "strategy", "sport"];
-  const ageList = ["all", "6", "12", "16", "18"];
+  const [searchText, setSearchText] = useState<string>("");
+  const [isLoading, setLoading] = useState<boolean>(true);
   const products = useSelector((state: RootState) => state.page.products);
 
+  const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
 
   useEffect(() => {
     dispatch(PAGE_ACTIONS.setProducts(data));
   }, [data]);
 
+  useEffect(() => {
+    console.log(debouncedSearchText);
+    if (debouncedSearchText) {
+      setLoading(true);
+      const searchedProducts = data.filter((product) =>
+        product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
+      );
+      dispatch(PAGE_ACTIONS.setProducts(searchedProducts));
+      setLoading(false);
+    } else {
+      dispatch(PAGE_ACTIONS.setProducts(data));
+      setLoading(false);
+    }
+  }, [debouncedSearchText]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true);
+    setSearchText(event.target.value);
+  };
+
   return (
     <div className="ProductsPage">
       <div className="ProductsPage__header">
         <h1>{param}</h1>
-        <SearchBar />
+        <SearchBar handleChange={handleChange} />
       </div>
       <div className="ProductsPage__wrapper">
         <div className="ProductsPage__sort-container">
@@ -47,21 +66,21 @@ const ProductsPage: React.FC = () => {
             <h2>Sort:</h2>
             <div className="ProductsPage__sort_field">
               <h4>Criteria: </h4>
-              <Select optionsList={criteriaOptions} />
+              <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} />
             </div>
             <div className="ProductsPage__sort_field">
               <h4>Type: </h4>
-              <Select optionsList={typeOptions} />
+              <Select optionsList={CONSTANTS.TYPE_OPTIONS} />
             </div>
             <h3>Genre: </h3>
-            {genreList.map((genre) => (
+            {CONSTANTS.GENRE_OPTIONS.map((genre) => (
               <div className="ProductsPage__sort_field" key={genre}>
                 <Checkbox name={genre} checked={genre === "all" ? true : isChecked} />
                 <label htmlFor={genre}>{genre}</label>
               </div>
             ))}
             <h3>Age: </h3>
-            {ageList.map((age) => (
+            {CONSTANTS.AGE_OPTIONS.map((age) => (
               <div className="ProductsPage__sort_field" key={age}>
                 <Checkbox name={age} checked={age === "all" ? true : isChecked} />
                 <label htmlFor={age}>{age}</label>
@@ -70,7 +89,10 @@ const ProductsPage: React.FC = () => {
           </div>
         </div>
         <div className="ProductsPage__products">
-          {loading ? <Spinner /> : products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)}
+          {!loading && !isLoading && debouncedSearchText && (
+            <h2 className="ProductsPage__products-title">{generateTitleSearch(debouncedSearchText, products)}</h2>
+          )}
+          {loading || isLoading ? <Spinner /> : products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)}
         </div>
       </div>
     </div>

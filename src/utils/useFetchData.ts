@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { CONSTANTS } from "../constants";
+
 export const useFetchData = (url) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -19,7 +21,7 @@ export const useFetchData = (url) => {
       }
     }
 
-    const timer1 = setTimeout(() => loadData(), 1000);
+    const timer1 = setTimeout(() => loadData(), CONSTANTS.TIMEOUT / 2);
 
     return () => {
       clearTimeout(timer1);

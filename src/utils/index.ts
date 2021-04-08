@@ -6,6 +6,8 @@ import { validatePrevPassword } from "./validatePrevPassword";
 import { validatePhone } from "./validatePhone";
 import { validateEmail } from "./validateEmail";
 import { useFetchData } from "./useFetchData";
+import { searchGame } from "./searchGames";
+import { generateTitleSearch } from "./generateTitleSearch";
 
 export {
   useDebounce,
@@ -16,4 +18,6 @@ export {
   validatePhone,
   validateEmail,
   useFetchData,
+  searchGame,
+  generateTitleSearch,
 };

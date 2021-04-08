@@ -1,11 +1,11 @@
 import { SET_LOGGED_IN, SET_ERROR, SET_USER_INFO, SET_MODAL_OPEN, SET_AUTH_INFO } from "../types/index";
 
-import { IUserData, iUserInfo } from "../../../utils/interfaces";
+import { IUserData, IUserInfo } from "../../../utils/interfaces";
 import { URLS } from "../../../constants";
 
 const setLoggedIn = (isLoggedIn: boolean) => ({ type: SET_LOGGED_IN, isLoggedIn });
 const setError = (hasError: boolean) => ({ type: SET_ERROR, hasError });
-const setUserInfo = (userInfo: iUserInfo) => ({ type: SET_USER_INFO, userInfo });
+const setUserInfo = (userInfo: IUserInfo) => ({ type: SET_USER_INFO, userInfo });
 const setModalOpen = (isModalOpen: boolean) => ({ type: SET_MODAL_OPEN, isModalOpen });
 const setAuthInfo = (authInfo: string) => ({ type: SET_AUTH_INFO, authInfo });
 
