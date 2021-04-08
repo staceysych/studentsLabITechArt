@@ -19,23 +19,41 @@ interface ParamTypes {
   param: string;
 }
 
+/*   useEffect(() => {
+    dispatch(PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}${sort}&${type}`));
+  }, [selectedText]); */
+
 const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
   const [isChecked, setChecked] = useState<boolean>(false);
+  const [sortCriteria, setSortCriteria] = useState<string>("");
+  const [sortType, setSortType] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(true);
   const products = useSelector((state: RootState) => state.page.products);
+  const { SERVER_URL, GET_PRODUCTS_URL } = URLS;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
+
+  console.log("criteria: ", sortCriteria, "type: ", sortType);
+
+  useEffect(() => {
+    if (sortCriteria || sortType) {
+      dispatch(
+        PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}/${sortCriteria}&${sortType || "desc"}`)
+      );
+    }
+
+    setLoading(false);
+  }, [sortCriteria, sortType]);
 
   useEffect(() => {
     dispatch(PAGE_ACTIONS.setProducts(data));
   }, [data]);
 
   useEffect(() => {
-    console.log(debouncedSearchText);
     if (debouncedSearchText) {
       setLoading(true);
       const searchedProducts = data.filter((product) =>
@@ -66,11 +84,11 @@ const ProductsPage: React.FC = () => {
             <h2>Sort:</h2>
             <div className="ProductsPage__sort_field">
               <h4>Criteria: </h4>
-              <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} />
+              <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} setSortState={setSortCriteria} />
             </div>
             <div className="ProductsPage__sort_field">
               <h4>Type: </h4>
-              <Select optionsList={CONSTANTS.TYPE_OPTIONS} />
+              <Select optionsList={CONSTANTS.TYPE_OPTIONS} setSortState={setSortType} />
             </div>
             <h3>Genre: </h3>
             {CONSTANTS.GENRE_OPTIONS.map((genre) => (

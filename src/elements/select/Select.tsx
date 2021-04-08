@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Select.scss";
 
 interface Props {
   optionsList: string[];
+  setSortState: any;
 }
-const Select: React.FC<Props> = ({ optionsList }) => {
+const Select: React.FC<Props> = ({ optionsList, setSortState }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("Select");
+
+  useEffect(() => {
+    if (selectedText !== "Select") {
+      if (selectedText === "descending") {
+        setSortState("desc");
+      } else if (selectedText === "ascending") {
+        setSortState("asc");
+      } else {
+        setSortState(selectedText);
+      }
+    }
+  }, [selectedText]);
 
   const handleListDisplay = () => {
     setShowOptionList(!showOptionList);

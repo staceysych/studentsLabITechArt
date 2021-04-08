@@ -5,8 +5,8 @@ import GameCard from "../GameCard";
 
 import "./HomePage.scss";
 
-import { searchGame, getTopProducts, generateTitle } from "./utils";
-import { useDebounce } from "../../../utils";
+import { searchGame, getTopProducts } from "./utils";
+import { useDebounce, generateTitleSearch } from "../../../utils";
 import { IGameObject } from "../../../utils/interfaces";
 import { CONSTANTS } from "../../../constants";
 
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SearchBar {...{ handleChange, isSearching }} />
-      {!isSearching && <h2 className="HomePage__title">{generateTitle(searchText, results)}</h2>}
+      {!isSearching && <h2 className="HomePage__title">{generateTitleSearch(searchText, results)}</h2>}
       {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
       <div className="HomePage__content">
         {results.length && !isSearching
