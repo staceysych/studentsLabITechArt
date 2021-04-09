@@ -22,11 +22,12 @@ interface ParamTypes {
 const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
-  const [isChecked, setChecked] = useState<boolean>(false);
   const [isDefault, setDefault] = useState<boolean>(false);
   const [sortCriteria, setSortCriteria] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
+  const [genreName, setGenreName] = useState<string>("");
+  const [ageValue, setAgeValue] = useState<string>("");
   const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
   const { SERVER_URL, GET_PRODUCTS_URL } = URLS;
@@ -48,6 +49,36 @@ const ProductsPage: React.FC = () => {
       }
     })();
   }, [sortCriteria, sortType]);
+
+  useEffect(() => {
+    (async () => {
+      if (genreName || ageValue) {
+        if (!isLoading) {
+          console.log(genreName);
+          console.log(ageValue);
+          setLoading(true);
+          setDefault(false);
+          const sortedProducts = data.filter((product) => {
+            if (genreName) {
+              if (ageValue) {
+                console.log("im here");
+                return (
+                  product.genre.toLocaleLowerCase().includes(genreName.toLocaleLowerCase()) && +product.age >= +ageValue
+                );
+              }
+              return product.genre.toLocaleLowerCase().includes(genreName.toLocaleLowerCase());
+            }
+
+            return false;
+          });
+
+          console.log(sortedProducts);
+          await dispatch(PAGE_ACTIONS.setProducts(sortedProducts));
+          setLoading(false);
+        }
+      }
+    })();
+  }, [genreName, ageValue]);
 
   useEffect(() => {
     setDefault(true);
@@ -94,15 +125,13 @@ const ProductsPage: React.FC = () => {
             <h3>Genre: </h3>
             {CONSTANTS.GENRE_OPTIONS.map((genre) => (
               <div className="ProductsPage__sort_field" key={genre}>
-                <Checkbox name={genre} checked={genre === "all" ? true : isChecked} />
-                <label htmlFor={genre}>{genre}</label>
+                <Checkbox value={genre} selected={genreName} text={genre} onChange={setGenreName} />
               </div>
             ))}
             <h3>Age: </h3>
             {CONSTANTS.AGE_OPTIONS.map((age) => (
               <div className="ProductsPage__sort_field" key={age}>
-                <Checkbox name={age} checked={age === "all" ? true : isChecked} />
-                <label htmlFor={age}>{age}</label>
+                <Checkbox value={age} selected={ageValue} text={age} onChange={setAgeValue} />
               </div>
             ))}
           </div>
