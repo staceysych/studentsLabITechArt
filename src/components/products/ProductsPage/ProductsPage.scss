@@ -40,6 +40,10 @@
     }
   }
 
+  &__products-wrapper {
+    flex: 3;
+  }
+
   &__products {
     flex: 3;
     display: flex;
@@ -47,9 +51,10 @@
     justify-content: space-evenly;
     align-items: center;
     position: relative;
+    height: 100%;
   }
   &__products-title {
-    position: absolute;
-    top: 0;
+    margin: 0;
+    text-align: center;
   }
 }

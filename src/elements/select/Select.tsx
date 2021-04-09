@@ -5,10 +5,19 @@ import "./Select.scss";
 interface Props {
   optionsList: string[];
   setSortState: any;
+  isDefault: boolean;
 }
-const Select: React.FC<Props> = ({ optionsList, setSortState }) => {
+const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("Select");
+
+  console.log("isDefault", isDefault);
+
+  useEffect(() => {
+    if (isDefault) {
+      setSelectedText("Select");
+    }
+  }, [isDefault]);
 
   useEffect(() => {
     if (selectedText !== "Select") {

@@ -19,55 +19,56 @@ interface ParamTypes {
   param: string;
 }
 
-/*   useEffect(() => {
-    dispatch(PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}${sort}&${type}`));
-  }, [selectedText]); */
-
 const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
   const [isChecked, setChecked] = useState<boolean>(false);
+  const [isDefault, setDefault] = useState<boolean>(false);
   const [sortCriteria, setSortCriteria] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
   const { SERVER_URL, GET_PRODUCTS_URL } = URLS;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
 
-  console.log("criteria: ", sortCriteria, "type: ", sortType);
-
   useEffect(() => {
-    if (sortCriteria || sortType) {
-      dispatch(
-        PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}/${sortCriteria}&${sortType || "desc"}`)
-      );
-    }
-
-    setLoading(false);
+    (async () => {
+      if (sortCriteria || sortType) {
+        if (!isLoading) {
+          setLoading(true);
+          setDefault(false);
+          await dispatch(
+            PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}/${sortCriteria}&${sortType || "desc"}`)
+          );
+          setLoading(false);
+        }
+      }
+    })();
   }, [sortCriteria, sortType]);
 
   useEffect(() => {
+    setDefault(true);
     dispatch(PAGE_ACTIONS.setProducts(data));
   }, [data]);
 
   useEffect(() => {
     if (debouncedSearchText) {
-      setLoading(true);
       const searchedProducts = data.filter((product) =>
         product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
       );
       dispatch(PAGE_ACTIONS.setProducts(searchedProducts));
       setLoading(false);
     } else {
-      dispatch(PAGE_ACTIONS.setProducts(data));
       setLoading(false);
+      dispatch(PAGE_ACTIONS.setProducts(data));
     }
   }, [debouncedSearchText]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDefault(true);
     setLoading(true);
     setSearchText(event.target.value);
   };
@@ -84,11 +85,11 @@ const ProductsPage: React.FC = () => {
             <h2>Sort:</h2>
             <div className="ProductsPage__sort_field">
               <h4>Criteria: </h4>
-              <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} setSortState={setSortCriteria} />
+              <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} setSortState={setSortCriteria} isDefault={isDefault} />
             </div>
             <div className="ProductsPage__sort_field">
               <h4>Type: </h4>
-              <Select optionsList={CONSTANTS.TYPE_OPTIONS} setSortState={setSortType} />
+              <Select optionsList={CONSTANTS.TYPE_OPTIONS} setSortState={setSortType} isDefault={isDefault} />
             </div>
             <h3>Genre: </h3>
             {CONSTANTS.GENRE_OPTIONS.map((genre) => (
@@ -106,11 +107,17 @@ const ProductsPage: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="ProductsPage__products">
+        <div className="ProductsPage__products-wrapper">
           {!loading && !isLoading && debouncedSearchText && (
             <h2 className="ProductsPage__products-title">{generateTitleSearch(debouncedSearchText, products)}</h2>
           )}
-          {loading || isLoading ? <Spinner /> : products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)}
+          <div className="ProductsPage__products">
+            {loading || isLoading ? (
+              <Spinner />
+            ) : (
+              products.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)
+            )}
+          </div>
         </div>
       </div>
     </div>
