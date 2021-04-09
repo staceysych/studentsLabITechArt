@@ -24,7 +24,7 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
       } else if (selectedText === "ascending") {
         setSortState("asc");
       } else {
-        setSortState(selectedText);
+        setSortState(selectedText.toLocaleLowerCase());
       }
     }
   }, [selectedText]);

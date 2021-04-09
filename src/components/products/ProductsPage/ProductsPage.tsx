@@ -22,81 +22,78 @@ interface ParamTypes {
 const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
-  const [isDefault, setDefault] = useState<boolean>(false);
+  const [isDefault, setDefault] = useState<boolean>(true);
   const [sortCriteria, setSortCriteria] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
-  const [genreName, setGenreName] = useState<string>("");
-  const [ageValue, setAgeValue] = useState<string>("");
+  const [genreName, setGenreName] = useState<string>("all");
+  const [ageValue, setAgeValue] = useState<string>("all");
   const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
-  const { SERVER_URL, GET_PRODUCTS_URL } = URLS;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
 
-  useEffect(() => {
-    (async () => {
-      if (sortCriteria || sortType) {
-        if (!isLoading) {
-          setLoading(true);
-          setDefault(false);
-          await dispatch(
-            PAGE_ACTIONS.getProducts(`${SERVER_URL}${GET_PRODUCTS_URL}${param}/${sortCriteria}&${sortType || "desc"}`)
-          );
-          setLoading(false);
-        }
-      }
-    })();
-  }, [sortCriteria, sortType]);
-
-  useEffect(() => {
-    (async () => {
-      if (genreName || ageValue) {
-        if (!isLoading) {
-          console.log(genreName);
-          console.log(ageValue);
-          setLoading(true);
-          setDefault(false);
-          const sortedProducts = data.filter((product) => {
-            if (genreName) {
-              if (ageValue) {
-                console.log("im here");
-                return (
-                  product.genre.toLocaleLowerCase().includes(genreName.toLocaleLowerCase()) && +product.age >= +ageValue
-                );
-              }
-              return product.genre.toLocaleLowerCase().includes(genreName.toLocaleLowerCase());
-            }
-
-            return false;
-          });
-
-          console.log(sortedProducts);
-          await dispatch(PAGE_ACTIONS.setProducts(sortedProducts));
-          setLoading(false);
-        }
-      }
-    })();
-  }, [genreName, ageValue]);
-
-  useEffect(() => {
+  const resetSortFilters = () => {
+    setSortCriteria("");
+    setSortType("");
+    setGenreName("all");
+    setAgeValue("all");
     setDefault(true);
-    dispatch(PAGE_ACTIONS.setProducts(data));
-  }, [data]);
+  };
+
+  const convertDateToSec = (date) => new Date(date).getTime() / 1000;
+
+  const sortProducts = (productsArr) => {
+    const sortedArr = productsArr.sort((a, b) => {
+      const isDescending = sortType === "desc" ? -1 : 1;
+      switch (sortCriteria) {
+        case "age":
+          return (a.age - b.age) * isDescending;
+        case "rating":
+          return (a.rating - b.rating) * isDescending;
+        case "date":
+          return (convertDateToSec(a.date) - convertDateToSec(b.date)) * isDescending;
+        default:
+          return 0;
+      }
+    });
+
+    return sortedArr;
+  };
 
   useEffect(() => {
-    if (debouncedSearchText) {
-      const searchedProducts = data.filter((product) =>
-        product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
-      );
-      dispatch(PAGE_ACTIONS.setProducts(searchedProducts));
-      setLoading(false);
-    } else {
-      setLoading(false);
-      dispatch(PAGE_ACTIONS.setProducts(data));
-    }
-  }, [debouncedSearchText]);
+    (async () => {
+      if (sortCriteria || sortType || genreName || ageValue) {
+        if (sortCriteria || sortType) {
+          setDefault(false);
+        }
+        let searchedProducts;
+        if (debouncedSearchText) {
+          searchedProducts = data.filter((product) =>
+            product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
+          );
+        }
+        const sortedProducts = sortProducts(searchedProducts || data);
+        const filteredProducts = filterProducts(sortedProducts);
+        await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
+        setLoading(false);
+      }
+    })();
+  }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText]);
+
+  const filterProducts = (productsArr) =>
+    productsArr.filter((product) => {
+      const genreFiltered = genreName === "all" ? true : product.genre.includes(genreName);
+      const ageFiltered = ageValue === "all" ? true : +product.age >= +ageValue;
+
+      return genreFiltered && ageFiltered;
+    });
+
+  useEffect(() => {
+    dispatch(PAGE_ACTIONS.setProducts(data));
+    resetSortFilters();
+  }, [data]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDefault(true);
