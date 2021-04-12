@@ -8,6 +8,7 @@ import { validateEmail } from "./validateEmail";
 import { useFetchData } from "./useFetchData";
 import { searchGame } from "./searchGames";
 import { generateTitleSearch } from "./generateTitleSearch";
+import { convertDateToSec } from "./convertDateToSec";
 
 export {
   useDebounce,
@@ -20,4 +21,5 @@ export {
   useFetchData,
   searchGame,
   generateTitleSearch,
+  convertDateToSec,
 };

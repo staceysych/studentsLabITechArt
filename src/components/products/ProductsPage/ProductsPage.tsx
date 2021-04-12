@@ -12,6 +12,7 @@ import { URLS, CONSTANTS } from "../../../constants";
 
 import { RootState, IProducts } from "../../../utils/interfaces";
 import { useFetchData, useDebounce, generateTitleSearch } from "../../../utils";
+import { sortProducts, filterProducts } from "./utils";
 
 import GameCard from "../GameCard";
 
@@ -26,8 +27,8 @@ const ProductsPage: React.FC = () => {
   const [sortCriteria, setSortCriteria] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
-  const [genreName, setGenreName] = useState<string>("all");
-  const [ageValue, setAgeValue] = useState<string>("all");
+  const [genreName, setGenreName] = useState<string>(CONSTANTS.ALL_PRODUCTS);
+  const [ageValue, setAgeValue] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
 
@@ -37,29 +38,9 @@ const ProductsPage: React.FC = () => {
   const resetSortFilters = () => {
     setSortCriteria("");
     setSortType("");
-    setGenreName("all");
-    setAgeValue("all");
+    setGenreName(CONSTANTS.ALL_PRODUCTS);
+    setAgeValue(CONSTANTS.ALL_PRODUCTS);
     setDefault(true);
-  };
-
-  const convertDateToSec = (date) => new Date(date).getTime() / 1000;
-
-  const sortProducts = (productsArr) => {
-    const sortedArr = productsArr.sort((a, b) => {
-      const isDescending = sortType === "desc" ? -1 : 1;
-      switch (sortCriteria) {
-        case "age":
-          return (a.age - b.age) * isDescending;
-        case "rating":
-          return (a.rating - b.rating) * isDescending;
-        case "date":
-          return (convertDateToSec(a.date) - convertDateToSec(b.date)) * isDescending;
-        default:
-          return 0;
-      }
-    });
-
-    return sortedArr;
   };
 
   useEffect(() => {
@@ -74,21 +55,13 @@ const ProductsPage: React.FC = () => {
             product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
           );
         }
-        const sortedProducts = sortProducts(searchedProducts || data);
-        const filteredProducts = filterProducts(sortedProducts);
+        const sortedProducts = sortProducts(searchedProducts || data, sortCriteria, sortType);
+        const filteredProducts = filterProducts(sortedProducts, genreName, ageValue);
         await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
         setLoading(false);
       }
     })();
   }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText]);
-
-  const filterProducts = (productsArr) =>
-    productsArr.filter((product) => {
-      const genreFiltered = genreName === "all" ? true : product.genre.includes(genreName);
-      const ageFiltered = ageValue === "all" ? true : +product.age >= +ageValue;
-
-      return genreFiltered && ageFiltered;
-    });
 
   useEffect(() => {
     dispatch(PAGE_ACTIONS.setProducts(data));

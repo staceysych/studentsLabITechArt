@@ -27,8 +27,9 @@ export default {
     phone: "",
     email: "",
   },
-  CRITERIA_OPTIONS: ["age", "rating", "date"],
+  CRITERIA_OPTIONS: ["price", "rating", "date"],
   TYPE_OPTIONS: ["ascending", "descending"],
   GENRE_OPTIONS: ["all", "shooter", "fighting", "racing", "strategy", "sport"],
   AGE_OPTIONS: ["all", "6", "12", "16", "18"],
+  ALL_PRODUCTS: "all",
 };

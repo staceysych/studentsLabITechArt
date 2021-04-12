@@ -2,7 +2,14 @@ import React from "react";
 
 import "./Checkbox.scss";
 
-const Checkbox: React.FC = ({ selected, onChange, text, value }) => (
+interface Props {
+  selected: string;
+  onChange: any;
+  text: string;
+  value: string;
+}
+
+const Checkbox: React.FC<Props> = ({ selected, onChange, text, value }) => (
   <div
     className="Checkbox"
     onClick={() => {
