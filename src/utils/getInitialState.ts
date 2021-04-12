@@ -29,4 +29,6 @@ export const getInitialState = () => ({
       devise: "",
     },
   ],
+
+  cart: [],
 });

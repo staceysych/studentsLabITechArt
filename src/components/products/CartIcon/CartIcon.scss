@@ -1,0 +1,29 @@
+@import "../../../styles/variables.scss";
+
+.CartIcon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 25px;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  span {
+    display: flex;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -3px;
+    right: -2px;
+    background: $successColor;
+    color: $textColor;
+  }
+}

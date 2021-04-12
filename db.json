@@ -199,7 +199,18 @@
       "devise": "PlayStation"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 1
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 2
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",
@@ -213,7 +224,7 @@
     {
       "login": "d15isaaaaa",
       "password": "123Love!",
-      "address": "V. Golubka 12 - 54",
+      "address": "V. Golubka 12 - 82",
       "phone": "123456777",
       "email": "nastya@y.com",
       "confirmPassword": "123Love!",

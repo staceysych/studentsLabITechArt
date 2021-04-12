@@ -1,8 +1,9 @@
-import { SET_PRODUCTS } from "../types/index";
+import { SET_PRODUCTS, SET_CART } from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
+const setCart = (productId: number) => ({ type: SET_CART, productId });
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -16,4 +17,5 @@ const getProducts = (url: string) => async (dispatch) => {
 export default {
   getProducts,
   setProducts,
+  setCart,
 };
