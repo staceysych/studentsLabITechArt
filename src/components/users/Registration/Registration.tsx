@@ -30,7 +30,7 @@ const Registration: React.FC<Props> = () => {
     confirmPassword: "",
   });
   const hasError = useSelector((state: RootState) => state.auth.hasError);
-  const errors = useSelector((state: RootState) => state.errors.errors);
+  const errors = useSelector((state: RootState) => state.auth.errors);
 
   const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ const Registration: React.FC<Props> = () => {
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      dispatch(ERRORS_ACTIONS.setErrors({}));
+      dispatch(ACTIONS.setErrors({}));
     }
   }, [inputText]);
 
@@ -61,7 +61,7 @@ const Registration: React.FC<Props> = () => {
 
   const closeModal = () => {
     dispatch(ACTIONS.setError(false));
-    dispatch(ERRORS_ACTIONS.setErrors({}));
+    dispatch(ACTIONS.setErrors({}));
     history.push(targetPath);
     setInput(CONSTANTS.EMPTY_USER_DATA);
   };

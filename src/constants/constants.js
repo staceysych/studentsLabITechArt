@@ -1,8 +1,8 @@
 export default {
   DEBOUNCE_TIME: 400,
-  PASSWORD_RGX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})/gi,
-  PHONE_RGX: /^[0-9]+$/gi,
-  EMAIL_RGX: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+  PASSWORD_RGX: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})/i,
+  PHONE_RGX: /^[0-9]+$/i,
+  EMAIL_RGX: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   PASSWORD_VALIDATION_TEXT: "Please add at least 6 characters, one digit, uppercase character, special character",
   PASSWORD_TEXT: "Please enter your password.",
   PREV_PASSWORD_TEXT: "Please enter your current password.",

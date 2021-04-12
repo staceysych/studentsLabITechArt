@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../constants";
 import { IErrors } from "./interfaces";
 
-import { ERRORS_ACTIONS } from "../redux/actions/creators";
+import { ACTIONS } from "../redux/actions/creators";
 
 export const validatePhone = (phone: string, dispatch) => {
   const errors: IErrors = {
@@ -22,7 +22,7 @@ export const validatePhone = (phone: string, dispatch) => {
     }
   }
 
-  dispatch(ERRORS_ACTIONS.setErrors(errors));
+  dispatch(ACTIONS.setErrors(errors));
 
   return isValid;
 };

@@ -13,7 +13,7 @@ import { URLS, CONSTANTS } from "../../../constants";
 
 import { validateLogin, validatePhone, validateEmail } from "../../../utils";
 
-import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS } from "../../../redux/actions/creators";
 
 import "./ProfilePage.scss";
 
@@ -25,13 +25,13 @@ const ProfilePage: React.FC<Props> = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const hasError = useSelector((state: RootState) => state.auth.hasError);
-  const errors = useSelector((state: RootState) => state.errors.errors);
+  const errors = useSelector((state: RootState) => state.auth.errors);
   const [changedContacts, setChangedContacts] = useState<IUserInfo>(userInfo);
 
   useEffect(() => {
     if (hasError) {
       dispatch(ACTIONS.setError(false));
-      dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
+      dispatch(ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
     }
   }, [changedContacts]);
 
@@ -48,7 +48,6 @@ const ProfilePage: React.FC<Props> = () => {
 
   const onClick = async () => {
     const newObj = { ...userInfo, ...changedContacts };
-    console.log("newObj", newObj);
 
     if (
       validateLogin(newObj.login, dispatch) &&
@@ -56,9 +55,7 @@ const ProfilePage: React.FC<Props> = () => {
       validateEmail(newObj.email, dispatch)
     ) {
       await dispatch(ACTIONS.saveProfile(`${URLS.SERVER_URL}${URLS.SAVE_PROFILE_URL}${userInfo.id}`, newObj));
-      await dispatch(ERRORS_ACTIONS.setErrors(CONSTANTS.EMPTY_ERRORS));
-      setChangedContacts(userInfo);
-      console.log("newObj after", newObj);
+      setChangedContacts(newObj);
     } else {
       dispatch(ACTIONS.setError(true));
     }
