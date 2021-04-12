@@ -1,6 +1,6 @@
 import { IErrors } from "./interfaces";
 
-import { ERRORS_ACTIONS } from "../redux/actions/creators";
+import { ACTIONS } from "../redux/actions/creators";
 
 export const validateLogin = (login: string, dispatch) => {
   const errors: IErrors = {
@@ -21,7 +21,7 @@ export const validateLogin = (login: string, dispatch) => {
     }
   }
 
-  dispatch(ERRORS_ACTIONS.setErrors(errors));
+  dispatch(ACTIONS.setErrors(errors));
 
   return isValid;
 };

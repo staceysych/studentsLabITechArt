@@ -1,7 +1,8 @@
 import { IErrors } from "./interfaces";
 import { CONSTANTS } from "../constants";
+import { ACTIONS } from "../redux/actions/creators";
 
-export const validatePrevPassword = (userPassword: string, inputPassword: string, setErrors: Function) => {
+export const validatePrevPassword = (dispatch, userPassword: string, inputPassword: string) => {
   const errors: IErrors = {
     prevPassword: "",
   };
@@ -18,7 +19,7 @@ export const validatePrevPassword = (userPassword: string, inputPassword: string
     }
   }
 
-  setErrors(errors);
+  dispatch(ACTIONS.setErrors(errors));
 
   return isValid;
 };

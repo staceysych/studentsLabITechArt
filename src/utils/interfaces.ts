@@ -41,8 +41,6 @@ export interface RootState {
     userInfo: IUserInfo;
     isModalOpen: boolean;
     authInfo: string;
-  };
-  errors: {
     errors: IErrors;
   };
   page: {

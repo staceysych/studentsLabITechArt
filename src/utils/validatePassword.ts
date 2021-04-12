@@ -1,7 +1,7 @@
 import { IErrors } from "./interfaces";
 import { CONSTANTS } from "../constants";
 
-import { ERRORS_ACTIONS } from "../redux/actions/creators";
+import { ACTIONS } from "../redux/actions/creators";
 
 export const validatePassword = (dispatch, password: string, confirmPassword?: string, needsToConfirm?: boolean) => {
   const errors: IErrors = {
@@ -41,7 +41,7 @@ export const validatePassword = (dispatch, password: string, confirmPassword?: s
     }
   }
 
-  dispatch(ERRORS_ACTIONS.setErrors(errors));
+  dispatch(ACTIONS.setErrors(errors));
 
   return isValid;
 };
