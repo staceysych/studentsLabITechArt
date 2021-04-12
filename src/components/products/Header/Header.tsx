@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Header.scss";
 
@@ -9,18 +9,15 @@ import DropDownMenu from "../DropDownMenu";
 import DropDownItem from "../DropDownItem";
 
 import { dropDownData } from "./utils";
-import { CONSTANTS } from "../../../constants";
 
 import { RootState } from "../../../utils/interfaces";
+import { ACTIONS } from "../../../redux/actions/creators";
 
-interface Props {
-  handleOpenModal: (type: string) => void;
-}
-
-const Header: React.FC<Props> = ({ handleOpenModal }) => {
+const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const userName = useSelector((state: RootState) => state.auth.userName);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
 
   const handleDropDownClick = () => {
     setOpen(!isOpen);
@@ -49,8 +46,8 @@ const Header: React.FC<Props> = ({ handleOpenModal }) => {
       <div className="Header__signIn">
         {isLoggedIn ? (
           <>
-            <h2 className="Header__userName">{userName}</h2>
-            <button type="button" onClick={() => handleOpenModal(CONSTANTS.SIGN_OUT)}>
+            <NavItem path="/profile" name={userInfo.login} />
+            <button type="button" onClick={() => dispatch(ACTIONS.setModalOpen(true))}>
               Sign out
             </button>
           </>

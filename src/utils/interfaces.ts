@@ -4,6 +4,9 @@ export interface IErrors {
   login?: string;
   password?: string;
   confirmPassword?: string;
+  prevPassword?: string;
+  phone?: string;
+  email?: string;
 }
 
 export interface IGameObject {
@@ -15,9 +18,12 @@ export interface IGameObject {
 }
 
 export interface IUserData {
-  login: string;
+  login?: string;
   password: string;
   confirmPassword?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 }
 
 export interface ILocation extends Location {
@@ -26,17 +32,24 @@ export interface ILocation extends Location {
   };
 }
 
-export interface IAppState {
-  isModalOpen: boolean;
-  type: string;
-  errors: IErrors;
-  info: string;
-}
+export interface IAppState {}
 
 export interface RootState {
   auth: {
-    userName: string;
     isLoggedIn: boolean;
     hasError: boolean;
+    userInfo: IUserInfo;
+    isModalOpen: boolean;
+    authInfo: string;
+    errors: IErrors;
   };
+}
+
+export interface IUserInfo {
+  login?: string;
+  password?: string;
+  address: string;
+  phone: string;
+  email: string;
+  id?: number;
 }

@@ -9,12 +9,12 @@ interface Props {
   path: string;
 }
 
-const ProtectedRoute: React.FC<Props> = ({ component: Component, path }) => {
+const ProtectedRoute: React.FC<Props> = ({ component: Component, ...rest }) => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   return (
     <Route
-      {...path}
+      {...rest}
       render={(props) => {
         if (isLoggedIn) {
           return <Component {...props} />;

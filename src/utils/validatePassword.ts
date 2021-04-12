@@ -1,18 +1,16 @@
 import { IErrors } from "./interfaces";
 import { CONSTANTS } from "../constants";
 
-export const validatePassword = (
-  password: string,
-  setErrors: Function,
-  isRegistration?: boolean,
-  confirmPassword?: string
-) => {
+import { ACTIONS } from "../redux/actions/creators";
+
+export const validatePassword = (dispatch, password: string, confirmPassword?: string, needsToConfirm?: boolean) => {
   const errors: IErrors = {
     login: "",
     password: "",
     confirmPassword: "",
   };
   let isValid: boolean = true;
+
   if (!password) {
     isValid = false;
     errors.password = CONSTANTS.PASSWORD_TEXT;
@@ -27,7 +25,7 @@ export const validatePassword = (
     }
   }
 
-  if (isRegistration) {
+  if (needsToConfirm) {
     if (password) {
       if (!confirmPassword) {
         isValid = false;
@@ -43,7 +41,7 @@ export const validatePassword = (
     }
   }
 
-  setErrors(errors);
+  dispatch(ACTIONS.setErrors(errors));
 
   return isValid;
 };
