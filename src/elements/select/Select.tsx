@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import "./Select.scss";
 
+import DropDownMenu from "../../components/products/DropDownMenu";
+import DropDownItem from "../../components/products/DropDownItem";
+
 interface Props {
   optionsList: string[];
   setSortState: any;
@@ -29,6 +32,20 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
     }
   }, [selectedText]);
 
+  useEffect(() => {
+    const closeDropDown = () => {
+      setShowOptionList(false);
+    };
+
+    if (showOptionList) {
+      document.addEventListener("click", closeDropDown);
+    }
+
+    return () => {
+      document.removeEventListener("click", closeDropDown);
+    };
+  }, [showOptionList]);
+
   const handleListDisplay = () => {
     setShowOptionList(!showOptionList);
   };
@@ -44,13 +61,11 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
         {selectedText}
       </div>
       {showOptionList && (
-        <ul className="Select__options">
+        <DropDownMenu>
           {optionsList.map((option) => (
-            <li className="Select__option" data-name={option} key={option} onClick={handleOptionClick}>
-              {option}
-            </li>
+            <DropDownItem name={option} key={option} isSelect handleDropDownClick={handleOptionClick} />
           ))}
-        </ul>
+        </DropDownMenu>
       )}
     </div>
   );

@@ -21,10 +21,10 @@ export const useFetchData = (url) => {
       }
     }
 
-    const timer1 = setTimeout(() => loadData(), CONSTANTS.TIMEOUT / 2);
+    const timer = setTimeout(() => loadData(), CONSTANTS.TIMEOUT / 2);
 
     return () => {
-      clearTimeout(timer1);
+      clearTimeout(timer);
     };
   }, [url]);
   return { loading, data, error };
