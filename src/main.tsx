@@ -18,6 +18,7 @@ import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
 import ChangePassword from "./components/users/ChangePassword";
 import CartIcon from "./components/products/CartIcon";
+import CartPage from "./components/products/CartPage";
 
 import { Alert, ProtectedRoute } from "./elements";
 
@@ -39,6 +40,7 @@ class AppContainer extends Component<{}, IAppState> {
               <CartIcon />
               <Switch>
                 <Route component={HomePage} path="/" exact />
+                <ProtectedRoute component={CartPage} path="/cart" />
                 <ProtectedRoute component={ProductsPage} path="/products/:param" />
                 <ProtectedRoute component={AboutPage} path="/about" />
                 <ProtectedRoute component={TestErrorComponent} path="/testError" />
