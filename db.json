@@ -199,68 +199,7 @@
       "devise": "PlayStation"
     }
   ],
-  "login-history": [
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 1
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 2
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 3
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 4
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 5
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 6
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 7
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 8
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 9
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 10
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123love!",
-      "id": 11
-    },
-    {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "id": 12
-    }
-  ],
+  "login-history": [],
   "users-info": [
     {
       "login": "testUser",
