@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Header.scss";
@@ -18,6 +18,20 @@ const Header: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const closeDropDown = () => {
+      setOpen(false);
+    };
+
+    if (isOpen) {
+      document.addEventListener("click", closeDropDown);
+    }
+
+    return () => {
+      document.removeEventListener("click", closeDropDown);
+    };
+  }, [isOpen]);
 
   const handleDropDownClick = () => {
     setOpen(!isOpen);

@@ -199,7 +199,23 @@
       "devise": "PlayStation"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 1
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 2
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 3
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",
