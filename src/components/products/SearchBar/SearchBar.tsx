@@ -8,7 +8,7 @@ import { Loader } from "../../../elements";
 
 interface Props {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  isSearching: boolean;
+  isSearching?: boolean;
 }
 
 const SearchBar: React.FC<Props> = ({ handleChange, isSearching }) => (

@@ -1,4 +1,4 @@
-export const generateTitle = (searchText: string, results: object[]) => {
+export const generateTitleSearch = (searchText: string, results: object[]) => {
   if (searchText) {
     if (results.length) {
       return `Results for '${searchText}'`;

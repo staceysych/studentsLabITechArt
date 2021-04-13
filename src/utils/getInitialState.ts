@@ -17,4 +17,16 @@ export const getInitialState = () => ({
     phone: "",
     email: "",
   },
+  products: [
+    {
+      name: "",
+      rating: 0,
+      price: 0,
+      poster: "",
+      date: "",
+      genre: "",
+      age: "",
+      devise: "",
+    },
+  ],
 });

@@ -5,5 +5,7 @@
   "/users/auth/signUp": "/users-info",
   "/api/getProfile/:login&:password": "/users-info?login=:login&password=:password",
   "/api/saveProfile/:id": "/users-info/:id",
-  "/api/changePassword/:id": "/users-info/:id"
+  "/api/changePassword/:id": "/users-info/:id",
+  "/api/products/:param": "/games?devise_like=:param",
+  "/api/products/:devise/:param&:order": "/games?devise_like=:devise?&_sort=:param&_order=:order"
 }

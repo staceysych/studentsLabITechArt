@@ -1,0 +1,60 @@
+@import "../../../styles/variables.scss";
+
+.ProductsPage {
+  padding-bottom: 140px;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__sort-container {
+    flex: 1;
+    border-right: 1px solid $basicColor;
+    padding-right: 5px;
+  }
+
+  &__sort {
+    h2 {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-weight: bold;
+    }
+    h4 {
+      width: 80px;
+      margin-right: 20px;
+    }
+    &_field {
+      display: flex;
+      align-items: center;
+
+      label {
+        margin-left: 10px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &__products-wrapper {
+    flex: 3;
+  }
+
+  &__products {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    height: 100%;
+  }
+  &__products-title {
+    margin: 0;
+    text-align: center;
+  }
+}
