@@ -189,7 +189,7 @@
     },
     {
       "id": 18,
-      "name": "Call od duty",
+      "name": "Call of duty",
       "rating": 4,
       "price": 145,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716636/game-posters/PSP/653134365_jvkiw1.jpg",
@@ -329,6 +329,71 @@
       "login": "d15isaaaaa",
       "password": "123Love!",
       "id": 26
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 27
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 28
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 29
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 30
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 31
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 32
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 33
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 34
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 35
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 36
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 37
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123love!",
+      "id": 38
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 39
     }
   ],
   "users-info": [

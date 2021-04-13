@@ -1,13 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./GameCard.scss";
 
 import star from "images/star.svg";
 
-import { IGameObject } from "../../../utils/interfaces";
+import { IGameObject, RootState } from "../../../utils/interfaces";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
+
+import { URLS } from "../../../constants";
 
 interface Props {
   obj: IGameObject;
@@ -15,9 +17,10 @@ interface Props {
 
 const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => {
   const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.page.products);
 
   const addToCart = () => {
-    dispatch(PAGE_ACTIONS.setCart(id));
+    dispatch(PAGE_ACTIONS.getCartProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCT_BY_ID_URL}${id}`));
   };
 
   return (

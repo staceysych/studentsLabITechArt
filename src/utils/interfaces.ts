@@ -68,4 +68,5 @@ export interface IProducts {
   genre: string;
   age: string;
   devise: string;
+  orderDate?: string;
 }

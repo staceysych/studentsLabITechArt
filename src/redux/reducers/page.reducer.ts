@@ -7,7 +7,7 @@ export default function pageReducer(state = getInitialState(), action) {
     case SET_PRODUCTS:
       return { ...state, products: action.products };
     case SET_CART:
-      return { ...state, cart: [...state.cart, action.productId] };
+      return { ...state, cart: [...state.cart, ...action.product] };
     default:
       return state;
   }

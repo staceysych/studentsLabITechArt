@@ -9,6 +9,7 @@ import { useFetchData } from "./useFetchData";
 import { searchGame } from "./searchGames";
 import { generateTitleSearch } from "./generateTitleSearch";
 import { convertDateToSec } from "./convertDateToSec";
+import { getDate } from "./getDate";
 
 export {
   useDebounce,
@@ -22,4 +23,5 @@ export {
   searchGame,
   generateTitleSearch,
   convertDateToSec,
+  getDate,
 };

@@ -3,7 +3,7 @@ import { SET_PRODUCTS, SET_CART } from "../types/index";
 import { IProducts } from "../../../utils/interfaces";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
-const setCart = (productId: number) => ({ type: SET_CART, productId });
+const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -14,8 +14,18 @@ const getProducts = (url: string) => async (dispatch) => {
   }
 };
 
+const getCartProducts = (url: string) => async (dispatch) => {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (response.status === 200) {
+    dispatch(setCart(data));
+  }
+};
+
 export default {
   getProducts,
   setProducts,
   setCart,
+  getCartProducts,
 };

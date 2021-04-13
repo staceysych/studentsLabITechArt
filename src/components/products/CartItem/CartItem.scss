@@ -4,6 +4,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 5px 0;
+  border-bottom: 1px solid $basicColor;
+  padding: 5px 0;
+
+  &__name {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__devise {
+    font-size: 14px;
+    opacity: 0.7;
+  }
 
   &__poster {
     width: 60px;
@@ -17,8 +30,10 @@
   }
 
   &__info {
+    width: 150px;
     display: flex;
     flex-direction: column;
+    margin: 0 10px;
   }
 
   &__controls {
@@ -47,6 +62,12 @@
 
     &_remove {
       background-color: $errorColorBG;
+    }
+  }
+
+  &__price {
+    span {
+      font-weight: bold;
     }
   }
 }
