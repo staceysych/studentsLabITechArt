@@ -10,6 +10,7 @@ import { searchGame } from "./searchGames";
 import { generateTitleSearch } from "./generateTitleSearch";
 import { convertDateToSec } from "./convertDateToSec";
 import { getDate } from "./getDate";
+import { getUniqueItems } from "./getUniqueItems";
 
 export {
   useDebounce,
@@ -24,4 +25,5 @@ export {
   generateTitleSearch,
   convertDateToSec,
   getDate,
+  getUniqueItems,
 };
