@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import add from "images/add.svg";
 import remove from "images/minus.svg";
@@ -6,8 +7,10 @@ import rubbish from "images/rubbish.svg";
 
 import "./CartItem.scss";
 
-import { IProducts } from "../../../utils/interfaces";
-import { getDate } from "../../../utils";
+import { IProducts, RootState } from "../../../utils/interfaces";
+import { getDate, removeObjectFromArr } from "../../../utils";
+
+import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
 interface Props {
   product: IProducts;
@@ -16,11 +19,15 @@ interface Props {
 }
 
 const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
+  const cart = useSelector((state: RootState) => state.page.cart);
+  const dispatch = useDispatch();
+
   const handleAddItem = (id: number) => {
     const newObj = { ...quantity };
     newObj[id] += 1;
 
     setQuantity(newObj);
+    dispatch(PAGE_ACTIONS.setCart([product]));
   };
 
   const handleRemoveItem = (id: number) => {
@@ -28,9 +35,11 @@ const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
     newObj[id] -= 1;
 
     setQuantity(newObj);
+    console.log("Old cart", cart);
+    const newCart = removeObjectFromArr(cart, product.id);
+    console.log("newCart", newCart);
   };
 
-  console.log(quantity);
   return (
     <div className="CartItem">
       <div className="CartItem__poster">
@@ -52,7 +61,7 @@ const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
         <button
           type="button"
           className="CartItem__btn CartItem__btn_remove"
-          onClick={() => (quantity[product.id] > 1 ? handleRemoveItem(product.id) : null)}
+          onClick={() => handleRemoveItem(product.id)}
         >
           <img src={quantity[product.id] > 1 ? remove : rubbish} alt="remove" />
         </button>

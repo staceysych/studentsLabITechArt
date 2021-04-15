@@ -6,17 +6,11 @@ import "./CartPage.scss";
 import CartItem from "../CartItem";
 
 import { RootState, IProducts } from "../../../utils/interfaces";
-import { getUniqueItems } from "../../../utils";
+import { getUniqueItems, getTotalPrice, countDuplicates } from "../../../utils";
 
 const CartPage = () => {
   const cart = useSelector((state: RootState) => state.page.cart);
   const [quantity, setQuantity] = useState<object>({});
-
-  const countDuplicates = (values) =>
-    values.reduce((acc, cur) => {
-      acc[cur.id] = ++acc[cur.id] || 1;
-      return acc;
-    }, {});
 
   useEffect(() => {
     if (cart.length) {
@@ -31,21 +25,25 @@ const CartPage = () => {
       </div>
       <div className="CartPage__wrapper">
         <div className="CartPage__items">
-          {getUniqueItems(cart, "id").map((product: IProducts) => (
-            <CartItem
-              product={product}
-              key={`${product.id}-${quantity[product.id]}`}
-              quantity={quantity}
-              setQuantity={setQuantity}
-            />
-          ))}
+          {cart.length ? (
+            getUniqueItems(cart, "id").map((product: IProducts) => (
+              <CartItem
+                product={product}
+                key={`${product.id}-${quantity[product.id]}`}
+                quantity={quantity}
+                setQuantity={setQuantity}
+              />
+            ))
+          ) : (
+            <h3>The cart is empty</h3>
+          )}
         </div>
         <div className="CartPage__total">
           <h4>
-            Total items: <span>1</span>
+            Total items: <span>{`${cart.length}`}</span>
           </h4>
           <h4>
-            Total payment: <span>$120</span>
+            Total payment: <span>{`$${cart.length && getTotalPrice(cart)}`}</span>
           </h4>
           <div className="CartPage__controls">
             <span>Current Balance: $0</span>
