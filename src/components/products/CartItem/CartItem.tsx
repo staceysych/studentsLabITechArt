@@ -35,9 +35,7 @@ const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
     newObj[id] -= 1;
 
     setQuantity(newObj);
-    console.log("Old cart", cart);
-    const newCart = removeObjectFromArr(cart, product.id);
-    console.log("newCart", newCart);
+    removeObjectFromArr(cart, product.id);
   };
 
   return (

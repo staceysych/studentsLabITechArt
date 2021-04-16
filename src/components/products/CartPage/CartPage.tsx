@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./CartPage.scss";
 
@@ -8,8 +8,11 @@ import CartItem from "../CartItem";
 import { RootState, IProducts } from "../../../utils/interfaces";
 import { getUniqueItems, getTotalPrice, countDuplicates } from "../../../utils";
 
+import { ACTIONS } from "../../../redux/actions/creators";
+
 const CartPage = () => {
   const cart = useSelector((state: RootState) => state.page.cart);
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState<object>({});
 
   useEffect(() => {
@@ -17,6 +20,12 @@ const CartPage = () => {
       setQuantity(countDuplicates(cart));
     }
   }, [cart]);
+
+  const onSubmit = () => {
+    if (cart.length) {
+      dispatch(ACTIONS.setModalOpen(true));
+    }
+  };
 
   return (
     <div className="CartPage">
@@ -47,7 +56,7 @@ const CartPage = () => {
           </h4>
           <div className="CartPage__controls">
             <span>Current Balance: $0</span>
-            <button type="button" className="CartPage__btn">
+            <button type="button" className="CartPage__btn" onClick={onSubmit}>
               Buy
             </button>
           </div>

@@ -15,7 +15,7 @@ const CartIcon = () => {
 
   return location.pathname !== CONSTANTS.CART_PATH ? (
     <div className="CartIcon">
-      <Link className="CartIcon__link" to="cart">
+      <Link className="CartIcon__link" to="/cart">
         <img src={cart} alt="cart icon" />
         {cartArray.length ? <span>{cartArray.length}</span> : null}
       </Link>
