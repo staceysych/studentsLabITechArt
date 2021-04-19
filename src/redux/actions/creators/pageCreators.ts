@@ -1,9 +1,10 @@
-import { SET_PRODUCTS, SET_CART } from "../types/index";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART } from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
 const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
+const clearCart = () => ({ type: CLEAR_CART });
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -28,4 +29,5 @@ export default {
   setProducts,
   setCart,
   getCartProducts,
+  clearCart,
 };

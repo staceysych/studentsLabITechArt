@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../../elements";
 import { RootState } from "../../../utils/interfaces";
 
-import { ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS, PAGE_ACTIONS } from "../../../redux/actions/creators";
 
 import "./SubmitModal.scss";
 
@@ -23,6 +23,7 @@ const SubmitModal = () => {
   const onSubmit = () => {
     dispatch(ACTIONS.setModalOpen(false));
     dispatch(ACTIONS.setAuthInfo("Success"));
+    dispatch(PAGE_ACTIONS.clearCart());
   };
   return (
     isModalOpen && (

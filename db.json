@@ -199,7 +199,43 @@
       "devise": "PlayStation"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 1
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 2
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 3
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 4
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 5
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 6
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 7
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",
