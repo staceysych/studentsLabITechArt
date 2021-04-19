@@ -7,8 +7,8 @@ import DropDownItem from "../../components/products/DropDownItem";
 
 interface Props {
   optionsList: string[];
-  setSortState: any;
-  isDefault: boolean;
+  setSortState?: any;
+  isDefault?: boolean;
 }
 const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);

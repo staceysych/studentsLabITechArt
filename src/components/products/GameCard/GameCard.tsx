@@ -1,15 +1,17 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./GameCard.scss";
 
 import star from "images/star.svg";
 
-import { IGameObject } from "../../../utils/interfaces";
+import { IGameObject, RootState } from "../../../utils/interfaces";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
-import { URLS } from "../../../constants";
+import { URLS, CONSTANTS } from "../../../constants";
+
+import { Button } from "../../../elements";
 
 interface Props {
   obj: IGameObject;
@@ -17,6 +19,8 @@ interface Props {
 
 const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => {
   const dispatch = useDispatch();
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const iseAdmin = userInfo.login === CONSTANTS.ADMIN;
 
   const addToCart = () => {
     dispatch(PAGE_ACTIONS.getCartProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCT_BY_ID_URL}${id}`));
@@ -35,6 +39,12 @@ const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } })
           ))}
         </div>
         <span>{`${price} BYN`}</span>
+        {iseAdmin && (
+          <div className="GameCard__controls">
+            <Button text="Edit" className="GameCard__controls GameCard__controls_edit" />
+            <Button text="Delete" className="GameCard__controls GameCard__controls_delete" />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
-import { Select, Checkbox, Spinner } from "../../../elements";
+import { Select, Checkbox, Spinner, Button } from "../../../elements";
 import "./ProductsPage.scss";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
@@ -31,6 +31,8 @@ const ProductsPage: React.FC = () => {
   const [ageValue, setAgeValue] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const isAdmin = userInfo.login === CONSTANTS.ADMIN;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
@@ -74,11 +76,18 @@ const ProductsPage: React.FC = () => {
     setSearchText(event.target.value);
   };
 
+  const handleAddGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction("add-game"));
+  };
+
   return (
     <div className="ProductsPage">
       <div className="ProductsPage__header">
         <h1>{param}</h1>
-        <SearchBar handleChange={handleChange} />
+        <div className="ProductsPage__controls">
+          <SearchBar handleChange={handleChange} />
+          {isAdmin && <Button text="Add game" className="ProductsPage__btn" onClick={handleAddGame} />}
+        </div>
       </div>
       <div className="ProductsPage__wrapper">
         <div className="ProductsPage__sort-container">

@@ -45,7 +45,9 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <SearchBar {...{ handleChange, isSearching }} />
+      <div className="HomePage__controls">
+        <SearchBar {...{ handleChange, isSearching }} />
+      </div>
       {!isSearching && <h2 className="HomePage__title">{generateTitleSearch(searchText, results)}</h2>}
       {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
       <div className="HomePage__content">

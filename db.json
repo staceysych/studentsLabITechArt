@@ -199,7 +199,188 @@
       "devise": "PlayStation"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 1
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 2
+    },
+    {
+      "login": "d15isaaaaa",
+      "password": "123Love!",
+      "id": 3
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 4
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 5
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 6
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 7
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 8
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 9
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 10
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 11
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 12
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 13
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 14
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 15
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 16
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 17
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 18
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 19
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 20
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 21
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 22
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 23
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admit!",
+      "id": 24
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 25
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 26
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 27
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 28
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 29
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 30
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 31
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 32
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 33
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 34
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 35
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 36
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",
@@ -211,12 +392,12 @@
       "id": 1
     },
     {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "address": "V. Golubka 12 - 82",
-      "phone": "123456777",
-      "email": "nastya@y.com",
-      "confirmPassword": "123Love!",
+      "login": "adminTest",
+      "password": "123Admin!",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "confirmPassword": "",
       "id": 2
     }
   ]

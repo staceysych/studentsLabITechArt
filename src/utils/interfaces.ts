@@ -46,6 +46,7 @@ export interface RootState {
   page: {
     products: IProducts[];
     cart: IProducts[];
+    cardAction: string;
   };
 }
 

@@ -33,4 +33,7 @@ export default {
   AGE_OPTIONS: ["all", "6", "12", "16", "18"],
   ALL_PRODUCTS: "all",
   CART_PATH: "/cart",
+  ADMIN: "adminTest",
+  PLATFORM_OPTIONS: ["PlayStation", "Xbox", "PC"],
+  RATING_OPTIONS: ["1", " 2", "3", "4", "5"],
 };

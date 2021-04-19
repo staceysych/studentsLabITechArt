@@ -19,7 +19,8 @@ import SignOut from "./components/users/SignOut";
 import ChangePassword from "./components/users/ChangePassword";
 import CartIcon from "./components/products/CartIcon";
 import CartPage from "./components/products/CartPage";
-import SubmitModal from "./components/users/SubmitModal/SubmitModal";
+import SubmitModal from "./components/users/SubmitModal";
+import AddGameModal from "./components/users/AddGameModal";
 
 import { Alert, ProtectedRoute } from "./elements";
 
@@ -62,6 +63,7 @@ class AppContainer extends Component<{}, IAppState> {
             <Footer />
             <Alert />
             <SubmitModal />
+            <AddGameModal />
           </ErrorBoundary>
         </BrowserRouter>
       </Provider>

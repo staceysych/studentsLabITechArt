@@ -1,4 +1,4 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART } from "../actions/types";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION } from "../actions/types";
 
 import { getInitialState } from "../../utils";
 
@@ -10,6 +10,8 @@ export default function pageReducer(state = getInitialState(), action) {
       return { ...state, cart: [...state.cart, ...action.product] };
     case CLEAR_CART:
       return { ...state, cart: [] };
+    case SET_CARD_ACTION:
+      return { ...state, cardAction: action.cardAction };
     default:
       return state;
   }
