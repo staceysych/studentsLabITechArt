@@ -17,6 +17,9 @@ import Login from "./components/users/Login";
 import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
 import ChangePassword from "./components/users/ChangePassword";
+import CartIcon from "./components/products/CartIcon";
+import CartPage from "./components/products/CartPage";
+import SubmitModal from "./components/users/SubmitModal/SubmitModal";
 
 import { Alert, ProtectedRoute } from "./elements";
 
@@ -35,25 +38,30 @@ class AppContainer extends Component<{}, IAppState> {
           <ErrorBoundary>
             <Header />
             <div className="container">
+              <CartIcon />
               <Switch>
                 <Route component={HomePage} path="/" exact />
                 <ProtectedRoute component={ProductsPage} path="/products/:param" />
                 <ProtectedRoute component={AboutPage} path="/about" />
                 <ProtectedRoute component={TestErrorComponent} path="/testError" />
                 <ProtectedRoute component={ProfilePage} path="/profile" />
+                <ProtectedRoute component={CartPage} path="/cart" />
                 <Route path="/login">
                   <Login />
                 </Route>
                 <Route path="/signUp">
                   <Registration />
                 </Route>
+                <Route path="/signOut">
+                  <SignOut />
+                </Route>
                 <ProtectedRoute component={ChangePassword} path="/changePassword" />
                 <Route render={() => <Redirect to={{ pathname: "/" }} />} />
               </Switch>
             </div>
-            <SignOut />
             <Footer />
             <Alert />
+            <SubmitModal />
           </ErrorBoundary>
         </BrowserRouter>
       </Provider>

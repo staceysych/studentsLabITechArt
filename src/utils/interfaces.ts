@@ -45,6 +45,7 @@ export interface RootState {
   };
   page: {
     products: IProducts[];
+    cart: IProducts[];
   };
 }
 
@@ -67,4 +68,5 @@ export interface IProducts {
   genre: string;
   age: string;
   devise: string;
+  orderDate?: string;
 }

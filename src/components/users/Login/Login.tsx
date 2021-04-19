@@ -12,7 +12,7 @@ import { IUserData, ILocation, RootState } from "../../../utils/interfaces";
 
 import { Modal, Alert } from "../../../elements";
 
-import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
 
 interface Props {}

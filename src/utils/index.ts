@@ -9,6 +9,11 @@ import { useFetchData } from "./useFetchData";
 import { searchGame } from "./searchGames";
 import { generateTitleSearch } from "./generateTitleSearch";
 import { convertDateToSec } from "./convertDateToSec";
+import { getDate } from "./getDate";
+import { getUniqueItems } from "./getUniqueItems";
+import { removeObjectFromArr } from "./removeObjectFromArr";
+import { getTotalPrice } from "./getTotalPrice";
+import { countDuplicates } from "./countDuplicates";
 
 export {
   useDebounce,
@@ -22,4 +27,9 @@ export {
   searchGame,
   generateTitleSearch,
   convertDateToSec,
+  getDate,
+  getUniqueItems,
+  removeObjectFromArr,
+  getTotalPrice,
+  countDuplicates,
 };

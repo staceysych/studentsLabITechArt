@@ -32,4 +32,5 @@ export default {
   GENRE_OPTIONS: ["all", "shooter", "fighting", "racing", "strategy", "sport"],
   AGE_OPTIONS: ["all", "6", "12", "16", "18"],
   ALL_PRODUCTS: "all",
+  CART_PATH: "/cart",
 };

@@ -189,7 +189,7 @@
     },
     {
       "id": 18,
-      "name": "Call od duty",
+      "name": "Call of duty",
       "rating": 4,
       "price": 145,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716636/game-posters/PSP/653134365_jvkiw1.jpg",
@@ -213,7 +213,7 @@
     {
       "login": "d15isaaaaa",
       "password": "123Love!",
-      "address": "V. Golubka 12 - 54",
+      "address": "V. Golubka 12 - 82",
       "phone": "123456777",
       "email": "nastya@y.com",
       "confirmPassword": "123Love!",

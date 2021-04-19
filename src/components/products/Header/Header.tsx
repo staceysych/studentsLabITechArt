@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./Header.scss";
 
@@ -11,13 +11,11 @@ import DropDownItem from "../DropDownItem";
 import { dropDownData } from "./utils";
 
 import { RootState } from "../../../utils/interfaces";
-import { ACTIONS } from "../../../redux/actions/creators";
 
 const Header: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const closeDropDown = () => {
@@ -61,9 +59,7 @@ const Header: React.FC = () => {
         {isLoggedIn ? (
           <>
             <NavItem path="/profile" name={userInfo.login} />
-            <button type="button" onClick={() => dispatch(ACTIONS.setModalOpen(true))}>
-              Sign out
-            </button>
+            <NavItem path="/signOut" isOpen name="Sign out" />
           </>
         ) : (
           <>

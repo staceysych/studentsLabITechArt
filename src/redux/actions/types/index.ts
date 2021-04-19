@@ -5,3 +5,5 @@ export const SET_MODAL_OPEN = "SET_MODAL_OPEN";
 export const SET_AUTH_INFO = "SET_AUTH_INFO";
 export const SET_ERRORS = "SET_ERRORS";
 export const SET_PRODUCTS = "SET_PRODUCTS";
+export const SET_CART = "SET_CART";
+export const CLEAR_CART = "CLEAR_CART";

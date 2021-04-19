@@ -9,4 +9,5 @@ export default {
   SAVE_PROFILE_URL: "api/saveProfile/",
   CHANGE_PASSWORD_URL: "api/changePassword/",
   GET_PRODUCTS_URL: "api/products/",
+  GET_PRODUCT_BY_ID_URL: "api/getProduct/",
 };
