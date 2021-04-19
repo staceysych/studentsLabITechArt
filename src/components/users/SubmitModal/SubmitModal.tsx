@@ -32,9 +32,7 @@ const SubmitModal = () => {
           <h2 className="SubmitModal__title">Do you want to buy these items?</h2>
           <div className="SubmitModal__items">
             {cart.map((product, index) => (
-              <p key={`${product.name}-${Math.random()}`}>{`${index + 1}. ${product.name} - price: $${
-                product.price
-              }`}</p>
+              <p key={`${product.name}-${index}`}>{`${index + 1}. ${product.name} - price: $${product.price}`}</p>
             ))}
           </div>
           <button type="submit" className="SubmitModal__btn" onClick={onSubmit}>
