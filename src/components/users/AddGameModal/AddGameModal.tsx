@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import defaultPhoto from "images/photo-default.png";
-import { Modal, Select } from "../../../elements";
+import { Modal, Select, Button } from "../../../elements";
 
 import { IProducts, RootState } from "../../../utils/interfaces";
 
 import { CONSTANTS } from "../../../constants";
+import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
 import "./AddGameModal.scss";
 
 const AddGameModal = () => {
   const cardAction = useSelector((state: RootState) => state.page.cardAction);
-  const [isOpen, setOpen] = useState<boolean>(true);
   const [inputText, setInput] = useState<IProducts>({ name: "", price: 0, poster: "" });
+  const dispatch = useDispatch();
 
   const closeModal = () => {
-    setOpen(false);
+    dispatch(PAGE_ACTIONS.setCardAction(""));
   };
 
   const handleChange = (e) => {
@@ -25,9 +26,8 @@ const AddGameModal = () => {
   };
 
   return (
-    isOpen &&
     cardAction && (
-      <Modal handleCloseModal={closeModal}>
+      <Modal handleCloseModal={closeModal} customClassName=" Modal_add">
         <form method="post" className="AddGame">
           <h2 className="AddGame__title">Add a new game</h2>
           <div className="AddGame__content">
@@ -88,6 +88,10 @@ const AddGameModal = () => {
             <div className="AddGame__photo">
               <img src={defaultPhoto} alt="poster" />
             </div>
+          </div>
+          <div className="AddGame__controls">
+            <Button text="Add game" className="AddGame__btn AddGame__btn_add" />
+            <Button text="Cancel" className="AddGame__btn AddGame__btn_cancel" onClick={closeModal} />
           </div>
         </form>
       </Modal>

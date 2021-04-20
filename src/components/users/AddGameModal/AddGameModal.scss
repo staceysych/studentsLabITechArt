@@ -32,4 +32,44 @@
       object-fit: cover;
     }
   }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  &__btn {
+    width: 200px;
+    height: 45px;
+    background: none;
+    border: 2px solid $successColor;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-out;
+    color: $successColor;
+
+    &:hover {
+      background: $successColor;
+      color: $textColor;
+    }
+
+    &_cancel {
+      background: $basicColor;
+      border: none;
+      color: $textColor;
+      width: 100px;
+
+      &:hover {
+        background: $basicColorBright;
+      }
+    }
+  }
 }
