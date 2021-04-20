@@ -1,8 +1,9 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION } from "../types/index";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT } from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
+const addToProducts = (newProduct: IProducts) => ({ type: ADD_PRODUCT, newProduct });
 const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
 const clearCart = () => ({ type: CLEAR_CART });
 const setCardAction = (cardAction: string) => ({ type: SET_CARD_ACTION, cardAction });
@@ -25,6 +26,24 @@ const getCartProducts = (url: string) => async (dispatch) => {
   }
 };
 
+const addNewProduct = (url: string, body: IProducts, location: string) => async (dispatch) => {
+  const response = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 201) {
+    if (location.includes(body.devise)) {
+      await dispatch(addToProducts(body));
+    }
+  } else {
+    console.log("error");
+  }
+};
+
 export default {
   getProducts,
   setProducts,
@@ -32,4 +51,5 @@ export default {
   getCartProducts,
   clearCart,
   setCardAction,
+  addNewProduct,
 };

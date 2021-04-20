@@ -20,6 +20,10 @@
     input {
       height: 80%;
       width: 140px;
+      border: 1px solid $basicColor;
+      text-align: center;
+      font-size: 16px;
+      color: $basicColorBright;
     }
   }
 

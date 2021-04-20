@@ -50,7 +50,7 @@ const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
       <span className="CartItem__price">
         Price: <span>{`$${product.price}`}</span>
       </span>
-      <span className="CartItem__date">{`Order Date: ${getDate()}`}</span>
+      <span className="CartItem__date">{`Order Date: ${getDate(true)}`}</span>
       <span className="CartItem__quantity">{`Qty: ${quantity[product.id]}`}</span>
       <div className="CartItem__controls">
         <button type="button" className="CartItem__btn CartItem__btn_add" onClick={() => handleAddItem(product.id)}>

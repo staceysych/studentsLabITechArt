@@ -197,6 +197,17 @@
       "genre": "fighting, strategy, shooter",
       "age": "18",
       "devise": "PlayStation"
+    },
+    {
+      "name": "Uncharted 4",
+      "rating": 5,
+      "price": 140,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1618923905/game-posters/PSP/7381e348b2960972a2387a5e1a0fbd84_dcemmf.jpg",
+      "date": "2021-04-20",
+      "genre": "strategy",
+      "age": "18",
+      "devise": "PlayStation",
+      "id": 19
     }
   ],
   "login-history": [
@@ -449,6 +460,226 @@
       "login": "adminTest",
       "password": "123Admin!",
       "id": 50
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 51
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 52
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 53
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 54
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 55
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 56
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 57
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 58
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 59
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 60
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 61
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 62
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 63
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 64
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 65
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 66
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 67
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 68
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 69
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 70
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 71
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 72
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 73
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 74
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 75
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 76
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 77
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 78
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 79
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 80
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 81
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 82
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 83
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 84
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 85
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 86
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 87
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 88
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 89
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 90
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 91
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 92
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 93
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 94
     }
   ],
   "users-info": [

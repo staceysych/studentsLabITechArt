@@ -60,12 +60,12 @@ export interface IUserInfo {
 }
 
 export interface IProducts {
-  id: number;
+  id?: number;
   name: string;
   rating: number;
   price: number;
   poster: string;
-  date: string;
+  date?: string;
   genre: string;
   age: string;
   devise: string;

@@ -10,4 +10,5 @@ export default {
   CHANGE_PASSWORD_URL: "api/changePassword/",
   GET_PRODUCTS_URL: "api/products/",
   GET_PRODUCT_BY_ID_URL: "api/getProduct/",
+  CHANGE_PRODUCT_URL: "api/product/",
 };
