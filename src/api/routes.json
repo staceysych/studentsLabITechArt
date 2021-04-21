@@ -9,5 +9,6 @@
   "/api/products/:param": "/games?devise_like=:param",
   "/api/products/:devise/:param&:order": "/games?devise_like=:devise?&_sort=:param&_order=:order",
   "/api/getProduct/:id": "/games?id=:id",
-  "/api/product": "/games"
+  "/api/product": "/games",
+  "/api/product/:id": "/games/:id"
 }

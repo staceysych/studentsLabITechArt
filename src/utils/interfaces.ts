@@ -47,6 +47,7 @@ export interface RootState {
     products: IProducts[];
     cart: IProducts[];
     cardAction: string;
+    editGameObj: IProducts;
   };
 }
 

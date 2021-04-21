@@ -1,4 +1,4 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT } from "../actions/types";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT, SET_EDIT_GAME_ID } from "../actions/types";
 
 import { getInitialState } from "../../utils";
 
@@ -14,6 +14,8 @@ export default function pageReducer(state = getInitialState(), action) {
       return { ...state, cart: [] };
     case SET_CARD_ACTION:
       return { ...state, cardAction: action.cardAction };
+    case SET_EDIT_GAME_ID:
+      return { ...state, editGameObj: action.editGameObj };
     default:
       return state;
   }

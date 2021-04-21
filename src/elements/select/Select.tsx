@@ -11,10 +11,17 @@ interface Props {
   isDefault?: boolean;
   setInput?: any;
   name?: string;
+  propsText?: string;
 }
-const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInput, name }) => {
+const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInput, name, propsText }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("Select");
+
+  useEffect(() => {
+    if (propsText && propsText !== "0") {
+      setSelectedText(propsText);
+    }
+  }, [propsText]);
 
   useEffect(() => {
     if (isDefault) {

@@ -1,4 +1,4 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT } from "../types/index";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT, SET_EDIT_GAME_ID } from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 
@@ -7,6 +7,7 @@ const addToProducts = (newProduct: IProducts) => ({ type: ADD_PRODUCT, newProduc
 const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
 const clearCart = () => ({ type: CLEAR_CART });
 const setCardAction = (cardAction: string) => ({ type: SET_CARD_ACTION, cardAction });
+const setEditGame = (editGameObj: IProducts) => ({ type: SET_EDIT_GAME_ID, editGameObj });
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -44,6 +45,20 @@ const addNewProduct = (url: string, body: IProducts, location: string) => async 
   }
 };
 
+const editProduct = (url: string, body: IProducts) => async (dispatch) => {
+  const response = await fetch(url, {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 200) {
+    console.log("success");
+  }
+};
+
 export default {
   getProducts,
   setProducts,
@@ -52,4 +67,6 @@ export default {
   clearCart,
   setCardAction,
   addNewProduct,
+  setEditGame,
+  editProduct,
 };

@@ -5,7 +5,7 @@ import "./GameCard.scss";
 
 import star from "images/star.svg";
 
-import { IGameObject, RootState } from "../../../utils/interfaces";
+import { IProducts, RootState } from "../../../utils/interfaces";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
@@ -14,21 +14,27 @@ import { URLS, CONSTANTS } from "../../../constants";
 import { Button } from "../../../elements";
 
 interface Props {
-  obj: IGameObject;
+  obj: IProducts;
 }
 
-const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => {
+const GameCard: React.FC<Props> = ({ obj }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const iseAdmin = userInfo.login === CONSTANTS.ADMIN;
+  const { id, poster, name, rating, price } = obj;
 
   const addToCart = () => {
     dispatch(PAGE_ACTIONS.getCartProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCT_BY_ID_URL}${id}`));
   };
 
+  const handleEditGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction("edit-game"));
+    dispatch(PAGE_ACTIONS.setEditGame(obj));
+  };
+
   return (
-    <div className="GameCard" key={id} onClick={() => addToCart()} aria-hidden="true">
-      <div className="GameCard__img">
+    <div className="GameCard" key={id}>
+      <div className="GameCard__img" onClick={() => addToCart()} aria-hidden="true">
         <img src={poster} alt={name} />
       </div>
       <div className="GameCard__content">
@@ -41,7 +47,7 @@ const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } })
         <span>{`${price} BYN`}</span>
         {iseAdmin && (
           <div className="GameCard__controls">
-            <Button text="Edit" className="GameCard__controls GameCard__controls_edit" />
+            <Button text="Edit" className="GameCard__controls GameCard__controls_edit" onClick={handleEditGame} />
             <Button text="Delete" className="GameCard__controls GameCard__controls_delete" />
           </div>
         )}
