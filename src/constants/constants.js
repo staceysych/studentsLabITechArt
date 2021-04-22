@@ -46,4 +46,9 @@ export default {
   ADMIN: "adminTest",
   PLATFORM_OPTIONS: ["PlayStation", "Xbox", "PC"],
   RATING_OPTIONS: ["1", " 2", "3", "4", "5"],
+  EMPTY_STRING: "",
+  ADD_PRODUCT_ERROR: "All fields must be filled",
+  ADD_PRODUCT: "add-product",
+  EDIT_PRODUCT: "edit-product",
+  DELETE_PRODUCT: "delete-product",
 };

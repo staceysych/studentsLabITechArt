@@ -1,18 +1,9 @@
-import {
-  SET_PRODUCTS,
-  SET_CART,
-  CLEAR_CART,
-  SET_CARD_ACTION,
-  ADD_PRODUCT,
-  SET_EDIT_GAME_ID,
-  SET_LOADING,
-} from "../types/index";
+import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, SET_EDIT_GAME_ID, SET_LOADING } from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 import { URLS } from "../../../constants";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
-const addToProducts = (newProduct: IProducts) => ({ type: ADD_PRODUCT, newProduct });
 const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
 const clearCart = () => ({ type: CLEAR_CART });
 const setCardAction = (cardAction: string) => ({ type: SET_CARD_ACTION, cardAction });
@@ -73,6 +64,20 @@ const editProduct = (url: string, body: IProducts, location: string) => async (d
   }
 };
 
+const deleteProduct = (url: string, body: IProducts) => async (dispatch) => {
+  const response = await fetch(url, {
+    method: "DELETE",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status === 200) {
+    await dispatch(getProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${body.devise}`));
+  }
+};
+
 export default {
   getProducts,
   setProducts,
@@ -84,4 +89,5 @@ export default {
   setEditGame,
   editProduct,
   setLoading,
+  deleteProduct,
 };

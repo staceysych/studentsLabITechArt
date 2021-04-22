@@ -24,9 +24,9 @@ const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
   const [isDefault, setDefault] = useState<boolean>(true);
-  const [sortCriteria, setSortCriteria] = useState<string>("");
-  const [sortType, setSortType] = useState<string>("");
-  const [searchText, setSearchText] = useState<string>("");
+  const [sortCriteria, setSortCriteria] = useState<string>(CONSTANTS.EMPTY_STRING);
+  const [sortType, setSortType] = useState<string>(CONSTANTS.EMPTY_STRING);
+  const [searchText, setSearchText] = useState<string>(CONSTANTS.EMPTY_STRING);
   const [genreName, setGenreName] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const [ageValue, setAgeValue] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const products = useSelector((state: RootState) => state.page.products);
@@ -37,9 +37,12 @@ const ProductsPage: React.FC = () => {
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
 
+  console.log("data", data);
+  console.log("products", products);
+
   const resetSortFilters = () => {
-    setSortCriteria("");
-    setSortType("");
+    setSortCriteria(CONSTANTS.EMPTY_STRING);
+    setSortType(CONSTANTS.EMPTY_STRING);
     setGenreName(CONSTANTS.ALL_PRODUCTS);
     setAgeValue(CONSTANTS.ALL_PRODUCTS);
     setDefault(true);
@@ -57,6 +60,7 @@ const ProductsPage: React.FC = () => {
             product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
           );
         }
+
         const sortedProducts = sortProducts(searchedProducts || data, sortCriteria, sortType);
         const filteredProducts = filterProducts(sortedProducts, genreName, ageValue);
         await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
@@ -77,7 +81,7 @@ const ProductsPage: React.FC = () => {
   };
 
   const handleAddGame = () => {
-    dispatch(PAGE_ACTIONS.setCardAction("add-game"));
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.ADD_PRODUCT));
   };
 
   return (

@@ -28,7 +28,12 @@ const GameCard: React.FC<Props> = ({ obj }) => {
   };
 
   const handleEditGame = () => {
-    dispatch(PAGE_ACTIONS.setCardAction("edit-game"));
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.EDIT_PRODUCT));
+    dispatch(PAGE_ACTIONS.setEditGame(obj));
+  };
+
+  const handleDeleteGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.DELETE_PRODUCT));
     dispatch(PAGE_ACTIONS.setEditGame(obj));
   };
 
@@ -48,7 +53,7 @@ const GameCard: React.FC<Props> = ({ obj }) => {
         {iseAdmin && (
           <div className="GameCard__controls">
             <Button text="Edit" className="GameCard__controls GameCard__controls_edit" onClick={handleEditGame} />
-            <Button text="Delete" className="GameCard__controls GameCard__controls_delete" />
+            <Button text="Delete" className="GameCard__controls GameCard__controls_delete" onClick={handleDeleteGame} />
           </div>
         )}
       </div>

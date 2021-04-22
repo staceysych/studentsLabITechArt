@@ -1,8 +1,10 @@
 export const generateBtnText = (action: string) => {
   switch (action) {
-    case "edit-game":
-      return "Edit game";
+    case "edit-product":
+      return "Edit product";
+    case "delete-product":
+      return "Delete product";
     default:
-      return "Add game";
+      return "Add product";
   }
 };
