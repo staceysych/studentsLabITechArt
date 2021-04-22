@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
 import GameCard from "../GameCard";
 
 import "./HomePage.scss";
 
-import { searchGame, getTopProducts } from "./utils";
-import { useDebounce, generateTitleSearch, convertDateToSec } from "../../../utils";
-import { IGameObject } from "../../../utils/interfaces";
-import { CONSTANTS } from "../../../constants";
+import { searchGame } from "./utils";
+import { useDebounce, generateTitleSearch } from "../../../utils";
+import { RootState, IProducts } from "../../../utils/interfaces";
+import { CONSTANTS, URLS } from "../../../constants";
+
+import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
 const HomePage: React.FC = () => {
   const { DEBOUNCE_TIME } = CONSTANTS;
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState<string>("");
   const [results, setResults] = useState<Array<object>>([]);
   const [isSearching, setIsSearching] = useState<boolean>(false);
-  const [recentGames, setRecentGames] = useState<Array<object>>([]);
+  const recentProducts = useSelector((state: RootState) => state.page.recentProducts);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsSearching(true);
@@ -25,9 +29,7 @@ const HomePage: React.FC = () => {
   const debouncedSearchText = useDebounce(searchText, DEBOUNCE_TIME);
 
   useEffect(() => {
-    getTopProducts().then((data) => {
-      setRecentGames(data);
-    });
+    dispatch(PAGE_ACTIONS.getRecentProducts(`${URLS.SERVER_URL}${URLS.TOP_PRODUCTS_URL}`));
   }, []);
 
   useEffect(() => {
@@ -51,11 +53,9 @@ const HomePage: React.FC = () => {
       {!isSearching && <h2 className="HomePage__title">{generateTitleSearch(searchText, results)}</h2>}
       {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
       <div className="HomePage__content">
-        {results.length && !isSearching
-          ? results.map((obj: IGameObject) => <GameCard key={obj.name} obj={obj} />)
-          : null}
+        {results.length && !isSearching ? results.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />) : null}
         {!searchText && !results.length
-          ? recentGames.slice(-3).map((obj: IGameObject) => <GameCard key={obj.name} obj={obj} />)
+          ? recentProducts && recentProducts.slice(-3).map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)
           : null}
       </div>
     </>

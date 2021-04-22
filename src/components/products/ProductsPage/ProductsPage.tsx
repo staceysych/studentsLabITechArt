@@ -32,13 +32,11 @@ const ProductsPage: React.FC = () => {
   const products = useSelector((state: RootState) => state.page.products);
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const isLoading = useSelector((state: RootState) => state.page.isLoading);
+  const allProducts = useSelector((state: RootState) => state.page.allProducts);
   const isAdmin = userInfo.login === CONSTANTS.ADMIN;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
-
-  console.log("data", data);
-  console.log("products", products);
 
   const resetSortFilters = () => {
     setSortCriteria(CONSTANTS.EMPTY_STRING);
@@ -56,20 +54,21 @@ const ProductsPage: React.FC = () => {
         }
         let searchedProducts;
         if (debouncedSearchText) {
-          searchedProducts = data.filter((product) =>
+          searchedProducts = allProducts.filter((product) =>
             product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
           );
         }
 
-        const sortedProducts = sortProducts(searchedProducts || data, sortCriteria, sortType);
+        const sortedProducts = sortProducts(searchedProducts || allProducts, sortCriteria, sortType);
         const filteredProducts = filterProducts(sortedProducts, genreName, ageValue);
         await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
         dispatch(PAGE_ACTIONS.setLoading(false));
       }
     })();
-  }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText]);
+  }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText, allProducts]);
 
   useEffect(() => {
+    dispatch(PAGE_ACTIONS.setAllProducts(data));
     dispatch(PAGE_ACTIONS.setProducts(data));
     resetSortFilters();
   }, [data]);

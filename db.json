@@ -25,10 +25,10 @@
     {
       "id": 3,
       "name": "cyberpunk",
-      "rating": 4,
+      "rating": 1,
       "price": 35,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
-      "date": "2021-11-15",
+      "date": "2021-04-22",
       "genre": "strategy",
       "age": "18",
       "devise": "Xbox"
@@ -45,15 +45,15 @@
       "devise": "Xbox"
     },
     {
+      "id": 5,
       "name": "Forza: Horizon 4",
-      "rating": 2,
+      "rating": 5,
       "price": 30,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
       "date": "2021-04-22",
       "genre": "racing",
       "age": "12",
-      "devise": "PlayStation",
-      "id": 5
+      "devise": "PlayStation"
     },
     {
       "id": 6,
@@ -284,6 +284,28 @@
       "date": "2021-04-04",
       "genre": "sport",
       "age": "6",
+      "devise": "Xbox"
+    },
+    {
+      "id": 28,
+      "name": "Uncharted 4",
+      "rating": 5,
+      "price": 20,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1618923905/game-posters/PSP/7381e348b2960972a2387a5e1a0fbd84_dcemmf.jpg",
+      "date": "2021-04-22",
+      "genre": "shooter",
+      "age": "12",
+      "devise": "PlayStation"
+    },
+    {
+      "id": 29,
+      "name": "The Last of Us",
+      "rating": 2,
+      "price": 29,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1619088763/game-posters/PSP/457786c07aeb7b15be70785055cdb0b7_xluejd.jpg",
+      "date": "2021-04-22",
+      "genre": "shooter",
+      "age": "18",
       "devise": "Xbox"
     }
   ],
@@ -1067,6 +1089,81 @@
       "login": "adminTest",
       "password": "123Admin!",
       "id": 156
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 157
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admn!",
+      "id": 158
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 159
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 160
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 161
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 162
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 163
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 164
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 165
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 166
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 167
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 168
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 169
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 170
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 171
     }
   ],
   "users-info": [

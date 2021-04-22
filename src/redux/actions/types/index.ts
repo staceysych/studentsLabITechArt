@@ -10,3 +10,5 @@ export const CLEAR_CART = "CLEAR_CART";
 export const SET_CARD_ACTION = "SET_CARD_ACTION";
 export const SET_EDIT_GAME_ID = "SET_EDIT_GAME_ID";
 export const SET_LOADING = "SET_LOADING";
+export const SET_ALL_PRODUCTS = "SET_ALL_PRODUCTS";
+export const SET_RECENT_PRODUCTS = "SET_RECENT_PRODUCTS";

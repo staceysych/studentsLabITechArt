@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import "./GameCard.scss";
 
@@ -20,7 +21,10 @@ interface Props {
 const GameCard: React.FC<Props> = ({ obj }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
-  const iseAdmin = userInfo.login === CONSTANTS.ADMIN;
+  const isAdmin = userInfo.login === CONSTANTS.ADMIN;
+  const location = useLocation();
+  const isProductsPage = location.pathname.includes("products");
+
   const { id, poster, name, rating, price } = obj;
 
   const addToCart = () => {
@@ -50,7 +54,7 @@ const GameCard: React.FC<Props> = ({ obj }) => {
           ))}
         </div>
         <span>{`${price} BYN`}</span>
-        {iseAdmin && (
+        {isAdmin && isProductsPage && (
           <div className="GameCard__controls">
             <Button text="Edit" className="GameCard__controls GameCard__controls_edit" onClick={handleEditGame} />
             <Button text="Delete" className="GameCard__controls GameCard__controls_delete" onClick={handleDeleteGame} />

@@ -45,10 +45,12 @@ export interface RootState {
   };
   page: {
     products: IProducts[];
+    allProducts: IProducts[];
     cart: IProducts[];
     cardAction: string;
     editGameObj: IProducts;
     isLoading: boolean;
+    recentProducts: IProducts[];
   };
 }
 

@@ -1,4 +1,13 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, SET_EDIT_GAME_ID, SET_LOADING } from "../actions/types";
+import {
+  SET_PRODUCTS,
+  SET_CART,
+  CLEAR_CART,
+  SET_CARD_ACTION,
+  SET_EDIT_GAME_ID,
+  SET_LOADING,
+  SET_ALL_PRODUCTS,
+  SET_RECENT_PRODUCTS,
+} from "../actions/types";
 
 import { getInitialState } from "../../utils";
 
@@ -16,6 +25,10 @@ export default function pageReducer(state = getInitialState(), action) {
       return { ...state, editGameObj: action.editGameObj };
     case SET_LOADING:
       return { ...state, isLoading: action.isLoading };
+    case SET_ALL_PRODUCTS:
+      return { ...state, allProducts: action.allProducts };
+    case SET_RECENT_PRODUCTS:
+      return { ...state, recentProducts: action.recentProducts };
     default:
       return state;
   }

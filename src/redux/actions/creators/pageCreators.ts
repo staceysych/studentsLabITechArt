@@ -1,4 +1,13 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, SET_EDIT_GAME_ID, SET_LOADING } from "../types/index";
+import {
+  SET_PRODUCTS,
+  SET_CART,
+  CLEAR_CART,
+  SET_CARD_ACTION,
+  SET_EDIT_GAME_ID,
+  SET_LOADING,
+  SET_ALL_PRODUCTS,
+  SET_RECENT_PRODUCTS,
+} from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
 import { URLS } from "../../../constants";
@@ -9,6 +18,17 @@ const clearCart = () => ({ type: CLEAR_CART });
 const setCardAction = (cardAction: string) => ({ type: SET_CARD_ACTION, cardAction });
 const setEditGame = (editGameObj: IProducts) => ({ type: SET_EDIT_GAME_ID, editGameObj });
 const setLoading = (isLoading: boolean) => ({ type: SET_LOADING, isLoading });
+const setAllProducts = (allProducts: IProducts[]) => ({ type: SET_ALL_PRODUCTS, allProducts });
+const setRecentProducts = (recentProducts: IProducts[]) => ({ type: SET_RECENT_PRODUCTS, recentProducts });
+
+const getRecentProducts = (url: string) => async (dispatch) => {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (response.status === 200) {
+    dispatch(setRecentProducts(data));
+  }
+};
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -16,6 +36,7 @@ const getProducts = (url: string) => async (dispatch) => {
 
   if (response.status === 200) {
     dispatch(setProducts(data));
+    dispatch(setAllProducts(data));
   }
 };
 
@@ -90,4 +111,6 @@ export default {
   editProduct,
   setLoading,
   deleteProduct,
+  setAllProducts,
+  getRecentProducts,
 };
