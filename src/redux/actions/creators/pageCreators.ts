@@ -1,6 +1,15 @@
-import { SET_PRODUCTS, SET_CART, CLEAR_CART, SET_CARD_ACTION, ADD_PRODUCT, SET_EDIT_GAME_ID } from "../types/index";
+import {
+  SET_PRODUCTS,
+  SET_CART,
+  CLEAR_CART,
+  SET_CARD_ACTION,
+  ADD_PRODUCT,
+  SET_EDIT_GAME_ID,
+  SET_LOADING,
+} from "../types/index";
 
 import { IProducts } from "../../../utils/interfaces";
+import { URLS } from "../../../constants";
 
 const setProducts = (products: IProducts[]) => ({ type: SET_PRODUCTS, products });
 const addToProducts = (newProduct: IProducts) => ({ type: ADD_PRODUCT, newProduct });
@@ -8,6 +17,7 @@ const setCart = (product: IProducts[]) => ({ type: SET_CART, product });
 const clearCart = () => ({ type: CLEAR_CART });
 const setCardAction = (cardAction: string) => ({ type: SET_CARD_ACTION, cardAction });
 const setEditGame = (editGameObj: IProducts) => ({ type: SET_EDIT_GAME_ID, editGameObj });
+const setLoading = (isLoading: boolean) => ({ type: SET_LOADING, isLoading });
 
 const getProducts = (url: string) => async (dispatch) => {
   const response = await fetch(url);
@@ -38,14 +48,14 @@ const addNewProduct = (url: string, body: IProducts, location: string) => async 
 
   if (response.status === 201) {
     if (location.includes(body.devise)) {
-      await dispatch(addToProducts(body));
+      await dispatch(getProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${body.devise}`));
     }
   } else {
     console.log("error");
   }
 };
 
-const editProduct = (url: string, body: IProducts) => async (dispatch) => {
+const editProduct = (url: string, body: IProducts, location: string) => async (dispatch) => {
   const response = await fetch(url, {
     method: "PUT",
     body: JSON.stringify(body),
@@ -55,7 +65,11 @@ const editProduct = (url: string, body: IProducts) => async (dispatch) => {
   });
 
   if (response.status === 200) {
-    console.log("success");
+    if (location.includes(body.devise)) {
+      await dispatch(getProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${body.devise}`));
+    } else {
+      await dispatch(getProducts(`${URLS.SERVER_URL}api${location}`));
+    }
   }
 };
 
@@ -69,4 +83,5 @@ export default {
   addNewProduct,
   setEditGame,
   editProduct,
+  setLoading,
 };

@@ -29,9 +29,9 @@ const ProductsPage: React.FC = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [genreName, setGenreName] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const [ageValue, setAgeValue] = useState<string>(CONSTANTS.ALL_PRODUCTS);
-  const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
   const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const isLoading = useSelector((state: RootState) => state.page.isLoading);
   const isAdmin = userInfo.login === CONSTANTS.ADMIN;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
@@ -60,7 +60,7 @@ const ProductsPage: React.FC = () => {
         const sortedProducts = sortProducts(searchedProducts || data, sortCriteria, sortType);
         const filteredProducts = filterProducts(sortedProducts, genreName, ageValue);
         await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
-        setLoading(false);
+        dispatch(PAGE_ACTIONS.setLoading(false));
       }
     })();
   }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText]);
@@ -72,7 +72,7 @@ const ProductsPage: React.FC = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDefault(true);
-    setLoading(true);
+    dispatch(PAGE_ACTIONS.setLoading(true));
     setSearchText(event.target.value);
   };
 

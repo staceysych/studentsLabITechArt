@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import defaultPhoto from "images/photo-default.png";
-import { Modal, Select, Button, Alert } from "../../../elements";
+import { Modal, Select, Button, Alert, Spinner } from "../../../elements";
 
 import { IProducts, RootState } from "../../../utils/interfaces";
 import { generateModalTitle, generateBtnText } from "./utils";
@@ -25,6 +25,7 @@ const AdminGameModal = () => {
 
   useEffect(() => {
     if (editGameObj) {
+      console.log("edit game", editGameObj);
       setInput(editGameObj);
     }
   }, [editGameObj]);
@@ -56,21 +57,28 @@ const AdminGameModal = () => {
       setError("All fields must be filled");
     } else {
       console.log(inputObj);
-      /* dispatch(
-        PAGE_ACTIONS.addNewProduct(
-          `${URLS.SERVER_URL}${URLS.CHANGE_PRODUCT_URL}`,
-          formatGameForServer(inputObj),
-          location.pathname
-        )
-      ); */
-      /* dispatch(
-        PAGE_ACTIONS.editProduct(
-          `${URLS.SERVER_URL}${URLS.CHANGE_PRODUCT_URL}${inputObj.id}`,
-          formatGameForServer(inputObj)
-        )
-      ); */
+      if (cardAction === "add-game") {
+        dispatch(
+          PAGE_ACTIONS.addNewProduct(
+            `${URLS.SERVER_URL}${URLS.CHANGE_PRODUCT_URL}`,
+            formatGameForServer(inputObj),
+            location.pathname
+          )
+        );
+        dispatch(ACTIONS.setAuthInfo("A new game has been added"));
+      }
+      if (cardAction === "edit-game") {
+        dispatch(
+          PAGE_ACTIONS.editProduct(
+            `${URLS.SERVER_URL}${URLS.CHANGE_PRODUCT_URL}${inputObj.id}`,
+            formatGameForServer(inputObj),
+            location.pathname
+          )
+        );
+        dispatch(ACTIONS.setAuthInfo("The game has been edited"));
+      }
+
       closeModal();
-      dispatch(ACTIONS.setAuthInfo("A new game has been added"));
     }
   };
 

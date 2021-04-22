@@ -28,6 +28,7 @@ export default {
     email: "",
   },
   EMPTY_PRODUCT: {
+    id: 0,
     name: "",
     rating: 0,
     poster: "",

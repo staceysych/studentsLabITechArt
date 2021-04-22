@@ -1,6 +1,7 @@
 import { getDate } from "./getDate";
 
 export const formatGameForServer = (obj) => ({
+  id: obj.id,
   name: obj.name,
   rating: +obj.rating,
   price: +obj.price,

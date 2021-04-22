@@ -10,3 +10,4 @@ export const CLEAR_CART = "CLEAR_CART";
 export const SET_CARD_ACTION = "SET_CARD_ACTION";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const SET_EDIT_GAME_ID = "SET_EDIT_GAME_ID";
+export const SET_LOADING = "SET_LOADING";

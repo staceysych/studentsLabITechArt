@@ -6,7 +6,7 @@ import GameCard from "../GameCard";
 import "./HomePage.scss";
 
 import { searchGame, getTopProducts } from "./utils";
-import { useDebounce, generateTitleSearch } from "../../../utils";
+import { useDebounce, generateTitleSearch, convertDateToSec } from "../../../utils";
 import { IGameObject } from "../../../utils/interfaces";
 import { CONSTANTS } from "../../../constants";
 

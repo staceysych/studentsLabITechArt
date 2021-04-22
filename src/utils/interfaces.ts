@@ -48,6 +48,7 @@ export interface RootState {
     cart: IProducts[];
     cardAction: string;
     editGameObj: IProducts;
+    isLoading: boolean;
   };
 }
 
