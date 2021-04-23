@@ -51,4 +51,7 @@ export default {
   ADD_PRODUCT: "add-product",
   EDIT_PRODUCT: "edit-product",
   DELETE_PRODUCT: "delete-product",
+  INFO_ADD_PRODUCT: "A new product has been added",
+  INFO_EDIT_PRODUCT: "The product has been edited",
+  INFO_DELETE_PRODUCT: "The product has been deleted",
 };

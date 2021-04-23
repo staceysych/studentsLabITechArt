@@ -64,7 +64,7 @@ const AdminGameModal = () => {
             location.pathname
           )
         );
-        dispatch(ACTIONS.setAuthInfo("A new product has been added"));
+        dispatch(ACTIONS.setAuthInfo(CONSTANTS.INFO_ADD_PRODUCT));
       }
       if (cardAction === CONSTANTS.EDIT_PRODUCT) {
         dispatch(
@@ -74,7 +74,7 @@ const AdminGameModal = () => {
             location.pathname
           )
         );
-        dispatch(ACTIONS.setAuthInfo("The product has been edited"));
+        dispatch(ACTIONS.setAuthInfo(CONSTANTS.INFO_EDIT_PRODUCT));
       }
 
       if (cardAction === CONSTANTS.DELETE_PRODUCT) {
@@ -84,7 +84,7 @@ const AdminGameModal = () => {
             formatGameForServer(inputObj)
           )
         );
-        dispatch(ACTIONS.setAuthInfo("The product has been deleted"));
+        dispatch(ACTIONS.setAuthInfo(CONSTANTS.INFO_DELETE_PRODUCT));
       }
       closeModal();
     }
