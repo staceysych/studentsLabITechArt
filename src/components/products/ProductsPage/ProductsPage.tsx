@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
-import { Select, Checkbox, Spinner } from "../../../elements";
+import { Select, Checkbox, Spinner, Button } from "../../../elements";
 import "./ProductsPage.scss";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
@@ -24,20 +24,23 @@ const ProductsPage: React.FC = () => {
   const { param } = useParams<ParamTypes>();
   const dispatch = useDispatch();
   const [isDefault, setDefault] = useState<boolean>(true);
-  const [sortCriteria, setSortCriteria] = useState<string>("");
-  const [sortType, setSortType] = useState<string>("");
-  const [searchText, setSearchText] = useState<string>("");
+  const [sortCriteria, setSortCriteria] = useState<string>(CONSTANTS.EMPTY_STRING);
+  const [sortType, setSortType] = useState<string>(CONSTANTS.EMPTY_STRING);
+  const [searchText, setSearchText] = useState<string>(CONSTANTS.EMPTY_STRING);
   const [genreName, setGenreName] = useState<string>(CONSTANTS.ALL_PRODUCTS);
   const [ageValue, setAgeValue] = useState<string>(CONSTANTS.ALL_PRODUCTS);
-  const [isLoading, setLoading] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.page.products);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const isLoading = useSelector((state: RootState) => state.page.isLoading);
+  const allProducts = useSelector((state: RootState) => state.page.allProducts);
+  const isAdmin = userInfo.login === CONSTANTS.ADMIN;
 
   const debouncedSearchText = useDebounce(searchText, CONSTANTS.DEBOUNCE_TIME);
   const { data, loading } = useFetchData(`${URLS.SERVER_URL}${URLS.GET_PRODUCTS_URL}${param}`);
 
   const resetSortFilters = () => {
-    setSortCriteria("");
-    setSortType("");
+    setSortCriteria(CONSTANTS.EMPTY_STRING);
+    setSortType(CONSTANTS.EMPTY_STRING);
     setGenreName(CONSTANTS.ALL_PRODUCTS);
     setAgeValue(CONSTANTS.ALL_PRODUCTS);
     setDefault(true);
@@ -51,34 +54,43 @@ const ProductsPage: React.FC = () => {
         }
         let searchedProducts;
         if (debouncedSearchText) {
-          searchedProducts = data.filter((product) =>
+          searchedProducts = allProducts.filter((product) =>
             product.name.toLocaleLowerCase().includes(debouncedSearchText.toLocaleLowerCase())
           );
         }
-        const sortedProducts = sortProducts(searchedProducts || data, sortCriteria, sortType);
+
+        const sortedProducts = sortProducts(searchedProducts || allProducts, sortCriteria, sortType);
         const filteredProducts = filterProducts(sortedProducts, genreName, ageValue);
         await dispatch(PAGE_ACTIONS.setProducts(filteredProducts));
-        setLoading(false);
+        dispatch(PAGE_ACTIONS.setLoading(false));
       }
     })();
-  }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText]);
+  }, [sortCriteria, sortType, genreName, ageValue, debouncedSearchText, allProducts]);
 
   useEffect(() => {
+    dispatch(PAGE_ACTIONS.setAllProducts(data));
     dispatch(PAGE_ACTIONS.setProducts(data));
     resetSortFilters();
   }, [data]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDefault(true);
-    setLoading(true);
+    dispatch(PAGE_ACTIONS.setLoading(true));
     setSearchText(event.target.value);
+  };
+
+  const handleAddGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.ADD_PRODUCT));
   };
 
   return (
     <div className="ProductsPage">
       <div className="ProductsPage__header">
         <h1>{param}</h1>
-        <SearchBar handleChange={handleChange} />
+        <div className="ProductsPage__controls">
+          <SearchBar handleChange={handleChange} />
+          {isAdmin && <Button text="Add game" className="ProductsPage__btn" onClick={handleAddGame} />}
+        </div>
       </div>
       <div className="ProductsPage__wrapper">
         <div className="ProductsPage__sort-container">

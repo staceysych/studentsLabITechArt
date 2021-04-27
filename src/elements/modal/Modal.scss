@@ -38,4 +38,12 @@
       height: 100%;
     }
   }
+
+  &_add {
+    max-height: 430px;
+  }
+
+  &_delete {
+    max-height: 200px;
+  }
 }

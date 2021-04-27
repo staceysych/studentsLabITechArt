@@ -14,6 +14,7 @@ import { getUniqueItems } from "./getUniqueItems";
 import { removeObjectFromArr } from "./removeObjectFromArr";
 import { getTotalPrice } from "./getTotalPrice";
 import { countDuplicates } from "./countDuplicates";
+import { formatGameForServer } from "./formatGameForServer";
 
 export {
   useDebounce,
@@ -32,4 +33,5 @@ export {
   removeObjectFromArr,
   getTotalPrice,
   countDuplicates,
+  formatGameForServer,
 };

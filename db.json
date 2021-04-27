@@ -1,15 +1,15 @@
 {
   "games": [
     {
-      "id": 1,
-      "name": "grand theft auto",
+      "name": "GTA",
       "rating": 5,
-      "price": 30,
+      "price": 50,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/GTA_uxipxm.jpg",
-      "date": "2021-03-12",
-      "genre": "shooter, strategy, fighting, sport",
+      "date": "2021-04-21",
+      "genre": "shooter",
       "age": "18",
-      "devise": "Xbox, PC, PlayStation"
+      "devise": "Xbox",
+      "id": 1
     },
     {
       "id": 2,
@@ -20,18 +20,18 @@
       "date": "2021-03-10",
       "genre": "strategy",
       "age": "18",
-      "devise": "Xbox, PC"
+      "devise": "Xbox"
     },
     {
       "id": 3,
       "name": "cyberpunk",
-      "rating": 4,
-      "price": 35,
+      "rating": 1,
+      "price": 12,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
-      "date": "2021-11-15",
-      "genre": "strategy, shooter",
+      "date": "2021-04-22",
+      "genre": "strategy",
       "age": "18",
-      "devise": "Xbox, PC, PlayStation"
+      "devise": "Xbox"
     },
     {
       "id": 4,
@@ -42,18 +42,18 @@
       "date": "2020-03-12",
       "genre": "strategy",
       "age": "18",
-      "devise": "Xbox, PC"
+      "devise": "Xbox"
     },
     {
       "id": 5,
       "name": "Forza: Horizon 4",
-      "rating": 2,
-      "price": 15,
+      "rating": 5,
+      "price": 30,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
-      "date": "2021-03-15",
+      "date": "2021-04-22",
       "genre": "racing",
       "age": "12",
-      "devise": "Xbox, PC, PlayStation"
+      "devise": "PlayStation"
     },
     {
       "id": 6,
@@ -69,13 +69,13 @@
     {
       "id": 7,
       "name": "red dead redemption",
-      "rating": 4,
+      "rating": 2,
       "price": 40,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887320/game-posters/redemption_rooy74.jpg",
-      "date": "2021-02-23",
-      "genre": "strategy, shooter",
+      "date": "2021-04-22",
+      "genre": "shooter",
       "age": "16",
-      "devise": "Xbox, PC, PlayStation"
+      "devise": "PlayStation"
     },
     {
       "id": 8,
@@ -84,7 +84,7 @@
       "price": 25,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716812/game-posters/XBOX/2409171e271a9dcce7ceaaec95e87c7f_toflye.jpg",
       "date": "2021-03-12",
-      "genre": "shooter, strategy",
+      "genre": "shooter",
       "age": "18",
       "devise": "Xbox"
     },
@@ -117,7 +117,7 @@
       "price": 38,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716786/game-posters/PC/Call_of_Duty_Modern_Warfare_3_box_art_x0ohrh.jpg",
       "date": "2021-03-30",
-      "genre": "shooter, strategy",
+      "genre": "shooter",
       "age": "18",
       "devise": "PC"
     },
@@ -139,7 +139,7 @@
       "price": 10,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716781/game-posters/PC/TS2_FirstCover_beu0mv.jpg",
       "date": "2021-04-01",
-      "genre": "strategy, sport",
+      "genre": "strategy",
       "age": "8",
       "devise": "PC"
     },
@@ -150,7 +150,7 @@
       "price": 120,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716654/game-posters/PSP/Spider-Man_Friend_or_Foe_oz2hww.png",
       "date": "2021-04-02",
-      "genre": "strategy, shooter",
+      "genre": "strategy",
       "age": "12",
       "devise": "PlayStation"
     },
@@ -172,7 +172,7 @@
       "price": 124,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716643/game-posters/PSP/1330009862_mortal-kombat-unchained-box-psp-psv.ru_ul1tjx.jpg",
       "date": "2021-04-06",
-      "genre": "sport, fighting",
+      "genre": "fighting",
       "age": "18",
       "devise": "PlayStation"
     },
@@ -183,7 +183,7 @@
       "price": 55,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716641/game-posters/PSP/poster_kgwkwi.png",
       "date": "2021-04-03",
-      "genre": "fighting, strategy, shooter",
+      "genre": "strategy",
       "age": "18",
       "devise": "PlayStation"
     },
@@ -194,9 +194,119 @@
       "price": 145,
       "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716636/game-posters/PSP/653134365_jvkiw1.jpg",
       "date": "2021-04-06",
-      "genre": "fighting, strategy, shooter",
+      "genre": "shooter",
       "age": "18",
       "devise": "PlayStation"
+    },
+    {
+      "id": 20,
+      "name": "grand theft auto",
+      "rating": 5,
+      "price": 100,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/GTA_uxipxm.jpg",
+      "date": "2021-03-12",
+      "genre": "shooter",
+      "age": "18",
+      "devise": "PlayStation"
+    },
+    {
+      "id": 21,
+      "name": "grand theft auto",
+      "rating": 5,
+      "price": 15,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/GTA_uxipxm.jpg",
+      "date": "2021-03-12",
+      "genre": "shooter",
+      "age": "18",
+      "devise": "PC"
+    },
+    {
+      "id": 22,
+      "name": "cyberpunk",
+      "rating": 1,
+      "price": 120,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
+      "date": "2021-04-22",
+      "genre": "strategy",
+      "age": "18",
+      "devise": "PlayStation"
+    },
+    {
+      "id": 23,
+      "name": "cyberpunk",
+      "rating": 4,
+      "price": 20,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887215/game-posters/cyberpunk_zfcxds.png",
+      "date": "2021-03-15",
+      "genre": "strategy",
+      "age": "18",
+      "devise": "PC"
+    },
+    {
+      "id": 24,
+      "name": "Forza: Horizon 4",
+      "rating": 2,
+      "price": 15,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
+      "date": "2021-03-15",
+      "genre": "racing",
+      "age": "12",
+      "devise": "Xbox"
+    },
+    {
+      "id": 25,
+      "name": "Forza: Horizon 4",
+      "rating": 2,
+      "price": 8,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1615887211/game-posters/forza_sxlmsf.jpg",
+      "date": "2021-03-15",
+      "genre": "racing",
+      "age": "12",
+      "devise": "PC"
+    },
+    {
+      "id": 26,
+      "name": "FIFA 2013",
+      "rating": 5,
+      "price": 98,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716647/game-posters/PSP/unnamed_l2cko6.png",
+      "date": "2021-04-04",
+      "genre": "sport",
+      "age": "6",
+      "devise": "PC"
+    },
+    {
+      "id": 27,
+      "name": "FIFA 2013",
+      "rating": 5,
+      "price": 98,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1617716647/game-posters/PSP/unnamed_l2cko6.png",
+      "date": "2021-04-04",
+      "genre": "sport",
+      "age": "6",
+      "devise": "Xbox"
+    },
+    {
+      "id": 28,
+      "name": "Uncharted 4",
+      "rating": 5,
+      "price": 20,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1618923905/game-posters/PSP/7381e348b2960972a2387a5e1a0fbd84_dcemmf.jpg",
+      "date": "2021-04-22",
+      "genre": "shooter",
+      "age": "12",
+      "devise": "PlayStation"
+    },
+    {
+      "id": 29,
+      "name": "The Last of Us",
+      "rating": 2,
+      "price": 29,
+      "poster": "https://res.cloudinary.com/dfoobx4vi/image/upload/v1619088763/game-posters/PSP/457786c07aeb7b15be70785055cdb0b7_xluejd.jpg",
+      "date": "2021-04-22",
+      "genre": "shooter",
+      "age": "18",
+      "devise": "Xbox"
     }
   ],
   "login-history": [],
@@ -211,12 +321,12 @@
       "id": 1
     },
     {
-      "login": "d15isaaaaa",
-      "password": "123Love!",
-      "address": "V. Golubka 12 - 82",
-      "phone": "123456777",
-      "email": "nastya@y.com",
-      "confirmPassword": "123Love!",
+      "login": "adminTest",
+      "password": "123Admin!",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "confirmPassword": "",
       "id": 2
     }
   ]

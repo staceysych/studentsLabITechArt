@@ -45,7 +45,12 @@ export interface RootState {
   };
   page: {
     products: IProducts[];
+    allProducts: IProducts[];
     cart: IProducts[];
+    cardAction: string;
+    editGameObj: IProducts;
+    isLoading: boolean;
+    recentProducts: IProducts[];
   };
 }
 
@@ -59,12 +64,12 @@ export interface IUserInfo {
 }
 
 export interface IProducts {
-  id: number;
+  id?: number;
   name: string;
   rating: number;
   price: number;
   poster: string;
-  date: string;
+  date?: string;
   genre: string;
   age: string;
   devise: string;

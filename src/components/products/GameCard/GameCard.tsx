@@ -1,30 +1,49 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import "./GameCard.scss";
 
 import star from "images/star.svg";
 
-import { IGameObject } from "../../../utils/interfaces";
+import { IProducts, RootState } from "../../../utils/interfaces";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
-import { URLS } from "../../../constants";
+import { URLS, CONSTANTS } from "../../../constants";
+
+import { Button } from "../../../elements";
 
 interface Props {
-  obj: IGameObject;
+  obj: IProducts;
 }
 
-const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } }) => {
+const GameCard: React.FC<Props> = ({ obj }) => {
   const dispatch = useDispatch();
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const isAdmin = userInfo.login === CONSTANTS.ADMIN;
+  const location = useLocation();
+  const isProductsPage = location.pathname.includes("products");
+
+  const { id, poster, name, rating, price } = obj;
 
   const addToCart = () => {
     dispatch(PAGE_ACTIONS.getCartProducts(`${URLS.SERVER_URL}${URLS.GET_PRODUCT_BY_ID_URL}${id}`));
   };
 
+  const handleEditGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.EDIT_PRODUCT));
+    dispatch(PAGE_ACTIONS.setEditGame(obj));
+  };
+
+  const handleDeleteGame = () => {
+    dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.DELETE_PRODUCT));
+    dispatch(PAGE_ACTIONS.setEditGame(obj));
+  };
+
   return (
-    <div className="GameCard" key={id} onClick={() => addToCart()} aria-hidden="true">
-      <div className="GameCard__img">
+    <div className="GameCard" key={id}>
+      <div className="GameCard__img" onClick={() => addToCart()} aria-hidden="true">
         <img src={poster} alt={name} />
       </div>
       <div className="GameCard__content">
@@ -35,6 +54,12 @@ const GameCard: React.FC<Props> = ({ obj: { id, poster, name, rating, price } })
           ))}
         </div>
         <span>{`${price} BYN`}</span>
+        {isAdmin && isProductsPage && (
+          <div className="GameCard__controls">
+            <Button text="Edit" className="GameCard__controls GameCard__controls_edit" onClick={handleEditGame} />
+            <Button text="Delete" className="GameCard__controls GameCard__controls_delete" onClick={handleDeleteGame} />
+          </div>
+        )}
       </div>
     </div>
   );

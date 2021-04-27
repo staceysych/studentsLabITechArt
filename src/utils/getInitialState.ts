@@ -31,4 +31,5 @@ export const getInitialState = () => ({
   ],
 
   cart: [],
+  cardAction: "",
 });

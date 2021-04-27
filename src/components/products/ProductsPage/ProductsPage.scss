@@ -57,4 +57,32 @@
     margin: 0;
     text-align: center;
   }
+
+  &__controls {
+    width: 70%;
+    justify-content: flex-start;
+    display: flex;
+  }
+
+  &__btn {
+    width: 110px;
+    height: 40px;
+    border: 2px solid $updateColor;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $updateColor;
+    transition: 0.3s all ease-in-out;
+    background: none;
+    margin-left: 20px;
+    &:hover {
+      background: $updateColor;
+      color: $textColor;
+    }
+  }
 }

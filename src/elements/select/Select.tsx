@@ -7,12 +7,21 @@ import DropDownItem from "../../components/products/DropDownItem";
 
 interface Props {
   optionsList: string[];
-  setSortState: any;
-  isDefault: boolean;
+  setSortState?: any;
+  isDefault?: boolean;
+  setInput?: any;
+  name?: string;
+  propsText?: string;
 }
-const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
+const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInput, name, propsText }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("Select");
+
+  useEffect(() => {
+    if (propsText && propsText !== "0") {
+      setSelectedText(propsText);
+    }
+  }, [propsText]);
 
   useEffect(() => {
     if (isDefault) {
@@ -21,14 +30,20 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
   }, [isDefault]);
 
   useEffect(() => {
-    if (selectedText !== "Select") {
-      if (selectedText === "descending") {
-        setSortState("desc");
-      } else if (selectedText === "ascending") {
-        setSortState("asc");
-      } else {
-        setSortState(selectedText.toLocaleLowerCase());
+    if (setSortState) {
+      if (selectedText !== "Select") {
+        if (selectedText === "descending") {
+          setSortState("desc");
+        } else if (selectedText === "ascending") {
+          setSortState("asc");
+        } else {
+          setSortState(selectedText.toLocaleLowerCase());
+        }
       }
+    }
+
+    if (setInput) {
+      setInput((prevState) => ({ ...prevState, [name]: selectedText === "Select" ? "" : selectedText }));
     }
   }, [selectedText]);
 
@@ -46,7 +61,7 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
     };
   }, [showOptionList]);
 
-  const handleListDisplay = () => {
+  const handleListDisplay = (e) => {
     setShowOptionList(!showOptionList);
   };
 
@@ -57,7 +72,11 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault }) => {
 
   return (
     <div className="Select">
-      <div className={showOptionList ? "Select__text Select__text_active" : "Select__text"} onClick={handleListDisplay}>
+      <div
+        className={showOptionList ? "Select__text Select__text_active" : "Select__text"}
+        onClick={handleListDisplay}
+        name={name}
+      >
         {selectedText}
       </div>
       {showOptionList && (

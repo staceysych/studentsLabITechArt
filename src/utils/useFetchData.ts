@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { CONSTANTS } from "../constants";
 
-export const useFetchData = (url) => {
+export const useFetchData = (url: string) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
