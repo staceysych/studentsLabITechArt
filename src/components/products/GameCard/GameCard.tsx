@@ -41,6 +41,8 @@ const GameCard: React.FC<Props> = ({ obj }) => {
     dispatch(PAGE_ACTIONS.setEditGame(obj));
   };
 
+  console.log("Game card");
+
   return (
     <div className="GameCard" key={id}>
       <div className="GameCard__img" onClick={() => addToCart()} aria-hidden="true">
@@ -65,4 +67,12 @@ const GameCard: React.FC<Props> = ({ obj }) => {
   );
 };
 
-export default GameCard;
+const shouldReRender = (prevProps, nextProps) => {
+  if (JSON.stringify(prevProps.obj) !== JSON.stringify(nextProps.obj)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default React.memo(GameCard, shouldReRender);

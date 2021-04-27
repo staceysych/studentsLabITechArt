@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
@@ -21,10 +21,13 @@ const HomePage: React.FC = () => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const recentProducts = useSelector((state: RootState) => state.page.recentProducts);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsSearching(true);
-    setSearchText(event.target.value);
-  };
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setIsSearching(true);
+      setSearchText(event.target.value);
+    },
+    [setIsSearching, setSearchText]
+  );
 
   const debouncedSearchText = useDebounce(searchText, DEBOUNCE_TIME);
 

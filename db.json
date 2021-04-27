@@ -309,7 +309,363 @@
       "devise": "Xbox"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 1
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 2
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 3
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 4
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 5
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 6
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 7
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 8
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 9
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 10
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 11
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 12
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 13
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 14
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 15
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 16
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 17
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 18
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 19
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 20
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 21
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 22
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 23
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 24
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 25
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 26
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 27
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 28
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 29
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 30
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 31
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 32
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 33
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 34
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 35
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 36
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 37
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 38
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 39
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 40
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 41
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 42
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 43
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 44
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 45
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 46
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 47
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 48
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 49
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 50
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 51
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 52
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 53
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 54
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 55
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 56
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 57
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 58
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 59
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 60
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 61
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 62
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 63
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 64
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 65
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 66
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 67
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 68
+    },
+    {
+      "login": "testUser",
+      "password": "123Test!",
+      "id": 69
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 70
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 71
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",

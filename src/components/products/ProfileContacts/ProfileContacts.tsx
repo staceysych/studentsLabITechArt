@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { RootState, IUserInfo } from "../../../utils/interfaces";
+import { generateInputType } from "./utils";
 
 interface Props {
   changedContacts: IUserInfo;
@@ -13,17 +14,6 @@ const ProfileContacts: React.FC<Props> = ({ changedContacts, handleChange }) => 
   const profileDataArr = Object.entries(userInfo).filter(
     (arr) => arr.includes("address") || arr.includes("phone") || arr.includes("email")
   );
-
-  const generateInputType = (input) => {
-    switch (input) {
-      case "phone":
-        return "tel";
-      case "email":
-        return "email";
-      default:
-        return "text";
-    }
-  };
 
   return (
     <>
@@ -43,4 +33,12 @@ const ProfileContacts: React.FC<Props> = ({ changedContacts, handleChange }) => 
   );
 };
 
-export default ProfileContacts;
+const shouldReRender = (prevProps, nextProps) => {
+  if (JSON.stringify(prevProps.changedContacts) !== JSON.stringify(nextProps.changedContacts)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default React.memo(ProfileContacts, shouldReRender);

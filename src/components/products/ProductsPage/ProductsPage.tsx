@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -73,11 +73,14 @@ const ProductsPage: React.FC = () => {
     resetSortFilters();
   }, [data]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDefault(true);
-    dispatch(PAGE_ACTIONS.setLoading(true));
-    setSearchText(event.target.value);
-  };
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setDefault(true);
+      dispatch(PAGE_ACTIONS.setLoading(true));
+      setSearchText(event.target.value);
+    },
+    [setDefault, setSearchText]
+  );
 
   const handleAddGame = () => {
     dispatch(PAGE_ACTIONS.setCardAction(CONSTANTS.ADD_PRODUCT));

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import "./Select.scss";
 
@@ -16,6 +16,7 @@ interface Props {
 const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInput, name, propsText }) => {
   const [showOptionList, setShowOptionList] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("Select");
+  const selectOptions = useMemo(() => optionsList, []);
 
   useEffect(() => {
     if (propsText && propsText !== "0") {
@@ -70,6 +71,7 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
     setShowOptionList(false);
   };
 
+  console.log("select");
   return (
     <div className="Select">
       <div
@@ -81,7 +83,7 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
       </div>
       {showOptionList && (
         <DropDownMenu>
-          {optionsList.map((option) => (
+          {selectOptions.map((option) => (
             <DropDownItem name={option} key={option} isSelect handleDropDownClick={handleOptionClick} />
           ))}
         </DropDownMenu>
@@ -90,4 +92,4 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
   );
 };
 
-export default Select;
+export default React.memo(Select);
