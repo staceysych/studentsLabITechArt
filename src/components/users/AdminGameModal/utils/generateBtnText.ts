@@ -1,8 +1,10 @@
+import { CONSTANTS } from "../../../../constants";
+
 export const generateBtnText = (action: string) => {
   switch (action) {
-    case "edit-product":
+    case CONSTANTS.EDIT_PRODUCT:
       return "Edit product";
-    case "delete-product":
+    case CONSTANTS.DELETE_PRODUCT:
       return "Delete product";
     default:
       return "Add product";
