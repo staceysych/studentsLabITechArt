@@ -23,4 +23,4 @@ const Checkbox: React.FC<Props> = ({ selected, onChange, text, value }) => (
   </div>
 );
 
-export default Checkbox;
+export default React.memo(Checkbox);

@@ -65,4 +65,12 @@ const GameCard: React.FC<Props> = ({ obj }) => {
   );
 };
 
-export default GameCard;
+const shouldReRender = (prevProps, nextProps) => {
+  if (JSON.stringify(prevProps.obj) !== JSON.stringify(nextProps.obj)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default React.memo(GameCard, shouldReRender);

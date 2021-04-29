@@ -24,4 +24,4 @@ const SearchBar: React.FC<Props> = ({ handleChange, isSearching }) => (
   </div>
 );
 
-export default SearchBar;
+export default React.memo(SearchBar);

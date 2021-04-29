@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./CartPage.scss";
@@ -14,6 +14,8 @@ const CartPage = () => {
   const cart = useSelector((state: RootState) => state.page.cart);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState<object>({});
+
+  const uniqueItems = useMemo(() => getUniqueItems(cart, "id"), [cart]);
 
   useEffect(() => {
     if (cart.length) {
@@ -35,7 +37,7 @@ const CartPage = () => {
       <div className="CartPage__wrapper">
         <div className="CartPage__items">
           {cart.length ? (
-            getUniqueItems(cart, "id").map((product: IProducts) => (
+            uniqueItems.map((product: IProducts) => (
               <CartItem
                 product={product}
                 key={`${product.id}-${quantity[product.id]}`}

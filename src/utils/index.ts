@@ -15,6 +15,7 @@ import { removeObjectFromArr } from "./removeObjectFromArr";
 import { getTotalPrice } from "./getTotalPrice";
 import { countDuplicates } from "./countDuplicates";
 import { formatGameForServer } from "./formatGameForServer";
+import { withSuspense } from "./withSuspense";
 
 export {
   useDebounce,
@@ -34,4 +35,5 @@ export {
   getTotalPrice,
   countDuplicates,
   formatGameForServer,
+  withSuspense,
 };
