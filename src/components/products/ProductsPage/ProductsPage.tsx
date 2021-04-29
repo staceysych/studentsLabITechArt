@@ -11,7 +11,7 @@ import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 import { URLS, CONSTANTS } from "../../../constants";
 
 import { RootState, IProducts } from "../../../utils/interfaces";
-import { useFetchData, useDebounce, generateTitleSearch } from "../../../utils";
+import { useFetchData, useDebounce, generateTitleSearch, withSuspense } from "../../../utils";
 import { sortProducts, filterProducts } from "./utils";
 
 import GameCard from "../GameCard";

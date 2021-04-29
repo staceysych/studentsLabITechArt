@@ -41,8 +41,6 @@ const GameCard: React.FC<Props> = ({ obj }) => {
     dispatch(PAGE_ACTIONS.setEditGame(obj));
   };
 
-  console.log("Game card");
-
   return (
     <div className="GameCard" key={id}>
       <div className="GameCard__img" onClick={() => addToCart()} aria-hidden="true">

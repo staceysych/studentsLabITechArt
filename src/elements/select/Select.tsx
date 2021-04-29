@@ -71,7 +71,6 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
     setShowOptionList(false);
   };
 
-  console.log("select");
   return (
     <div className="Select">
       <div

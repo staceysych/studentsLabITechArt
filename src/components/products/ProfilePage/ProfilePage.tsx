@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -61,7 +61,6 @@ const ProfilePage: React.FC<Props> = () => {
     }
   };
 
-  console.log("Profile page");
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__avatar">

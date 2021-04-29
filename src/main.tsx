@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, lazy } from "react";
 import ReactDom from "react-dom";
 import { Provider } from "react-redux";
 
@@ -8,9 +8,6 @@ import "./styles/main.scss";
 
 import Header from "./components/products/Header";
 import HomePage from "./components/products/HomePage";
-import ProductsPage from "./components/products/ProductsPage";
-import AboutPage from "./components/products/AboutPage";
-import ProfilePage from "./components/products/ProfilePage";
 import Footer from "./components/products/Footer";
 import ErrorBoundary from "./components/products/ErrorBoundary";
 import Login from "./components/users/Login";
@@ -18,7 +15,6 @@ import Registration from "./components/users/Registration";
 import SignOut from "./components/users/SignOut";
 import ChangePassword from "./components/users/ChangePassword";
 import CartIcon from "./components/products/CartIcon";
-import CartPage from "./components/products/CartPage";
 import SubmitModal from "./components/users/SubmitModal";
 import AdminGameModal from "./components/users/AdminGameModal";
 
@@ -27,6 +23,12 @@ import { Alert, ProtectedRoute } from "./elements";
 import { IAppState } from "./utils/interfaces";
 
 import store from "./redux/index";
+import { withSuspense } from "./utils";
+
+const ProductsPage = withSuspense(lazy(() => import("./components/products/ProductsPage")));
+const AboutPage = withSuspense(lazy(() => import("./components/products/AboutPage")));
+const ProfilePage = withSuspense(lazy(() => import("./components/products/ProfilePage")));
+const CartPage = withSuspense(lazy(() => import("./components/products/CartPage")));
 
 const TestErrorComponent = () => {
   throw new Error("Error is in the render method");
