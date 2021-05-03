@@ -309,7 +309,43 @@
       "devise": "Xbox"
     }
   ],
-  "login-history": [],
+  "login-history": [
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 1
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 2
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 3
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 4
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 5
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 6
+    },
+    {
+      "login": "adminTest",
+      "password": "123Admin!",
+      "id": 7
+    }
+  ],
   "users-info": [
     {
       "login": "testUser",
