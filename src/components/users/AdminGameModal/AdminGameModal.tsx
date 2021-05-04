@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import defaultPhoto from "images/photo-default.png";
+import defaultPhoto from "images/photo-default-min.jpg";
 import { Modal, Select, Button, Alert } from "../../../elements";
 
 import { IProducts, RootState } from "../../../utils/interfaces";

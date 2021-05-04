@@ -1,10 +1,10 @@
 import React from "react";
 
-import valve from "images/Valve_Logo_Since_2018.png";
-import rockStar from "images/rockstar-games-555376.png";
-import EA from "images/EA_logo_logotype.png";
-import activision from "images/Activision_Blizzard.svg.png";
-import sony from "images/PlayStation_black_logo.png";
+import valve from "images/Valve_Logo_Since_2018-min.jpg";
+import rockStar from "images/rockstar-games-555376-min.jpg";
+import EA from "images/EA_logo_logotype-min.jpg";
+import activision from "images/Activision_Blizzard.svg-min.jpg";
+import sony from "images/PlayStation_black_logo-min.jpg";
 
 import styles from "./Footer.module.scss";
 
