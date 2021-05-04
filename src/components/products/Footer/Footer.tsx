@@ -1,15 +1,15 @@
 import React from "react";
 
-import "./Footer.scss";
-
 import valve from "images/Valve_Logo_Since_2018.png";
 import rockStar from "images/rockstar-games-555376.png";
 import EA from "images/EA_logo_logotype.png";
 import activision from "images/Activision_Blizzard.svg.png";
 import sony from "images/PlayStation_black_logo.png";
 
+import styles from "./Footer.module.scss";
+
 const Footer: React.FC = () => (
-  <div className="Footer">
+  <div className={styles.wrapper}>
     <h2>Incredible convenient</h2>
     <ul>
       <li>

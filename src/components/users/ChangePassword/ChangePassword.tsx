@@ -11,7 +11,7 @@ import { ACTIONS } from "../../../redux/actions/creators";
 
 import { CONSTANTS, URLS } from "../../../constants";
 
-import "./ChangePassword.scss";
+import styles from "./ChangePassword.module.scss";
 
 interface Props {}
 
@@ -81,9 +81,9 @@ const ChangePassword: React.FC<Props> = () => {
 
   return (
     <Modal handleCloseModal={closeModal}>
-      <form method="post" className="ChangePassword">
-        <h2 className="ChangePassword__title">Change Password</h2>
-        <div className="ChangePassword__content">
+      <form method="post" className={styles.wrapper}>
+        <h2 className={styles.title}>Change Password</h2>
+        <div className={styles.content}>
           <div>
             <label htmlFor="prevPassword">Previous Password:</label>
             <input
@@ -123,7 +123,7 @@ const ChangePassword: React.FC<Props> = () => {
           </div>
           <Button
             text="Update password"
-            className="ProfilePage__btn ProfilePage__btn_changePassword"
+            className={`${styles.btn} ${styles.changePassword}`}
             onClick={(e) => onSubmit(e)}
           />
         </div>

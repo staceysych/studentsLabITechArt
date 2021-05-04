@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.Alert {
+.wrapper {
   height: auto;
   background: $errorColorBG;
   color: $errorColor;
@@ -35,9 +35,4 @@
   100% {
     transform: scaleX(1);
   }
-}
-
-.success {
-  background: $successColor;
-  color: $textColor;
 }

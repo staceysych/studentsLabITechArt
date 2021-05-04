@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from "../SearchBar";
 import { Select, Checkbox, Spinner, Button } from "../../../elements";
-import "./ProductsPage.scss";
 
 import { PAGE_ACTIONS } from "../../../redux/actions/creators";
 
 import { URLS, CONSTANTS } from "../../../constants";
 
 import { RootState, IProducts } from "../../../utils/interfaces";
-import { useFetchData, useDebounce, generateTitleSearch, withSuspense } from "../../../utils";
+import { useFetchData, useDebounce, generateTitleSearch } from "../../../utils";
 import { sortProducts, filterProducts } from "./utils";
 
 import GameCard from "../GameCard";
+
+import styles from "./ProductsPage.module.scss";
 
 interface ParamTypes {
   param: string;
@@ -87,45 +88,45 @@ const ProductsPage: React.FC = () => {
   };
 
   return (
-    <div className="ProductsPage">
-      <div className="ProductsPage__header">
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
         <h1>{param}</h1>
-        <div className="ProductsPage__controls">
+        <div className={styles.controls}>
           <SearchBar handleChange={handleChange} />
-          {isAdmin && <Button text="Add game" className="ProductsPage__btn" onClick={handleAddGame} />}
+          {isAdmin && <Button text="Add game" className={styles.btn} onClick={handleAddGame} />}
         </div>
       </div>
-      <div className="ProductsPage__wrapper">
-        <div className="ProductsPage__sort-container">
-          <div className="ProductsPage__sort">
+      <div className={styles.content}>
+        <div className={styles.sortContainer}>
+          <div className={styles.sort}>
             <h2>Sort:</h2>
-            <div className="ProductsPage__sort_field">
+            <div className={styles.sortField}>
               <h4>Criteria: </h4>
               <Select optionsList={CONSTANTS.CRITERIA_OPTIONS} setSortState={setSortCriteria} isDefault={isDefault} />
             </div>
-            <div className="ProductsPage__sort_field">
+            <div className={styles.sortField}>
               <h4>Type: </h4>
               <Select optionsList={CONSTANTS.TYPE_OPTIONS} setSortState={setSortType} isDefault={isDefault} />
             </div>
             <h3>Genre: </h3>
             {CONSTANTS.GENRE_OPTIONS.map((genre) => (
-              <div className="ProductsPage__sort_field" key={genre}>
+              <div className={styles.sortField} key={genre}>
                 <Checkbox value={genre} selected={genreName} text={genre} onChange={setGenreName} />
               </div>
             ))}
             <h3>Age: </h3>
             {CONSTANTS.AGE_OPTIONS.map((age) => (
-              <div className="ProductsPage__sort_field" key={age}>
+              <div className={styles.sortField} key={age}>
                 <Checkbox value={age} selected={ageValue} text={age} onChange={setAgeValue} />
               </div>
             ))}
           </div>
         </div>
-        <div className="ProductsPage__products-wrapper">
+        <div className={styles.productsContainer}>
           {!loading && !isLoading && debouncedSearchText && (
-            <h2 className="ProductsPage__products-title">{generateTitleSearch(debouncedSearchText, products)}</h2>
+            <h2 className={styles.productsTitle}>{generateTitleSearch(debouncedSearchText, products)}</h2>
           )}
-          <div className="ProductsPage__products">
+          <div className={styles.products}>
             {loading || isLoading ? (
               <Spinner />
             ) : (

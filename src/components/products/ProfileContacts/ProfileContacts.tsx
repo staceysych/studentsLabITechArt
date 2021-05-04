@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { RootState, IUserInfo } from "../../../utils/interfaces";
 import { generateInputType } from "./utils";
 
+import styles from "../ProfilePage/ProfilePage.module.scss";
+
 interface Props {
   changedContacts: IUserInfo;
   handleChange: (e) => void;
@@ -18,7 +20,7 @@ const ProfileContacts: React.FC<Props> = ({ changedContacts, handleChange }) => 
   return (
     <>
       {profileDataArr.map((arr) => (
-        <div className="ProfilePage__field" key={arr[0]}>
+        <div className={styles.field} key={arr[0]}>
           <label htmlFor={arr[0]}>{`${arr[0]}:`}</label>
           <input
             type={generateInputType(arr[0])}

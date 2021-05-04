@@ -1,0 +1,50 @@
+.wrapper {
+  flex: 1;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    position: relative;
+  }
+}
+
+.link {
+  text-decoration: none;
+  font-size: $mainFontSize;
+  color: $textColor;
+  position: relative;
+
+  &::after {
+    background: $textColor;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    top: 25px;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  &:hover::after {
+    left: 0;
+    width: 100%;
+  }
+}
+
+.btn {
+  background: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  margin: 0;
+  display: inline;
+  height: 100%;
+  font-family: "OpenSans-Regular", sans-serif;
+  cursor: pointer;
+}

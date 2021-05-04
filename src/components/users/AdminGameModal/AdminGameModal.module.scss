@@ -1,0 +1,76 @@
+.title {
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+.field {
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  label,
+  span {
+    width: 80px;
+  }
+
+  input {
+    height: 80%;
+    width: 140px;
+    border: 1px solid $basicColor;
+    text-align: center;
+    font-size: 16px;
+    color: $basicColorBright;
+  }
+}
+
+.photo {
+  width: 200px;
+  height: 275px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 200px;
+  height: 45px;
+  background: none;
+  border: 2px solid $successColor;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+  color: $successColor;
+
+  &:hover {
+    background: $successColor;
+    color: $textColor;
+  }
+}
+.cancel {
+  background: $basicColor;
+  border: none;
+  color: $textColor;
+  width: 100px;
+
+  &:hover {
+    background: $basicColorBright;
+  }
+}

@@ -7,7 +7,7 @@ import { RootState } from "../../../utils/interfaces";
 
 import { ACTIONS, PAGE_ACTIONS } from "../../../redux/actions/creators";
 
-import "./SubmitModal.scss";
+import styles from "./SubmitModal.module.scss";
 
 const SubmitModal = () => {
   const history = useHistory();
@@ -28,14 +28,14 @@ const SubmitModal = () => {
   return (
     isModalOpen && (
       <Modal handleCloseModal={closeModal}>
-        <div className="SubmitModal">
-          <h2 className="SubmitModal__title">Do you want to buy these items?</h2>
-          <div className="SubmitModal__items">
+        <div>
+          <h2>Do you want to buy these items?</h2>
+          <div className={styles.items}>
             {cart.map((product, index) => (
               <p key={`${product.name}-${index}`}>{`${index + 1}. ${product.name} - price: $${product.price}`}</p>
             ))}
           </div>
-          <button type="submit" className="SubmitModal__btn" onClick={onSubmit}>
+          <button type="submit" className="btn" onClick={onSubmit}>
             Buy
           </button>
         </div>

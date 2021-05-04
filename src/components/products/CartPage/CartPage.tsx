@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import "./CartPage.scss";
+import styles from "./CartPage.module.scss";
 
 import CartItem from "../CartItem";
 
@@ -30,12 +30,12 @@ const CartPage = () => {
   };
 
   return (
-    <div className="CartPage">
-      <div className="CartPage__header">
+    <>
+      <div className={styles.header}>
         <h1>Order list</h1>
       </div>
-      <div className="CartPage__wrapper">
-        <div className="CartPage__items">
+      <div className={styles.wrapper}>
+        <div className={styles.items}>
           {cart.length ? (
             uniqueItems.map((product: IProducts) => (
               <CartItem
@@ -49,22 +49,22 @@ const CartPage = () => {
             <h3>The cart is empty</h3>
           )}
         </div>
-        <div className="CartPage__total">
+        <div className={styles.total}>
           <h4>
             Total items: <span>{`${cart.length}`}</span>
           </h4>
           <h4>
             Total payment: <span>{`$${cart.length && getTotalPrice(cart)}`}</span>
           </h4>
-          <div className="CartPage__controls">
+          <div className={styles.controls}>
             <span>Current Balance: $0</span>
-            <button type="button" className="CartPage__btn" onClick={onSubmit}>
+            <button type="button" className={styles.btn} onClick={onSubmit}>
               Buy
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

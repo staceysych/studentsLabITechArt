@@ -1,8 +1,10 @@
 import { CONSTANTS } from "../../../../constants";
 
+import styles from "../../../../elements/modal/Modal.module.scss";
+
 export const generateCustomClassName = (action: string) => {
   if (action === CONSTANTS.DELETE_PRODUCT) {
-    return " Modal_delete";
+    return ` ${styles.delete}`;
   }
-  return " Modal_add";
+  return ` ${styles.add}`;
 };

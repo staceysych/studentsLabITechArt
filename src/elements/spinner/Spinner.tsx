@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./Spinner.scss";
+import styles from "./Spinner.module.scss";
 
 const Spinner = () => (
-  <div className="Spinner">
-    <div className="double-bounce1" />
-    <div className="double-bounce2" />
+  <div className={styles.wrapper}>
+    <div className={styles.bounce1} />
+    <div className={styles.bounce2} />
   </div>
 );
 

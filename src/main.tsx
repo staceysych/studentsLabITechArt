@@ -4,8 +4,6 @@ import { Provider } from "react-redux";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import "./styles/main.scss";
-
 import Header from "./components/products/Header";
 import HomePage from "./components/products/HomePage";
 import Footer from "./components/products/Footer";
@@ -24,6 +22,8 @@ import { IAppState } from "./utils/interfaces";
 
 import store from "./redux/index";
 import { withSuspense } from "./utils";
+
+import "./styles/main.scss";
 
 const ProductsPage = withSuspense(lazy(() => import("./components/products/ProductsPage")));
 const AboutPage = withSuspense(lazy(() => import("./components/products/AboutPage")));
