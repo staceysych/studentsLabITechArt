@@ -1,0 +1,16 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 140px;
+}
+
+.title {
+  text-align: center;
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

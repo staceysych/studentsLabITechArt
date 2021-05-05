@@ -2,8 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import "./Login.scss";
-
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
@@ -14,6 +12,8 @@ import { Modal, Alert } from "../../../elements";
 
 import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
+
+import styles from "./Login.module.scss";
 
 interface Props {}
 
@@ -82,9 +82,9 @@ const Login: React.FC<Props> = () => {
 
   return (
     <Modal handleCloseModal={closeModal}>
-      <form method="post" className="Login">
-        <h2 className="Login__title">Sign In</h2>
-        <div className="Login__content">
+      <form method="post" className={styles.wrapper}>
+        <h2 className={styles.title}>Sign In</h2>
+        <div className={styles.content}>
           <label htmlFor="login">
             <span>
               <img src={user} alt="user" />
@@ -116,7 +116,7 @@ const Login: React.FC<Props> = () => {
               ref={passwordRef}
             />
           </label>
-          <button type="submit" className="Login__btn" onClick={(e) => onSubmit(e)}>
+          <button type="submit" className="btn" onClick={(e) => onSubmit(e)}>
             Enter
           </button>
         </div>

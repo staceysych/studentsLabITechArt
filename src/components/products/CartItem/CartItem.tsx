@@ -5,7 +5,7 @@ import add from "images/add.svg";
 import remove from "images/minus.svg";
 import rubbish from "images/rubbish.svg";
 
-import "./CartItem.scss";
+import styles from "./CartItem.module.scss";
 
 import { IProducts, RootState } from "../../../utils/interfaces";
 import { getDate, removeObjectFromArr } from "../../../utils";
@@ -39,28 +39,24 @@ const CartItem: React.FC<Props> = ({ product, quantity, setQuantity }) => {
   };
 
   return (
-    <div className="CartItem">
-      <div className="CartItem__poster">
+    <div className={styles.CartItem}>
+      <div className={styles.poster}>
         <img src={product.poster} alt="poster" />
       </div>
-      <div className="CartItem__info">
-        <span className="CartItem__name">{product.name}</span>
-        <span className="CartItem__devise">{product.devise}</span>
+      <div className={styles.info}>
+        <span className={styles.name}>{product.name}</span>
+        <span className={styles.devise}>{product.devise}</span>
       </div>
-      <span className="CartItem__price">
+      <span className={styles.price}>
         Price: <span>{`$${product.price}`}</span>
       </span>
-      <span className="CartItem__date">{`Order Date: ${getDate(true)}`}</span>
-      <span className="CartItem__quantity">{`Qty: ${quantity[product.id]}`}</span>
-      <div className="CartItem__controls">
-        <button type="button" className="CartItem__btn CartItem__btn_add" onClick={() => handleAddItem(product.id)}>
+      <span>{`Order Date: ${getDate(true)}`}</span>
+      <span>{`Qty: ${quantity[product.id]}`}</span>
+      <div className={styles.controls}>
+        <button type="button" className={styles.btn} onClick={() => handleAddItem(product.id)}>
           <img src={add} alt="add" />
         </button>
-        <button
-          type="button"
-          className="CartItem__btn CartItem__btn_remove"
-          onClick={() => handleRemoveItem(product.id)}
-        >
+        <button type="button" className={`${styles.btn} ${styles.remove}`} onClick={() => handleRemoveItem(product.id)}>
           <img src={quantity[product.id] > 1 ? remove : rubbish} alt="remove" />
         </button>
       </div>

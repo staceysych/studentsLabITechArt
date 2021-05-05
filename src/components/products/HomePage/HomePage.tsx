@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../SearchBar";
 import GameCard from "../GameCard";
 
-import "./HomePage.scss";
+import styles from "./HomePage.module.scss";
 
 import { searchGame } from "./utils";
 import { useDebounce, generateTitleSearch } from "../../../utils";
@@ -49,19 +49,19 @@ const HomePage: React.FC = () => {
   }, [debouncedSearchText]);
 
   return (
-    <>
-      <div className="HomePage__controls">
+    <div className={styles.HomePage}>
+      <div className={styles.controls}>
         <SearchBar {...{ handleChange, isSearching }} />
       </div>
-      {!isSearching && <h2 className="HomePage__title">{generateTitleSearch(searchText, results)}</h2>}
-      {isSearching && <h2 className="HomePage__title">Searching for results...</h2>}
-      <div className="HomePage__content">
+      {!isSearching && <h2 className={styles.title}>{generateTitleSearch(searchText, results)}</h2>}
+      {isSearching && <h2 className={styles.title}>Searching for results...</h2>}
+      <div className={styles.content}>
         {results.length && !isSearching ? results.map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />) : null}
         {!searchText && !results.length
           ? recentProducts && recentProducts.slice(-3).map((obj: IProducts) => <GameCard key={obj.name} obj={obj} />)
           : null}
       </div>
-    </>
+    </div>
   );
 };
 

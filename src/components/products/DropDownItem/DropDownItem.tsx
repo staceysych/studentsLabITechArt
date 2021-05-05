@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import styles from "../DropDownMenu/DropDownMenu.module.scss";
+
 interface Props {
   path?: string;
   name: string;
@@ -11,12 +13,12 @@ interface Props {
 
 const DropDownItem: React.FC<Props> = ({ path, name, handleDropDownClick, icon, isSelect }) =>
   isSelect ? (
-    <li className="DropDownMenu__item" data-name={name} onClick={handleDropDownClick}>
+    <li className={styles.item} data-name={name} onClick={handleDropDownClick}>
       {name}
     </li>
   ) : (
-    <NavLink className="DropDownMenu__item" to={path} onClick={handleDropDownClick}>
-      <img className="DropDownMenu__icon" src={icon} alt={name} />
+    <NavLink className={styles.item} to={path} onClick={handleDropDownClick}>
+      <img className={styles.icon} src={icon} alt={name} />
       {name}
     </NavLink>
   );

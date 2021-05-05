@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+.wrapper {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.label {
+  color: $basicColor;
+  padding-right: 8px;
+}
+
+.outerCircle {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border: 2px solid $basicColor;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  transition: all 0.1s linear;
+}
+
+.innerCircle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $basicColor;
+  transition: all 0.1s linear;
+}
+
+.unselected {
+  border: 2px solid $basicColor;
+}
+.unselectedCircle {
+  width: 0;
+  height: 0;
+}

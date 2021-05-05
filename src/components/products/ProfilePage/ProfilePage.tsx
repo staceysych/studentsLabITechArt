@@ -15,7 +15,7 @@ import { validateLogin, validatePhone, validateEmail } from "../../../utils";
 
 import { ACTIONS } from "../../../redux/actions/creators";
 
-import "./ProfilePage.scss";
+import styles from "./ProfilePage.module.scss";
 
 interface Props {}
 
@@ -62,13 +62,13 @@ const ProfilePage: React.FC<Props> = () => {
   };
 
   return (
-    <div className="ProfilePage">
-      <div className="ProfilePage__avatar">
+    <div className={styles.wrapper}>
+      <div className={styles.avatar}>
         <img src={avatar} alt="avatar" />
       </div>
-      <div className="ProfilePage__info">
-        <div className="ProfilePage__contacts">
-          <div className="ProfilePage__field">
+      <div className={styles.info}>
+        <div className={styles.contacts}>
+          <div className={styles.field}>
             <label htmlFor="login">User name:</label>
             <input
               type="text"
@@ -82,11 +82,11 @@ const ProfilePage: React.FC<Props> = () => {
           </div>
           <ProfileContacts {...{ changedContacts, handleChange }} />
         </div>
-        <div className="ProfilePage__controls">
-          <Button text="Save contacts" className="ProfilePage__btn ProfilePage__btn_save" onClick={onClick} />
+        <div className={styles.controls}>
+          <Button text="Save contacts" className={`${styles.btn} ${styles.save}`} onClick={onClick} />
           <Button
             text="Change password"
-            className="ProfilePage__btn ProfilePage__btn_changePassword"
+            className={`${styles.btn} ${styles.changePassword}`}
             onClick={() => history.push("/changePassword")}
           />
         </div>

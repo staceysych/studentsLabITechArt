@@ -6,7 +6,7 @@ import { RootState } from "../../utils/interfaces";
 import { ACTIONS } from "../../redux/actions/creators";
 import { CONSTANTS } from "../../constants";
 
-import "./Alert.scss";
+import styles from "./Alert.module.scss";
 
 interface Props {
   text?: string;
@@ -16,7 +16,7 @@ const Alert: React.FC<Props> = ({ text }) => {
   const authInfo = useSelector((state: RootState) => state.auth.authInfo);
   const hasError = useSelector((state: RootState) => state.auth.hasError);
   const dispatch = useDispatch();
-  const styleName = ["Alert"];
+  const styleName = [styles.wrapper];
   const noUserAlert = authInfo === "No such user. Please sign up";
 
   useEffect(() => {

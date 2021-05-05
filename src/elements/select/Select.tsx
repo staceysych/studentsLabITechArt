@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
 
-import "./Select.scss";
-
 import DropDownMenu from "../../components/products/DropDownMenu";
 import DropDownItem from "../../components/products/DropDownItem";
+
+import styles from "./Select.module.scss";
 
 interface Props {
   optionsList: string[];
@@ -72,9 +72,9 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
   };
 
   return (
-    <div className="Select">
+    <div className={styles.wrapper}>
       <div
-        className={showOptionList ? "Select__text Select__text_active" : "Select__text"}
+        className={showOptionList ? `${styles.text} ${styles.active}` : styles.text}
         onClick={handleListDisplay}
         name={name}
       >

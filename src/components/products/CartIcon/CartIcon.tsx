@@ -7,14 +7,14 @@ import cart from "images/add-to-cart.svg";
 import { RootState } from "../../../utils/interfaces";
 import { CONSTANTS } from "../../../constants";
 
-import "./CartIcon.scss";
+import styles from "./CartIcon.module.scss";
 
 const CartIcon = () => {
   const cartArray = useSelector((state: RootState) => state.page.cart);
   const location = useLocation();
 
   return location.pathname !== CONSTANTS.CART_PATH ? (
-    <div className="CartIcon">
+    <div className={styles.CartIcon}>
       <Link className="CartIcon__link" to="/cart">
         <img src={cart} alt="cart icon" />
         {cartArray.length ? <span>{cartArray.length}</span> : null}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import defaultPhoto from "images/photo-default.png";
+import defaultPhoto from "images/photo-default-min.jpg";
 import { Modal, Select, Button, Alert } from "../../../elements";
 
 import { IProducts, RootState } from "../../../utils/interfaces";
@@ -12,7 +12,7 @@ import { formatGameForServer } from "../../../utils";
 import { CONSTANTS, URLS } from "../../../constants";
 import { ACTIONS, PAGE_ACTIONS } from "../../../redux/actions/creators";
 
-import "./AdminGameModal.scss";
+import styles from "./AdminGameModal.module.scss";
 
 const AdminGameModal = () => {
   const dispatch = useDispatch();
@@ -93,12 +93,12 @@ const AdminGameModal = () => {
   return (
     cardAction && (
       <Modal handleCloseModal={closeModal} customClassName={generateCustomClassName(cardAction)}>
-        <form method="post" className="AdminGameModal">
-          <h2 className="AdminGameModal__title">{generateModalTitle(cardAction, inputObj.name)}</h2>
+        <form method="post">
+          <h2 className={styles.title}>{generateModalTitle(cardAction, inputObj.name)}</h2>
           {!isDelete && (
-            <div className="AdminGameModal__content">
-              <div className="AdminGameModal__info">
-                <div className="AdminGameModal__field">
+            <div className={styles.content}>
+              <div className={styles.info}>
+                <div className={styles.field}>
                   <span>Name:</span>
                   <input
                     key="name"
@@ -110,7 +110,7 @@ const AdminGameModal = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Platform:</span>
                   <Select
                     optionsList={CONSTANTS.PLATFORM_OPTIONS}
@@ -119,7 +119,7 @@ const AdminGameModal = () => {
                     propsText={inputObj.devise}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Genre:</span>
                   <Select
                     optionsList={CONSTANTS.GENRE_OPTIONS.slice(1)}
@@ -128,7 +128,7 @@ const AdminGameModal = () => {
                     propsText={inputObj.genre}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Age:</span>
                   <Select
                     optionsList={CONSTANTS.AGE_OPTIONS.slice(1)}
@@ -137,7 +137,7 @@ const AdminGameModal = () => {
                     propsText={inputObj.age}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Rating:</span>
                   <Select
                     optionsList={CONSTANTS.RATING_OPTIONS}
@@ -146,7 +146,7 @@ const AdminGameModal = () => {
                     propsText={inputObj.rating.toString()}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Price:</span>
                   <input
                     key="price"
@@ -157,7 +157,7 @@ const AdminGameModal = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="AdminGameModal__field">
+                <div className={styles.field}>
                   <span>Poster:</span>
                   <input
                     key="poster"
@@ -170,18 +170,14 @@ const AdminGameModal = () => {
                 </div>
               </div>
 
-              <div className="AdminGameModal__photo">
+              <div className={styles.photo}>
                 <img src={inputObj.poster || defaultPhoto} alt="poster" />
               </div>
             </div>
           )}
-          <div className="AdminGameModal__controls">
-            <Button
-              text={generateBtnText(cardAction)}
-              className="AdminGameModal__btn AdminGameModal__btn_add"
-              onClick={handleSubmit}
-            />
-            <Button text="Cancel" className="AdminGameModal__btn AdminGameModal__btn_cancel" onClick={closeModal} />
+          <div className={styles.controls}>
+            <Button text={generateBtnText(cardAction)} className={styles.btn} onClick={handleSubmit} />
+            <Button text="Cancel" className={`${styles.btn} ${styles.cancel}`} onClick={closeModal} />
           </div>
         </form>
         {hasError && <Alert text={error} />}

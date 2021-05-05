@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 140px;
+}
+
+.header h1 {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.items {
+  flex: 3;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+  flex: 1;
+  margin-left: 20px;
+  border: 1px solid $basicColorBright;
+  height: 200px;
+}
+
+.total h4 {
+  margin: 0;
+  font-weight: normal;
+}
+
+.total h4 span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $basicColor;
+  margin-top: 20px;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 50%;
+  height: 40px;
+  text-transform: uppercase;
+  background: none;
+  border: 2px solid $successColor;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+  color: $successColor;
+
+  &:hover {
+    background: $successColor;
+    color: $textColor;
+  }
+}

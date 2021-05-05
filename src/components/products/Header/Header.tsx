@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import "./Header.scss";
+import styles from "./Header.module.scss";
 
 import NavBar from "../NavBar";
 import NavItem from "../NavItem";
@@ -36,8 +36,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="Header">
-      <h2 className="Header__title">Best Games Market</h2>
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>Best Games Market</h2>
       <NavBar>
         <NavItem path="/" name="Home" />
         <NavItem name="Products" handleDropDownClick={handleDropDownClick} isOpen={isOpen}>
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
         </NavItem>
         <NavItem path="/about" name="About" />
       </NavBar>
-      <div className="Header__signIn">
+      <div className={styles.signIn}>
         {isLoggedIn ? (
           <>
             <NavItem path="/profile" name={userInfo.login} />

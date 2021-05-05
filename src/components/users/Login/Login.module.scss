@@ -1,0 +1,57 @@
+@import "../../../styles/variables.scss";
+
+.wrapper {
+  height: 100%;
+  position: relative;
+
+  label {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+      flex: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 20px;
+
+      img {
+        width: 20px;
+        margin-right: 5px;
+      }
+    }
+
+    input {
+      flex: 2;
+      height: 100%;
+      padding: 10px;
+
+      &:focus {
+        border: 1.5px solid $errorColorBG;
+        outline: none;
+      }
+    }
+  }
+}
+
+.title {
+  margin-top: 0;
+  border-bottom: 1px solid $basicColorBright;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-bottom: 1px solid $basicColorBright;
+  padding: 20px 0;
+}
+
+.registrationBtn {
+  bottom: 0;
+}

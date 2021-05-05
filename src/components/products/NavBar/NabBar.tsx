@@ -1,14 +1,14 @@
 import React from "react";
 
-import "./NavBar.scss";
+import styles from "./NavBar.module.scss";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const NavBar: React.FC<Props> = ({ children }) => (
-  <nav className="NavBar">
-    <ul className="NavBar__nav">{children}</ul>
+  <nav className={styles.wrapper}>
+    <ul className={styles.nav}>{children}</ul>
   </nav>
 );
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Checkbox.scss";
+import styles from "./Checkbox.module.scss";
 
 interface Props {
   selected: string;
@@ -11,15 +11,15 @@ interface Props {
 
 const Checkbox: React.FC<Props> = ({ selected, onChange, text, value }) => (
   <div
-    className="Checkbox"
+    className={styles.wrapper}
     onClick={() => {
       onChange(value);
     }}
   >
-    <div className={`Checkbox__circle_outer ${value !== selected && "unselected"}`}>
-      <div className={`Checkbox__circle_inner ${value !== selected && "unselected-circle"}`} />
+    <div className={`${styles.outerCircle} ${value !== selected && styles.unselected}`}>
+      <div className={`${styles.innerCircle} ${value !== selected && styles.unselectedCircle}`} />
     </div>
-    <div className="Checkbox__label">{text}</div>
+    <div className={styles.label}>{text}</div>
   </div>
 );
 

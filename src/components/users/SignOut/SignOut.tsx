@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import "../Login/Login.scss";
-import "./SignOut.scss";
-
 import logout from "images/logout.svg";
 
 import { Modal } from "../../../elements";
@@ -12,6 +9,8 @@ import { Modal } from "../../../elements";
 import { ACTIONS } from "../../../redux/actions/creators";
 
 import { CONSTANTS } from "../../../constants";
+
+import styles from "./SignOut.module.scss";
 
 interface Props {}
 
@@ -40,12 +39,12 @@ const SignOut: React.FC<Props> = () => {
 
   return (
     <Modal handleCloseModal={closeModal}>
-      <div className="SignOut">
-        <h2 className="SignOut__title">Sign out?</h2>
-        <div className="SignOut__img">
+      <div>
+        <h2 className={styles.title}>Sign out?</h2>
+        <div className={styles.img}>
           <img src={logout} alt="logout" />
         </div>
-        <button type="submit" className="Login__btn" onClick={onSignOut}>
+        <button type="submit" className="btn" onClick={onSignOut}>
           Ok
         </button>
       </div>

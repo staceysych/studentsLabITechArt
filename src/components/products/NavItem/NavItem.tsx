@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import "./NavItem.scss";
+import styles from "../NavBar/NavBar.module.scss";
 
 interface Props {
   path?: string;
@@ -13,7 +13,7 @@ interface Props {
 
 const NavItem: React.FC<Props> = ({ path, name, handleDropDownClick, isOpen, children }) => {
   const location = useLocation();
-  const className: string[] = ["NavBar__link nav__btn"];
+  const className: string[] = [`${styles.link} ${styles.btn}`];
   if (location.pathname.includes("products")) {
     className.push(" active");
   }
@@ -24,7 +24,7 @@ const NavItem: React.FC<Props> = ({ path, name, handleDropDownClick, isOpen, chi
           {name}
         </button>
       ) : (
-        <NavLink className="NavBar__link" to={path} exact>
+        <NavLink className={styles.link} to={path} exact>
           {name}
         </NavLink>
       )}

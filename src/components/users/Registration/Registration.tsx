@@ -5,15 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import user from "images/user.svg";
 import padlock from "images/padlock.svg";
 
-import "../Login/Login.scss";
-import "./Registration.scss";
-
 import { validateLogin, validatePassword } from "../../../utils";
 import { IUserData, ILocation, RootState } from "../../../utils/interfaces";
 import { Modal, Alert } from "../../../elements";
 
-import { ACTIONS, ERRORS_ACTIONS } from "../../../redux/actions/creators";
+import { ACTIONS } from "../../../redux/actions/creators";
 import { CONSTANTS, URLS } from "../../../constants";
+
+import styles from "../Login/Login.module.scss";
 
 interface Props {}
 
@@ -99,9 +98,9 @@ const Registration: React.FC<Props> = () => {
 
   return (
     <Modal handleCloseModal={closeModal}>
-      <form method="post" className="Login">
-        <h2 className="Login__title">Registration</h2>
-        <div className="Login__content">
+      <form method="post" className={styles.wrapper}>
+        <h2 className={styles.title}>Registration</h2>
+        <div className={styles.content}>
           <label htmlFor="login">
             <span>
               <img src={user} alt="user" />
@@ -147,7 +146,7 @@ const Registration: React.FC<Props> = () => {
               ref={confirmRef}
             />
           </label>
-          <button type="submit" className="Login__btn Registration__btn" onClick={onSubmit}>
+          <button type="submit" className="btn" onClick={onSubmit} style={{ bottom: 0 }}>
             Registration
           </button>
         </div>

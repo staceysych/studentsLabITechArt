@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import "./GameCard.scss";
-
 import star from "images/star.svg";
+
+import styles from "./GameCard.module.scss";
 
 import { IProducts, RootState } from "../../../utils/interfaces";
 
@@ -42,22 +42,22 @@ const GameCard: React.FC<Props> = ({ obj }) => {
   };
 
   return (
-    <div className="GameCard" key={id}>
-      <div className="GameCard__img" onClick={() => addToCart()} aria-hidden="true">
+    <div className={styles.GameCard} key={id}>
+      <div className={styles.img} onClick={() => addToCart()} aria-hidden="true">
         <img src={poster} alt={name} />
       </div>
-      <div className="GameCard__content">
+      <div className={styles.content}>
         <h2>{name}</h2>
-        <div className="GameCard__rating">
+        <div className={styles.rating}>
           {[...Array(rating)].map((num, index) => (
             <img key={`${num}-${index}`} alt={rating.toString()} src={star} />
           ))}
         </div>
         <span>{`${price} BYN`}</span>
         {isAdmin && isProductsPage && (
-          <div className="GameCard__controls">
-            <Button text="Edit" className="GameCard__controls GameCard__controls_edit" onClick={handleEditGame} />
-            <Button text="Delete" className="GameCard__controls GameCard__controls_delete" onClick={handleDeleteGame} />
+          <div className={styles.controls}>
+            <Button text="Edit" className={`${styles.controls} ${styles.edit}`} onClick={handleEditGame} />
+            <Button text="Delete" className={`${styles.controls} ${styles.delete}`} onClick={handleDeleteGame} />
           </div>
         )}
       </div>
