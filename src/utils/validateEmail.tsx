@@ -3,7 +3,7 @@ import { IErrors } from "./interfaces";
 
 import { ACTIONS } from "../redux/actions/creators";
 
-export const validateEmail = (email: string, dispatch?) => {
+export const validateEmail = (email: string, dispatch) => {
   const errors: IErrors = {
     email: "",
   };

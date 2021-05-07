@@ -1,14 +1,17 @@
-import thunk from "redux-thunk";
-import configureStore from "redux-mock-store";
-import { convertDateToSec } from "../src/utils/convertDateToSec";
-import { getDate } from "../src/utils/getDate";
-import { validateEmail } from "../src/utils/validateEmail";
-import { getInitialState } from "../src/utils";
+import { createMockStore } from "../src/helpers/testHelpers";
 
-const createMockStore = () => {
-  const mockStore = configureStore([thunk]);
-  return mockStore;
-};
+import { CONSTANTS } from "../src/constants";
+
+import {
+  convertDateToSec,
+  getDate,
+  validateEmail,
+  getInitialState,
+  validateLogin,
+  validatePassword,
+  validatePhone,
+  validatePrevPassword,
+} from "../src/utils";
 
 const mockStore = createMockStore();
 
@@ -39,6 +42,55 @@ describe("Utils tests", () => {
   describe("Validation", () => {
     it("Should return boolean", () => {
       expect(validateEmail("bla@y.ru", store.dispatch)).toEqual(expect.any(Boolean));
+      expect(validateLogin("login", store.dispatch)).toEqual(expect.any(Boolean));
+      expect(validatePassword(store.dispatch, "1234")).toEqual(expect.any(Boolean));
+      expect(validatePhone("802911134", store.dispatch)).toEqual(expect.any(Boolean));
+      expect(validatePrevPassword(store.dispatch, "1234", "145")).toEqual(expect.any(Boolean));
+    });
+
+    it("Should return true if valid", () => {
+      const emailRegEx = CONSTANTS.EMAIL_RGX;
+      const mockedEmail = "bla@y.ru";
+      const loginRegEx = /^\S*$/;
+      const mockedLogin = "tronasty23";
+      const passwordRegEx = CONSTANTS.PASSWORD_RGX;
+      const mockedPassword = "123Love!";
+
+      if (emailRegEx.test(mockedEmail)) {
+        expect(validateEmail(mockedEmail, store.dispatch)).toBeTruthy();
+      }
+
+      if (loginRegEx.test(mockedLogin)) {
+        expect(validateLogin(mockedLogin, store.dispatch)).toBeTruthy();
+      }
+
+      if (passwordRegEx.test(mockedPassword)) {
+        expect(validatePassword(store.dispatch, mockedPassword)).toBeTruthy();
+      }
+    });
+
+    it("Should return false if passed data is falsy", () => {
+      expect(validateEmail("", store.dispatch)).toBeFalsy();
+      expect(validateLogin("", store.dispatch)).toBeFalsy();
+      expect(validatePassword(store.dispatch, "")).toBeFalsy();
+      expect(validatePhone("", store.dispatch)).toBeFalsy();
+      expect(validatePrevPassword(store.dispatch, "1234", "")).toBeFalsy();
+    });
+
+    it("validatePassword should return false if while confirmation no confirmPassword was passed", () => {
+      const needsToConfirm = true;
+      const noConfirmPassword = "";
+      const mockedPassword = "123";
+
+      expect(validatePassword(store.dispatch, mockedPassword, noConfirmPassword, needsToConfirm)).toBeFalsy();
+    });
+
+    it("validatePassword should return false if password and confirmPassword don't match", () => {
+      const needsToConfirm = true;
+      const noConfirmPassword = "1234";
+      const mockedPassword = "123";
+
+      expect(validatePassword(store.dispatch, mockedPassword, noConfirmPassword, needsToConfirm)).toBeFalsy();
     });
   });
 });
