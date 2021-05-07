@@ -1,6 +1,23 @@
+import thunk from "redux-thunk";
+import configureStore from "redux-mock-store";
 import { convertDateToSec } from "../src/utils/convertDateToSec";
 import { getDate } from "../src/utils/getDate";
 import { validateEmail } from "../src/utils/validateEmail";
+import { getInitialState } from "../src/utils";
+
+const createMockStore = () => {
+  const mockStore = configureStore([thunk]);
+  return mockStore;
+};
+
+const mockStore = createMockStore();
+
+let store;
+beforeEach(() => {
+  const state = getInitialState();
+
+  store = mockStore(state);
+});
 
 describe("Utils tests", () => {
   describe("Working with Date", () => {
@@ -21,7 +38,7 @@ describe("Utils tests", () => {
 
   describe("Validation", () => {
     it("Should return boolean", () => {
-      expect(validateEmail("bla@y.ru")).toEqual(expect.any(Boolean));
+      expect(validateEmail("bla@y.ru", store.dispatch)).toEqual(expect.any(Boolean));
     });
   });
 });
