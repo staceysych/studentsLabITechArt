@@ -5,3 +5,459 @@ exports[`Snapshot testing AboutPage renders correctly 1`] = `
   About
 </h3>
 `;
+
+exports[`Snapshot testing GameCard renders correctly 1`] = `
+<div
+  className="GameCard"
+>
+  <div
+    aria-hidden="true"
+    className="img"
+    onClick={[Function]}
+  >
+    <img
+      alt="GTA"
+      src="yandex.ru"
+    />
+  </div>
+  <div
+    className="content"
+  >
+    <h2>
+      GTA
+    </h2>
+    <div
+      className="rating"
+    >
+      <img
+        alt="5"
+        src={Object {}}
+      />
+      <img
+        alt="5"
+        src={Object {}}
+      />
+      <img
+        alt="5"
+        src={Object {}}
+      />
+      <img
+        alt="5"
+        src={Object {}}
+      />
+      <img
+        alt="5"
+        src={Object {}}
+      />
+    </div>
+    <span>
+      120 BYN
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Snapshot testing HomePage renders correctly 1`] = `
+<div
+  className="HomePage"
+>
+  <div
+    className="controls"
+  >
+    <div
+      className="wrapper"
+    >
+      <input
+        className="input"
+        onChange={[Function]}
+        placeholder="Search"
+        type="text"
+      />
+      <button
+        className="btn"
+        type="button"
+      >
+        <img
+          alt="lens"
+          src={Object {}}
+        />
+      </button>
+    </div>
+  </div>
+  <h2
+    className="title"
+  >
+    The most recent games added to the website
+  </h2>
+  <div
+    className="content"
+  >
+    <div
+      className="GameCard"
+    >
+      <div
+        aria-hidden="true"
+        className="img"
+        onClick={[Function]}
+      >
+        <img
+          alt=""
+          src=""
+        />
+      </div>
+      <div
+        className="content"
+      >
+        <h2>
+          
+        </h2>
+        <div
+          className="rating"
+        />
+        <span>
+          0 BYN
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snapshot testing ProductsPage renders correctly 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="header"
+  >
+    <h1 />
+    <div
+      className="controls"
+    >
+      <div
+        className="wrapper"
+      >
+        <input
+          className="input"
+          onChange={[Function]}
+          placeholder="Search"
+          type="text"
+        />
+        <button
+          className="btn"
+          type="button"
+        >
+          <img
+            alt="lens"
+            src={Object {}}
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="content"
+  >
+    <div
+      className="sortContainer"
+    >
+      <div
+        className="sort"
+      >
+        <h2>
+          Sort:
+        </h2>
+        <div
+          className="sortField"
+        >
+          <h4>
+            Criteria: 
+          </h4>
+          <div
+            className="wrapper"
+          >
+            <div
+              className="text"
+              onClick={[Function]}
+            >
+              Select
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <h4>
+            Type: 
+          </h4>
+          <div
+            className="wrapper"
+          >
+            <div
+              className="text"
+              onClick={[Function]}
+            >
+              Select
+            </div>
+          </div>
+        </div>
+        <h3>
+          Genre: 
+        </h3>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle false"
+            >
+              <div
+                className="innerCircle false"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              all
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              shooter
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              fighting
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              racing
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              strategy
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              sport
+            </div>
+          </div>
+        </div>
+        <h3>
+          Age: 
+        </h3>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle false"
+            >
+              <div
+                className="innerCircle false"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              all
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              6
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              12
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              16
+            </div>
+          </div>
+        </div>
+        <div
+          className="sortField"
+        >
+          <div
+            className="wrapper"
+            onClick={[Function]}
+          >
+            <div
+              className="outerCircle unselected"
+            >
+              <div
+                className="innerCircle unselectedCircle"
+              />
+            </div>
+            <div
+              className="label"
+            >
+              18
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="productsContainer"
+    >
+      <div
+        className="products"
+      >
+        <div
+          className="wrapper"
+        >
+          <div
+            className="bounce1"
+          />
+          <div
+            className="bounce2"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
