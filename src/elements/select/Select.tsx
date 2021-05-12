@@ -73,11 +73,7 @@ const Select: React.FC<Props> = ({ optionsList, setSortState, isDefault, setInpu
 
   return (
     <div className={styles.wrapper}>
-      <div
-        className={showOptionList ? `${styles.text} ${styles.active}` : styles.text}
-        onClick={handleListDisplay}
-        name={name}
-      >
+      <div className={showOptionList ? `${styles.text} ${styles.active}` : styles.text} onClick={handleListDisplay}>
         {selectedText}
       </div>
       {showOptionList && (

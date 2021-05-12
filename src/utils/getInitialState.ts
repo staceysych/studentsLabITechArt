@@ -29,7 +29,18 @@ export const getInitialState = () => ({
       devise: "",
     },
   ],
-
+  recentProducts: [
+    {
+      name: "",
+      rating: 0,
+      price: 0,
+      poster: "",
+      date: "",
+      genre: "",
+      age: "",
+      devise: "",
+    },
+  ],
   cart: [],
   cardAction: "",
 });

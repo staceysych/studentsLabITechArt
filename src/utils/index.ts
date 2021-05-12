@@ -16,6 +16,7 @@ import { getTotalPrice } from "./getTotalPrice";
 import { countDuplicates } from "./countDuplicates";
 import { formatGameForServer } from "./formatGameForServer";
 import { withSuspense } from "./withSuspense";
+import { getStateForTesting } from "./getStateForTesting";
 
 export {
   useDebounce,
@@ -36,4 +37,5 @@ export {
   countDuplicates,
   formatGameForServer,
   withSuspense,
+  getStateForTesting,
 };
